@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVLC.WEB", "MVLC.WEB\MVLC.WEB.csproj", "{F1A272BD-B697-43A5-A3DE-6B067A1564BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVLC.WEB.Tests", "MVLC.WEB.Tests\MVLC.WEB.Tests.csproj", "{FF0E3E85-780A-4494-9782-1B4A8D73F861}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F1A272BD-B697-43A5-A3DE-6B067A1564BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1A272BD-B697-43A5-A3DE-6B067A1564BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1A272BD-B697-43A5-A3DE-6B067A1564BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1A272BD-B697-43A5-A3DE-6B067A1564BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF0E3E85-780A-4494-9782-1B4A8D73F861}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF0E3E85-780A-4494-9782-1B4A8D73F861}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF0E3E85-780A-4494-9782-1B4A8D73F861}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF0E3E85-780A-4494-9782-1B4A8D73F861}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6D01509B-3D10-4047-800D-7CCEF9B3AE03}
+	EndGlobalSection
+EndGlobal

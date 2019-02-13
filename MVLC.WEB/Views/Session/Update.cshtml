@@ -1,0 +1,45 @@
+﻿@model LearnMVCBasics.Models.MultiSession
+@{
+    ViewBag.Title = "Update";
+}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>TotalHours</th>
+            <th># Attended</th>
+            <th>@if (Model.CurrentSession > 1) {@Model.SessionDates[@Model.CurrentSession - 2] }</th>
+            <th>@if (Model.CurrentSession>0) {@Model.SessionDates[@Model.CurrentSession - 1] }</th>
+            <th>@if (Model.SessionDates.Count > @Model.CurrentSession) {@Model.SessionDates[@Model.CurrentSession] }</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (var i = 0; i < Model.Students.Count(); i++)
+        {
+       
+            <tr>
+                <td>@Model.Students[i].Name</td>
+                <td></td>
+                <td></td>
+                @for (var j = 0; j < Model.Students[i].Hours.Count(); j++)
+                {
+                    <td>
+                        @if (j == 1)
+                        {
+                            @Html.TextBoxFor(m => m.Students[i].Hours[j].Hours)
+                        }
+                        else
+                        {
+                            @Model.Students[i].Hours[j].Hours
+                        }
+                    </td>
+                }
+                <td></td>
+            </tr>  
+        }
+    </tbody>
+</table>
+
+<h2>Update</h2>
+
