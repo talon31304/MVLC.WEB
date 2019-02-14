@@ -1,45 +1,70 @@
-﻿@model LearnMVCBasics.Models.MultiSession
+﻿@model MVLC.WEB.Models.MultiSession
 @{
     ViewBag.Title = "Update";
 }
+<a href="#" onclick="SetInitialVisibleState()">ClickMe</a>
+
 <table class="table table-bordered">
     <thead>
         <tr>
             <th>Name</th>
             <th>TotalHours</th>
             <th># Attended</th>
-            <th>@if (Model.CurrentSession > 1) {@Model.SessionDates[@Model.CurrentSession - 2] }</th>
-            <th>@if (Model.CurrentSession>0) {@Model.SessionDates[@Model.CurrentSession - 1] }</th>
-            <th>@if (Model.SessionDates.Count > @Model.CurrentSession) {@Model.SessionDates[@Model.CurrentSession] }</th>
+            @for (var j = 0; j < Model.SessionDates.Count(); j++)
+            {
+
+
+
+                <th class="Session@(j+1)">
+
+                    @Model.SessionDates[j]
+                </th>
+            }
+
+
+
+
+
             <th>Action</th>
         </tr>
     </thead>
+
     <tbody>
+
+
+
+
+
         @for (var i = 0; i < Model.Students.Count(); i++)
         {
-       
+
             <tr>
                 <td>@Model.Students[i].Name</td>
                 <td></td>
                 <td></td>
                 @for (var j = 0; j < Model.Students[i].Hours.Count(); j++)
                 {
-                    <td>
-                        @if (j == 1)
-                        {
-                            @Html.TextBoxFor(m => m.Students[i].Hours[j].Hours)
-                        }
-                        else
-                        {
-                            @Model.Students[i].Hours[j].Hours
-                        }
+                    <td class="Session@(j+1)">
+
+                        @Html.TextBoxFor(m => m.Students[i].Hours[j].Hours, new { @class = "SessionEntry" + (j+1).ToString() })
+                        <span class="SessionText@(j+1)" style="display:none">@Html.DisplayFor(m => m.Students[i].Hours[j].Hours)</span>
+
+
                     </td>
                 }
                 <td></td>
-            </tr>  
+            </tr>
         }
     </tbody>
 </table>
 
 <h2>Update</h2>
 
+
+
+
+@section CustomScripts
+   {
+
+    <script src="@Url.Content("~/Scripts/MultiSession.js")" type="text/javascript"></script>
+}

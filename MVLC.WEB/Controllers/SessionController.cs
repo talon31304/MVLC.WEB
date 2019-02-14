@@ -1,11 +1,11 @@
-﻿using LearnMVCBasics.Models;
+﻿using MVLC.WEB.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace LearnMVCBasics.Controllers
+namespace MVLC.WEB.Controllers
 {
     public class SessionController : Controller
     {
@@ -49,7 +49,7 @@ namespace LearnMVCBasics.Controllers
 
             }
             ClassSessionData.CurrentSession = ClassSessionData.SessionDates.Count()-1;
-
+            ClassSessionData.CurrentSessionDate = DateTime.Now.ToString("MM/dd/yyyy");
             // List<string> mylist = new List<string>(new string[] { "element1", "element2" });
             //Question q = new Question() { Text = "Some question" };
 
