@@ -1,4 +1,5 @@
-﻿function HideAll(ClassName) {
+﻿var EditCol = 7;
+function HideAll(ClassName) {
     var divsToHide = document.getElementsByClassName(ClassName); //divsToHide is an array
     for (var i = 0; i < divsToHide.length; i++) {
         //divsToHide[i].style.visibility = "hidden"; // or
@@ -16,6 +17,8 @@ function ShowAll(ClassName) {
 }
 
 function SetEditColumn(ColNumber) {
+
+
     for (i = 1; i < (ColNumber - 2); i++) {
         HideAll('Session'.concat(i));
     }
@@ -31,9 +34,10 @@ function SetEditColumn(ColNumber) {
     //test
 }
 function SetInitialVisibleState() {
-    SetEditColumn(6);
+    SetEditColumn(EditCol);
+    EditCol--;
    
-     
+    alert(EditCol);
 }
 
 window.onload =   SetInitialVisibleState();

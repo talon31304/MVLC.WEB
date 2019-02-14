@@ -3,61 +3,61 @@
     ViewBag.Title = "Update";
 }
 <a href="#" onclick="SetInitialVisibleState()">ClickMe</a>
-
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>TotalHours</th>
-            <th># Attended</th>
-            @for (var j = 0; j < Model.SessionDates.Count(); j++)
+<div class="HoursEntry">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Total Hours</th>
+                <th># Attended</th>
+                @for (var j = 0; j < Model.SessionDates.Count(); j++)
             {
 
 
 
-                <th class="Session@(j+1)">
+                    <th class="Session@(j+1) HoursEntry">
 
-                    @Model.SessionDates[j]
-                </th>
+                        @Model.SessionDates[j]
+                    </th>
             }
 
 
 
 
 
-            <th>Action</th>
-        </tr>
-    </thead>
+                <th>Action</th>
+            </tr>
+        </thead>
 
-    <tbody>
-
-
+        <tbody>
 
 
 
-        @for (var i = 0; i < Model.Students.Count(); i++)
+
+
+            @for (var i = 0; i < Model.Students.Count(); i++)
         {
 
-            <tr>
-                <td>@Model.Students[i].Name</td>
-                <td></td>
-                <td></td>
-                @for (var j = 0; j < Model.Students[i].Hours.Count(); j++)
+                <tr>
+                    <td>@Model.Students[i].Name</td>
+                    <td></td>
+                    <td></td>
+                    @for (var j = 0; j < Model.Students[i].Hours.Count(); j++)
                 {
-                    <td class="Session@(j+1)">
+                        <td class="Session@(j+1) HoursEntry">
 
-                        @Html.TextBoxFor(m => m.Students[i].Hours[j].Hours, new { @class = "SessionEntry" + (j+1).ToString() })
-                        <span class="SessionText@(j+1)" style="display:none">@Html.DisplayFor(m => m.Students[i].Hours[j].Hours)</span>
+                            @Html.TextBoxFor(m => m.Students[i].Hours[j].Hours, new { @class = "SessionEntry" + (j+1).ToString() })
+                            <span class="SessionText@(j+1)" style="display:none">@Html.DisplayFor(m => m.Students[i].Hours[j].Hours)</span>
 
 
-                    </td>
+                        </td>
                 }
-                <td></td>
-            </tr>
+                    <td></td>
+                </tr>
         }
-    </tbody>
-</table>
-
+        </tbody>
+    </table>
+</div>
 <h2>Update</h2>
 
 

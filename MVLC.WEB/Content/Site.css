@@ -1,4 +1,10 @@
-﻿body {
+﻿.HoursEntry
+{
+    background: blue;
+
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -21,4 +27,12 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.HoursEntry input {
+    max-width: 30px;
+    width: 30px;
+}
+.HoursEntry td {
+    width: 45px;
 }
