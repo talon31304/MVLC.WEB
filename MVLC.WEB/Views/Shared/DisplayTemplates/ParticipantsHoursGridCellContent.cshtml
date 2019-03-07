@@ -1,0 +1,49 @@
+﻿@model MVLC.WEB.ViewModels.ParticipantsHoursGridCellContent
+@{
+    string idText = "_" + Model.Row + "_" + Model.Column;
+    string spanID = "Text" + idText;
+
+    string changeAttribsRadio = "CommitChange('Radio'," + Model.Row + "," + Model.Column + ",'" + idText + "'," + Model.ParticipantID + ",'" + Model.DateString + "',this.value )";
+    List<string> RadioVals = new List<string>() { "0", "1", "1.5", "2", "2.5" };
+    string clickAttribs = "CellActive('Click'," + Model.Row + "," + Model.Column + ")";
+    string hoverAttribs = "CellActive('Over'," + Model.Row + "," + Model.Column + ")";
+    string inputvisible = "display:" + (Model.Hours <= 2.5 ? "Block" : "Block");
+
+
+
+    <div class="CellWrapper" onmouseover="@hoverAttribs" onclick="@clickAttribs">
+        <div class="TopLeft">
+
+        </div>
+        <div class="TopCenter DataSection">
+            <div class="HoursViewSpan">
+                   <span class="DataValue" id="@(spanID)">@Model.Hours</span>
+            </div>
+           
+            <div class="BlankBackground" onclick="ToggleVisibility('@("DDR" + @idText)'); SetHideDiv('@("DDR" + @idText)')">
+                <div class="MVCL-DropdownMenuSelector HoursSelectDropDown dropdown">
+                    <div class="MVCL-DropdownMenuSelectorTextContainer"><span class="DataValue LargeDataValue EditModeValue" id=@("DDSpan"+@idText)>@Model.Hours</span></div>
+                    <div class="MVCL-DropdownMenuSelectorCaretContainer"><span class="MenuCaret"></span></div>
+                </div>
+               
+                </div>
+            </div>
+        <div class="Bottom">
+            
+            @Html.Partial("HoursRadioTablePartialView", @Model)
+        </div>
+        <div class="RightSide EntryDropDownRightOuter" id="@("DDR" + @idText)" onblur"alert('lostfocus!')">
+
+
+            @foreach (string choice in ViewData["choices"] as IList<string>)
+            {
+               <a href="#" onclick="@("UpdateVal(" + Model.ParticipantID + ",'"+Model.DateString+ "'," + Model.Row+","+Model.Column + "," + choice + ");")">@(choice)  </a><br />
+
+            }
+        </div>
+    </div>
+
+   
+
+}
+

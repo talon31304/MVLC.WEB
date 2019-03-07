@@ -1,0 +1,55 @@
+﻿@model MVLC.WEB.ViewModels.HoursEntryViewModel
+
+@Html.DropDownListFor(
+    x => x.Year,
+    new SelectList(Model.Years, "Value", "Text"),
+    "-- select year --"
+)
+
+@Html.DropDownListFor(
+    x => x.Month,
+    Enumerable.Empty<SelectListItem>(),
+    "-- select month --"
+)
+@section scripts
+   {
+<script type="text/javascript">
+ //   alert("hereA1");
+    $("#Year").change(function () {
+       // alert("here2");
+        var selectedYear = $(this).val();
+
+    });
+  //  alert("hereA2");
+
+    $("select").change(function () {
+      //  alert("The text has been changed.");
+    });
+  //  alert("hereA3");
+    </script>
+
+<script type="text/javascript">
+
+
+
+
+    $('#Year').change(function () {
+       // alert("here1");
+        var selectedYear = $(this).val();
+        if (selectedYear != null && selectedYear != '') {
+
+
+            $.getJSON('@Url.Action("Months")', { year: selectedYear }, function (months) {
+                var monthsSelect = $('#Month');
+                monthsSelect.empty();
+                $.each(months, function (index, month) {
+                    monthsSelect.append($('<option/>', {
+                        value: month.value,
+                        text: month.text
+                    }));
+                });
+            });
+        }
+    });
+</script>
+    }

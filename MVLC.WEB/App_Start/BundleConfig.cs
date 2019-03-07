@@ -22,8 +22,14 @@ namespace MVLC.WEB
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/customJQuery").Include(
+                       "~/Scripts/Custom/DynamicDiv.js",
+                       "~/Scripts/Custom/DropDownDiv.js"
+                       ));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap.css", "~/Content/grid.css",
+                      "~/Content/bootstrap.css", "~/Content/DynamicDiv.css",
                       "~/Content/site.css"));
         }
     }

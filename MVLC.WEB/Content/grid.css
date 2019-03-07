@@ -1,0 +1,174 @@
+﻿.MVCL_GridTable {
+    background-color: #EEEEEE;
+    text-align:center;
+    width:700px;
+}
+.MVCL_GridTable .header
+{
+
+}
+.MVCL_GridTable .footer
+{
+
+}
+
+/*Colum Header CSS*/
+.MVCL_GridTable  th {
+    background: #1C6EA4;
+  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  border-bottom: 2px solid #444444;
+}
+.MVCL_GridTable  th.InactiveColumn {
+    font-weight:Bold;
+        color:aliceblue;
+    font-size:1em;
+}
+.MVCL_GridTable  th.ActiveColumn {
+    font-weight:Bold;
+        color:black;
+        font-size:1.2em;
+}
+
+
+
+
+/*Row CSS*/
+
+.MVCL_GridTable .ActiveRow {
+/*background-color:lightblue;*/
+opacity: .75;
+max-height:100px;
+height:100px;
+}
+
+.MVCL_GridTable tr.OddRow {
+  background-color:aqua;
+  color:black;
+  /*background: #D0E4F5;*/
+}
+
+.MVCL_GridTable tr.EvenRow {
+  background-color: #EEEEEE;
+  color:black;
+  /*background: #D0E4F5;*/
+}
+.MVCL_GridTable .Separator {
+  background-color:darkblue !important;
+  color:white;
+  display:block;
+  /*background: #D0E4F5;*/
+}
+
+.MVCL_GridTable .Separator.Narrow {
+max-height:5px;
+min-height:5px;
+height:5px;
+}
+.MVCL_GridTable .Separator.Medium {
+max-height:10px;
+min-height:10px;
+height:10px;
+}
+.MVCL_GridTable tr.Separator.Wide {
+max-height:20px;
+min-height:20px;
+height:20px;
+}
+
+
+/*Column CSS*/
+.MVCL_GridTable .HiddenColumn  {
+   display:none;
+}
+.MVCL_GridTable {
+    /*background-color:aliceblue;*/
+   
+}
+
+
+.MVCL_GridTable col.EntryDataColumn.ActiveColumn 
+{
+ border: 2px dashed gray;
+    opacity: 1;
+     width:220px;
+     min-width:220px;
+}
+.MVCL_GridTable .InactiveColumn {
+    /*background-color:lightgray;*/
+    opacity: .75;
+    width:45px;
+    max-width:45px;
+    margin-left:0px;
+    margin-right:0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    overflow-x:hidden;
+    
+}
+.MVCL_GridTable .ActiveRow .InactiveColumn {
+    /*background-color:lightyellow;*/
+}
+
+
+
+
+/*Cell CSS*/
+
+.MVCL_GridTable .MVLC_ActiveCell,
+.ActiveRow .ActiveColumn.MVLC_TableCell
+{
+    background-color:white;
+    border: 2px solid Black
+}
+.MVCL_GridTable .MVLC_TableCell
+{
+
+}
+
+
+
+
+/*Cell Content CSS*/
+.MVCL_GridTable .InactiveColumn.MVLC_TableCell div.DataSection{
+    font-size:1.2em;
+    font-weight:Bold;
+        color:darkslategray;
+        background-color:inherit;
+}
+
+.MVCL_GridTable .ActiveColumn.MVLC_TableCell div.DataSection{
+    font-size:1.2em;
+    font-weight:Bold;
+        color:darkslategray;
+        background-color:inherit;
+}
+.MVCL_GridTable .ActiveColumn.MVLC_TableCell div.DataSection:hover{
+    font-size:1.2em;
+    font-weight:Bold;
+        color:darkslategray;
+        background-color:white;
+        border:1px solid darkgray;
+}
+
+.MVCL_GridTable .MVLC_TableCell .DataValue{
+    font-size:1.2em;
+    font-weight:Bold;
+        color:black;
+}
+.MVCL_GridTable .InactiveColumn .MVLC_TableCell .DataValue{
+    /*font-size:1.2em;
+    font-weight:Bold;
+        color:darkslategray;*/
+}
+.MVCL_GridTable .MVLC_TableCell span.DataValue.LargeDataValue{
+    font-size:2.6em;
+
+}
+.MVCL_GridTable .MVLC_TableCell span.DataValue.EditModeValue {
+    color:blue;
+    
+}
+
+

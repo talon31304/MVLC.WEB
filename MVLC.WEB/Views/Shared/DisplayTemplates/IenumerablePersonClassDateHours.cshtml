@@ -1,0 +1,39 @@
+﻿@model List<MVLC.DAL.Models.PersonClassDateHours>
+<tr>
+    <td class="EntryNameColumn">
+        <span class="EntryNameColumn">PersonName</span><br />
+        <span class="MVLCTable_SmallLabel">Classes Attended</span>
+        <span class="MVLCTable_SmallValue"></span><br />
+        <span class="MVLCTable_SmallLabel">Total Hours</span>
+        <span class="MVLCTable_SmallValue"></span><br />
+    </td>
+
+
+
+    @for (var j = 0; j < Model.Count() - 1; j++)
+    {
+        if (j < Model.Count() - 3)
+        {
+
+
+            <td class="EntryDataColumn HiddenColumn EntryDataColumn@(j + 1)">
+                @Html.TextBoxFor(m => m[j].Hours, new { @class = "HoursEntryInput" })
+                <span class="HoursEntryText">@Html.DisplayFor(m => m[j].Hours)</span>
+            </td>
+        }
+        else
+        {
+            <td class="EntryDataColumn InactiveColumn EntryDataColumn@(j + 1)">
+                @Html.TextBoxFor(m => m[j].Hours, new { @class = "HoursEntryInput" })
+                <span class="HoursEntryText">@Html.DisplayFor(m => m[j].Hours)</span>
+            </td>
+        }
+    }
+
+    <td class="EntryDataColumn ActiveColumn EntryDataColumn@(Model.Count())">
+        @Html.TextBoxFor(m => m.Hours[Model.Count() - 1].Hours, new { @class = "HoursEntryInput" })
+        <span class="HoursEntryText">@Html.DisplayFor(m => m.Hours[Model.Count() - 1].Hours)</span>
+    </td>
+
+    <td></td>
+</tr>

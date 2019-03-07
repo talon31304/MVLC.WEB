@@ -1,0 +1,6 @@
+﻿@model List<MVLC.WEB.ViewModels.OnClickText>
+
+@for (int k = 0; k < Model.Count(); k++)
+{
+    <a href="#" onclick="@(Model[k].OnClick)">@Model[k].LinkText</a><br />
+}

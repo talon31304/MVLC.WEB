@@ -1,0 +1,32 @@
+﻿@model MVLC.WEB.ViewModels.ParticipantHoursGridRow
+<tr id="@("DataRow"+Model.RowNumber.ToString())" class="DataRow @(Model.RowNumber % 2 == 0? "EvenRow": "OddRow")" >
+    <td class="MVLC_TableCell EntryNameColumn">
+        <div onmouseover="SetActiveRow(@(Model.RowNumber));">
+            <span class="EntryNameColumn">@Model.PartipantName</span><br />
+            <div class="EntryNameData">
+                <span class="MVLCTable_SmallLabel">Classes Attended</span>
+                <span class="MVLCTable_SmallValue" id=@("ClassTotal" + Model.RowNumber)>0</span><br />
+                <span class="MVLCTable_SmallLabel">Total Hours</span>
+                <span class="MVLCTable_SmallValue" id=@("HoursTotal" + Model.RowNumber)>0</span><br />
+            </div>
+        </div>
+    </td>
+
+    @for (var j = 0; j < Model.DataCells.Count(); j++)
+    {
+        string columnClass = "ActiveColumn";
+        if (j < Model.DataCells.Count() - 3)
+        {
+            columnClass = "HiddenColumn";
+        }
+        else if (j < Model.DataCells.Count() - 1)
+        {
+            columnClass = "InactiveColumn";
+        }
+        <td class="MVLC_TableCell EntryDataColumn @columnClass EntryDataColumn@(j + 1)" onclick="CellActive('Click',@Model.RowNumber,@(j + 1))">
+            @Html.DisplayFor(m => m.DataCells[j]) @*//Display Template ParticipantsHoursGridCellContent*@
+        </td>
+    }
+    <td MVLC_TableCell><div id="@("RowMsg" + Model.RowNumber.ToString())" class="SavedMessage" style="display:none"><span>Saved!</span></div>
+</td>
+</tr>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e51b121b93964c78a6d85ebb6e6cf250" Name="Diagram1">
+        <EntityTypeShape EntityType="MVLC.LIVEModel.BulkClassHour" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVLC.LIVEModel.ClassDate" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVLC.LIVEModel.Class" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVLC.LIVEModel.HoursEntryIssue" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVLC.LIVEModel.Person" Width="1.5" PointX="3.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVLC.LIVEModel.PersonClass" Width="1.5" PointX="6" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVLC.LIVEModel.PersonClassHour" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVLC.LIVEModel.PersonClassHoursHistory" Width="1.5" PointX="6" PointY="11.25" IsExpanded="true" />
+        <AssociationConnector Association="MVLC.LIVEModel.FK__BulkClass__Class__145C0A3F" ManuallyRouted="false" />
+        <AssociationConnector Association="MVLC.LIVEModel.FK__ClassDate__Class__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="MVLC.LIVEModel.FK__PersonCla__Class__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="MVLC.LIVEModel.FK__PersonCla__Class__1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="MVLC.LIVEModel.FK__PersonCla__Class__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="MVLC.LIVEModel.FK__PersonCla__Perso__173876EA" ManuallyRouted="false" />
+        <AssociationConnector Association="MVLC.LIVEModel.FK__PersonCla__Perso__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="MVLC.LIVEModel.FK__PersonCla__Perso__21B6055D" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MVLC.LIVEModel.Term" Width="1.5" PointX="0.75" PointY="3.75" />
+        <AssociationConnector Association="MVLC.LIVEModel.FK__Classes__Term__36B12243" />
+        <EntityTypeShape EntityType="MVLC.LIVEModel.SectionContent" Width="1.5" PointX="10.625" PointY="1" />
+        <EntityTypeShape EntityType="MVLC.LIVEModel.SectionLayout" Width="1.5" PointX="8.375" PointY="1.5" />
+        <AssociationConnector Association="MVLC.LIVEModel.FK__SectionCo__NextC__4316F928" />
+        <AssociationConnector Association="MVLC.LIVEModel.FK__SectionCo__Previ__4222D4EF" />
+        <AssociationConnector Association="MVLC.LIVEModel.FK__SectionCo__Previ__440B1D61" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

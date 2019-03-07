@@ -1,0 +1,46 @@
+﻿@model MVLC.WEB.ViewModels.DynamicDiv
+
+
+<div class="@Model.CssClass DynamicDiv">
+
+
+    <span class="helper"></span>
+    <div class="popupCloseButton">X</div>
+
+    <div class="DynamicDivHeader">
+            <div class="DynamicInnerHeaderDiv1">@Model.HeaderLink</div>
+            <div class="DynamicInnerHeaderDiv2">
+                <span class="DynamicDivSubTitle">@Model.Header</span>
+            </div>
+            <div class="DynamicInnerHeaderDiv3"></div>
+        </div>
+
+    <div class="DynamicDivTitle">
+            <div class="DynamicInnerTitleDiv1"></div>
+            <div class="DynamicInnerTitleDiv2">
+                <span class="DynamicDivTitle">@Model.Title</span>
+            </div>
+            <div class="DynamicInnerTitleDiv3"></div>
+        </div>
+
+    <div class="DynamicDivSubTitle">
+            <div class="DynamicInnerSubTitleDiv1"></div>
+            <div class="DynamicInnerSubTitleDiv2">
+                <span class="DynamicDivSubTitle">@Model.SubTitle</span>
+            </div>
+            <div class="DynamicInnerSubTitleDiv3"></div>
+        </div>
+
+    <div class="DynamicDivBody">
+            @Html.Raw(@Model.BodyHTML)
+        </div>
+
+    <div class="DynamicDivFooter">
+            <div class="DynamicInnerFooterDiv1"></div>
+            <div class="DynamicInnerFooterDiv2">
+                <span class="DynamicFooterText">@Model.Footer</span>
+            </div>
+            <div class="DynamicInnerFooterDiv3"></div>
+    </div>
+
+</div>

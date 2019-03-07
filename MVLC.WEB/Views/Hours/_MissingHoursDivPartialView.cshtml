@@ -1,0 +1,111 @@
+﻿@model MVLC.WEB.ViewModels.HoursColumnHead
+@{ 
+    string checkedText = "";
+    string didClassMeet = "Y";
+    string  MissingHoursAction = "UncheckMe(this); ToggleDidClassMeet(" + Model.Column + ",'" + Model.ClassDate + "');";
+    if ( (ViewData["DatesClassDidNotMeet"] as IList<DateTime>).Contains(Model.ClassDate) )
+    {
+        didClassMeet = "N";
+        checkedText = "checked";
+    }
+
+
+}
+
+<input type="hidden" value="@didClassMeet" id="@("ColumnClassMet"  + Model.Column.ToString())" />
+
+
+@*<div>@MissingHoursStatus</div>*@
+<div class="MissingHours HoursStatus">
+
+    <div class="Missing">
+        <div class="Small2Column">
+            <a href="#" onmouseover="@("ToggleMissingDisplay("+Model.Column.ToString()+");" )">
+                <img src="~/Content/Images/ExclamationMark.png" class="HoursStatusImage" />
+            </a>
+        </div>
+        <div class="Big2Column HoursStatusActionBox ">
+            <span class="ColorRed">Missing Hours  </span>
+            <div onclick="DisplayDynamicPopupDiv(1);" class="HelpQuestionMark">?</div><br />
+            <div class="NarrowFormDiv">
+                <input type="checkbox" onchange="@MissingHoursAction" @checkedText />
+                No Class
+   
+            </div>
+            <div class="NarrowFormDiv">
+                @*<div onclick="DisplayDynamicPopupDiv(1);" class="HelpQuestionMark">?</div>*@
+                @*<a href="#" onclick="DisplayDynamicPopupDiv(1);">Click here to show the popup</a>
+                <span class="MVLCTable_SmallHelpLabel BlueHint">How Do I fix this?</span>*@
+            </div>
+        </div>
+        <div class="MissingHoursDetails" id="@("MissingHoursDetailsDiv"  + Model.Column.ToString())" onclick="@("ToggleVisibility('MissingHoursDetailsDiv"+Model.Column.ToString()+"');" )">
+        </div>
+
+        <div class="HoursStatusActionBox">
+            <div class="MissingHoursDetails HelpInfoBox CenterText">
+                @*<span>To fix: </span><br />*@
+                <span> Please Add Hours</span><br />
+                <span> --OR--</span><br />
+                @*<span> If No Class,</span><br />*@
+                 <span> Select "No Class"</span><br />
+            </div>
+            <div class="HoursStatusCB">
+                      </div>
+            
+        </div>
+
+    </div>
+    <div class="NoClass">
+        <div class="Small2Column">
+            <a href="#" onmouseover="@("ToggleMissingDisplay("+Model.Column.ToString()+");" )">
+                <img src="~/Content/Images/NoClass.png" class="HoursStatusImage" />
+            </a>
+        </div>
+        <div class="Big2Column HoursStatusActionBox Yellow">
+            <span>No Class</span><br />
+        </div>
+    </div>
+    <div class="HasHours">
+        <div class="Small2Column">
+            <a href="#" onmouseover="@("ToggleMissingDisplay("+Model.Column.ToString()+");" )">
+                <img src="~/Content/Images/GreenCheck.png" class="HoursStatusImage" />
+            </a>
+        </div>
+        <div class="Big2Column HoursStatusActionBox">
+            <span>
+                <span class="MVLCTable_SmallLabel"> Total Attendees:</span><span class="MVLCTable_SmallValue" id="@("TotalAttendeesColumn"  + Model.Column.ToString())">0 </span><br />
+                <span class="MVLCTable_SmallLabel">Total Hours:</span> <span class="MVLCTable_SmallValue" id="@("ColumnTotal"  + Model.Column.ToString())">0 </span>
+
+            </span><br />
+        </div>
+        <div class="HoursStatusActionBox">
+    @*<input type="hidden" value="0" id="@("ColumnTotal"  + Model.Column.ToString())" />*@
+         </div>
+    </div>
+
+    @*<div class="Small2Column">
+        <a href="#" onmouseover="@("ToggleMissingDisplay("+Model.Column.ToString()+");" )">
+            <img src="~/Content/Images/ExclamationMark.png" class="MissingHoursImage" />
+        </a>
+        <a href="#" onmouseover="@("ToggleMissingDisplay("+Model.Column.ToString()+");" )">
+            <img src="~/Content/Images/GreenCheck.png" class="OKHoursImage" />
+        </a>
+        <a href="#" onmouseover="@("ToggleMissingDisplay("+Model.Column.ToString()+");" )">
+            <img src="~/Content/Images/NoClass.png" class="NoClassImage" />
+        </a>
+
+    </div>
+    <div class="Big2Column HoursStatusActionBox Missing">
+        <span>Missing Hours</span><br />
+    </div>*@
+
+
+
+    <div class="MissingHoursActionBox">
+        @*<span>Add Hours, or Check class cancelled.</span> <br />
+        <input type="checkbox" name="" value="N" onchange="@MissingHoursAction"/>Class Cancelled<br />*@
+    </div>
+
+    
+
+</div>

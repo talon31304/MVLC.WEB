@@ -1,20 +1,34 @@
-﻿.HoursEntry
-{
-    background: blue;
-
+﻿
+.navbar-default {
+    background:inherit !important;
+    border: 0px !important;
+    /*background-color:white !important;
+    border-color: #E7E7E7;*/
 }
 
 body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
+.Small2Column {float:left;width:25%}
+.Big2Column {float:left;width:75%}
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
-
+div.container.body-content
+{
+   min-height:500px;
+}
+footer {
+      
+    display:block;
+    width:600px;
+    min-width:100%;
+    text-align:center;
+}
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
@@ -29,10 +43,524 @@ textarea {
     max-width: 280px;
 }
 
-.HoursEntry input {
-    max-width: 30px;
-    width: 30px;
+.EditTextBoxWrapper {
+       /*background-color:burlywood;*/
 }
-.HoursEntry td {
-    width: 45px;
+select.HoursEntryInput {
+   font-size:2.6em; 
 }
+ 
+.ActiveRow .ActiveColumn div.HoursEntryRadio{ 
+    display:block;
+}
+.ActiveRow div.EditGridCell{ 
+    display:none;
+}
+.ActiveColumn div.EditGridCell{ 
+    display:none;
+}
+.MVCL_GridTable th.InactiveColumn div.HoursStatus a img.HoursStatusImage {
+    display:block;
+    height: 25px;
+}
+.MVCL_GridTable th.ActiveColumn div.HoursStatus a img.HoursStatusImage {
+    display:block;
+    height: 35px;
+}
+.MVCL_GridTable th div.HoursStatus div.Missing,
+.MVCL_GridTable th div.HoursStatus div.HasHours,
+.MVCL_GridTable th div.HoursStatus div.NoClass
+  {
+    display:none;
+}
+
+.MVCL_GridTable th.PastHours.MissingHours div.HoursStatus div.Missing,
+.MVCL_GridTable th.HasHours div.HoursStatus div.HasHours,
+.MVCL_GridTable th.NoClass div.HoursStatus div.NoClass
+  {
+    display:block;
+    min-height: 35px;
+}
+.MVCL_GridTable th.InactiveColumn div.HoursStatus div.HoursStatusActionBox {
+    display:none;
+}
+.MVCL_GridTable th.ActiveColumn div.HoursStatus div.HoursStatusActionBox {
+    display:block;
+     min-height: 35px;
+}
+
+.HoursStatusActionBox input{
+    line-height:.9em;
+    margin-top:-5px;
+    margin-bottom:-5px;
+
+}
+
+.HelpInfoBox 
+{
+    font-size:1em;
+    color:darkslategray;
+    background-color:white;
+    border: 1px solid blue;
+}
+
+.CenterText {text-align:center}
+div.HoursStatusCB { margin-top:10px;margin-left:35px;margin-right:35px; width:110px;}
+.ColorRed {
+    color: red;
+}
+.FullWidth{
+    width:100%;
+    min-width:100%
+}
+ .MVCL_GridTable th  div.HoursStatus a img.MissingHoursImage {
+    
+     display:none;
+}
+  .MVCL_GridTable th  div.HoursStatus a img.OKHoursImage {
+    
+     display:none;
+}
+  .MVCL_GridTable th  div.HoursStatus a img.NoClassImage {
+    
+     display:none;
+}
+
+ div.MissingHoursDetails
+{
+    display:none;
+
+}
+.MVCL_GridTable th.MissingHours.ActiveColumn div.MissingHours div.MissingHoursActionBox
+{
+    min-height: 25px;
+    display:block;
+}
+.MVCL_GridTable th div.MissingHours div.MissingHoursActionBox
+{
+    display:none;
+}
+
+th.ssMissingHours div.MissingHours  {
+    background-image: inherit;
+     background-repeat: inherit;
+  background-size: inherit;
+  background-position-x: inherit;
+  background-position-y: inherit;
+  min-height: inherit;
+  max-height: inherit;
+   min-width: inherit;
+  max-width: inherit;
+
+}
+.MVCL_GridTable th.MissingHours div.MissingHours div.InnerMissingHours {
+}
+
+
+.EditGridCell, .EditGridCellOuter {
+    width:100%;
+}
+.MVCL_GridTable .NoMTG td.InactiveColumn
+ {color: red;
+           background-color:red;
+
+}
+
+.EntryNameData {
+    display:none;
+}
+.ActiveRow Div.EntryNameData {
+    display:block;
+    
+}
+
+    .ActiveColumnxxx input {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: red;
+    }
+
+.ActiveRow .ActiveColumn .HoursEntryInputSection span {display:block;}
+.ActiveRow .ActiveColumn .xxx span {display:none;}
+.xxxActiveRow .ActiveColumn div.HoursEntryInputSection span {
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 1.2em;
+    vertical-align: top;
+    text-align:center;
+}
+.xxActiveColumn div span {
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 1.9em;
+
+    vertical-align: middle;
+}
+.InactiveColumn div.HoursEntryInputSection {display:none;}
+.ActiveColumn div.HoursEntryInputSection {display:none;}
+.ActiveRow .ActiveColumn div.HoursEntryInputSection {display:block;}
+
+.InactiveColumn input {display:none;}
+.InactiveColumn span {
+         font-size:1.2em;
+    font-weight:bold;
+    line-height:1.9em;
+   color:darkgrey;
+   margin-top:25px;
+   vertical-align:middle;
+    }
+.HoursEntryRadio div table {
+    width:140px;
+    max-width:140px;
+}
+.HoursEntryRadio td {
+    width:30px;
+    max-width:30px;
+    text-align:center;
+      padding-left:.1em;
+        padding-right:.1em;
+}
+.HoursEntryRadio input{
+    margin-right:15px;
+     padding-left:7px;
+        padding-right:7px;
+}
+.MVLCTable_SmallLabel {
+font-size:.9em;
+font-style:italic;
+line-height:105%;
+margin-top: -10px;
+margin-bottom: 0px;
+height:.92em;
+font-weight:normal;
+margin-left: 20px;
+}
+.MVLCTable_SmallHelpLabel {
+    font-size: .7em;
+    font-style: italic;
+    line-height: .72em;
+    margin-top: -10px;
+    margin-bottom: 0px;
+    height: .72em;
+    font-weight: normal;
+    margin-left: 20px;
+}
+
+.NarrowFormDiv {
+margin-top: 5px;
+margin-bottom: 5px;
+line-height: .92em;
+ font-size: .9em;
+               }
+
+
+
+.BlueHint{
+    color:blue;
+}
+
+
+.MVLCTable_SmallValue {
+font-size:.9em;
+font-style:normal;
+line-height:105%;
+color:blue;
+height:.92em;
+margin-top: -10px;
+margin-bottom: 0px;
+font-weight:normal;
+}
+.EntryNameColumn {
+    font-size:1.2em;
+font-style:normal;
+font-weight:bold;
+    width: 190px;
+}
+
+.MainGridHoursEntry table {
+    max-width: 600px;
+    width: 600px;
+}
+.HoursDataEntry {
+    font-size:2em;
+}
+
+
+.loader {
+  height: 4px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: #ddd;
+}
+.loader:before{
+  display: block;
+  position: absolute;
+  content: "";
+  left: -200px;
+  width: 200px;
+  height: 4px;
+  background-color: #2980b9;
+  animation: loading 2s linear infinite;
+}
+
+@keyframes loading {
+    from {left: -200px; width: 30%;}
+    50% {width: 30%;}
+    70% {width: 70%;}
+    80% { left: 50%;}
+    95% {left: 120%;}
+    to {left: 100%;}
+}
+/*s##############################################s*/
+
+div.OuterCellWrap {
+     width:100%;
+     height:100%;
+     min-height:31px;
+
+}
+div.InnerCellWrap {
+   
+}
+.EntryDropDownText
+{
+    text-align:center;
+}
+.EntryDropDownText span, a.dropdown-toggle
+{
+    padding-left:0px;
+    padding-right:0px;
+    margin-left:0px;
+    margin-right:0px;
+
+    font-size:14px;
+    width:30px !important;
+  max-width:30px;
+    text-align:right !important;
+}
+.dropdown-toggle .HoursGridDropdownMenu a {
+    width:49px;min-width:49px;
+}
+div.EntryDropDownRightOuter {
+    display:block;
+    min-width:50px;
+    max-width:50px;
+    max-height:120px;
+    overflow-y:scroll;
+        overflow-x:hidden;
+        z-index: 9;
+}
+.EditGridCellOuter {
+       z-index: 1;
+}
+
+div.EntryDropDownRightInner {
+   
+    max-width:79px;
+    max-height:119px;
+    overflow-y:scroll;
+    overflow-x:hidden;
+    margin-left:-30px;
+    margin-right:-30px;
+}
+
+.HoursGridDropdownMenu .dropdown-menu {
+        max-height:0px;
+    overflow-y:scroll;
+    overflow-x:hidden;
+    max-width:49px;
+    width:49px;
+}
+
+.HoursGridDropdownMenu {
+      min-width:49px !important;
+            max-width:80px !important;
+    width:49px !important;
+    text-align:left;
+}
+.HoursGridDropdownMenu .caret{
+    max-width:10px !important;
+    min-width:1px !important;
+}
+ul.HoursGridDropdownMenu, .HoursGridDropdownMenu a{
+    width:20px;
+    max-width:20px !important;
+}
+.HiddenColumn div.CellWrapper,
+.RightSide,
+.InactiveColumn .CellWrapper div.TopLeft,
+.InactiveColumn .CellWrapper div.RightSide,
+.InactiveColumn .CellWrapper div.Bottom,
+.InactiveColumn .CellWrapper .TopCenter div.HoursSelectDropDown,
+
+.ActiveColumn .CellWrapper div.RightSide,
+.ActiveColumn .CellWrapper div.Bottom,
+.ActiveColumn .CellWrapper .TopCenter div.HoursSelectDropDown,
+.ActiveRow .ActiveColumn .CellWrapper .TopCenter div.HoursViewSpan
+ {display:none;}
+
+
+
+.ActiveRow .ActiveColumn .CellWrapper div.TopLeft,
+.ActiveRow .ActiveColumn .CellWrapper div.TopCenter,
+.ActiveRow .ActiveColumn .CellWrapper .TopCenter div.HoursSelectDropDown,
+.ActiveRow .ActiveColumn .CellWrapper div.Bottom
+{
+    display:block;
+ max-height:45px;
+ min-height:45px;
+ height:45px;
+ 
+}
+
+div.RightSide {
+     position:absolute;
+      top:0px;
+       right:0px;
+      z-index:11;
+}
+div.Bottom{
+        width:160px;
+     min-width:160px;
+     max-width:160px;
+       position:absolute;
+       top:45px;
+       left:0px;
+   z-index:5;
+  
+}
+
+div.CellWrapper {
+         width:160px;
+     min-height:31px;
+     max-width:160px;
+     max-height:90px;
+     min-width:50px;
+     position:absolute;
+    
+}
+
+.CellWrapper div.TopLeft,
+.CellWrapper div.TopCenter
+{
+    float:left;
+    min-height:30px;
+}
+
+.CellWrapper div.TopCenter {
+        max-width: 70px;
+    min-width: 70px;
+    width:70px;
+}
+.CellWrapper div.TopLeft,
+.CellWrapper div.RightSide {
+    max-width: 45px;
+    min-width: 45px;
+    width:45px;
+}
+.CellWrapper div.RightSide {
+ min-height:90px;
+ max-height:90px;
+ height:90px;
+
+}
+
+a.MVCL-DropdownMenuSelector {
+    text-decoration:none;
+    color:black;
+    font-size:25px;
+    font-weight:bold;
+     opacity:1;
+}
+div.HoursSelectDropDown {
+     opacity:1;z-index:2;                   
+}
+
+div.BlankBackground
+{
+     background: rgba(76, 175, 80, 0.1)
+}
+
+div.MVCL-DropdownMenuSelector
+{
+    /*width:70px;*/
+    max-width:70px;
+    min-width:70px;
+    width:70px;
+     text-align: center;
+    
+    
+     margin: 0 auto;
+ position:relative;
+ left:0px;
+}
+div.MVCL-DropdownMenuSelectorTextContainer {
+    max-width:60px;
+    min-width:30px;
+    /*width:60px;*/
+    float:left;
+    text-align:right;
+     cursor: pointer;
+      max-height:inherit; 
+ 
+}
+.MVCL-DropdownMenuSelectorTextContainer 
+{
+     text-decoration:none;
+    
+}
+
+.MVCL-DropdownMenuSelectorTextContainer span
+{
+     margin-bottom:30px;
+     padding-bottom:30px;
+     vertical-align:top;
+     color:red;
+     line-height:45px;
+}
+
+div.MVCL-DropdownMenuSelectorCaretContainer {
+    max-width:6px;
+    min-width:6px;
+    width:6px;
+    float:left;
+    cursor: pointer; 
+    max-height:inherit; 
+}
+
+.MenuCaret {
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid black;
+  display:inline;
+  padding:0px 0px 0px 0px;
+}
+.EntryDropDownRightOuter 
+{
+    background: rgba(76, 175, 80, 1)
+}
+
+
+
+.HelpQuestionMark {
+    background-color:blue;
+    border: 1px solid Black;
+    border-radius: 15px;
+    cursor: pointer;
+    display: inline-block;
+    font-family: arial;
+    font-weight: bold;
+    position: relative;
+    top: -3px;
+    right: -3px;
+    font-size: 14px;
+    line-height: 12px;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    color:white;
+}
+    

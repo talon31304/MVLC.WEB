@@ -1,0 +1,81 @@
+﻿@model MVLC.WEB.ViewModels.ParticipantsHoursEntryGrid
+
+
+
+
+<div class="HoursEntry MVCL_GridTable">
+    <table class="MVCL_GridTable table table-bordered" id="HoursTableGrid">
+        @*<caption id="EntryTableCaption"></caption>*@
+        <colgroup>
+            <col span="1" class="EntryNameColumn">
+           
+            @for (var j = 0; j < Model.ClassDates.Count(); j++)
+            {
+                string columnClass = "ActiveColumn";
+                if (j < Model.ClassDates.Count() - 3)
+                {
+                    columnClass = "HiddenColumn";
+                }
+                else if (j < Model.ClassDates.Count() - 1)
+                {
+                    columnClass = "InactiveColumn";
+                }
+                <col span="1" class="EntryDataColumn @columnClass EntryDataColumn@(j + 1)">
+            }
+            <col span="1">
+        </colgroup>
+
+        <thead>
+           
+            <tr>
+                <th class="EntryNameColumn"><button onclick="MoveLeft()">Move Left</button></th>
+                @for (var j = 0; j < Model.ClassDates.Count(); j++)
+                {
+                    string columnClass = "ActiveColumn";
+                    if (j < Model.ClassDates.Count() - 3)
+                    {
+                        columnClass = "HiddenColumn";
+                    }
+                    else if (j < Model.ClassDates.Count() - 1)
+                    {
+                        columnClass = "InactiveColumn";
+                    }
+
+                    if (Model.ClassDates[j]==DateTime.Today)
+                    {
+                        columnClass = columnClass + "TodayHours";
+                    }
+                    else if (Model.ClassDates[j] < DateTime.Today)
+                    {
+                        columnClass = columnClass + " PastHours";
+                    }
+                    else
+                    {
+                        columnClass = columnClass + "FutureHours";
+                    }
+                    <th id="@("DateColumn" + (j + 1).ToString())" onclick="SetActiveColumn(@(j+1))" class="EntryDataColumn @columnClass EntryDataColumn@(j + 1) ">
+                         <div>@Model.ClassDates[j].ToString("MMM dd yyyy") </div>
+                        @Html.Partial("_MissingHoursDivPartialView", new MVLC.WEB.ViewModels.HoursColumnHead() { ClassDate = Model.ClassDates[j], Column = (j+1) })
+                    </th>
+                }
+                <th span="1" class="ActionColumn"><button onclick="MoveRight()">Move Right</button></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @for (var i = 0; i < Model.StudentRows.Count(); i++)
+            {
+                @Html.DisplayFor(m => m.StudentRows[i]) //Display Template ParticipantHoursGridRow
+            }
+            @*<tr class="Separator Narrow"></tr><tr class="Separator Narrow"></tr>*@
+            @for (var i = 0; i < Model.TutorRows.Count(); i++)
+            {
+                 @Html.DisplayFor(m => m.TutorRows[i]) //Display Template ParticipantHoursGridRow
+            }
+
+
+        </tbody>
+    </table>
+</div>
+
+
