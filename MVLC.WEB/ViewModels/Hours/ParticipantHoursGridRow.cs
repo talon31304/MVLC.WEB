@@ -12,6 +12,7 @@ namespace MVLC.WEB.ViewModels
         public DateHours[] Hours { get; set; }
         public int RowNumber { get; set; }
         public ParticipantsHoursGridCellContent[] DataCells { get; set; }
+        public bool IsLast { get; set; }
 
     }
 }

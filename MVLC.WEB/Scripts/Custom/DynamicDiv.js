@@ -3,7 +3,7 @@
 function DisplayDynamicPopupDiv(ContentID)
 {
     TargetDivID = "DynamicDivPopup";
-    alert('Fetching:' + ContentID);
+    TestAlert('Fetching:' + ContentID);
 
     $.get('/Content/Get/' + ContentID, function (data) {
         $('#DynamicDivPopup').html(data);

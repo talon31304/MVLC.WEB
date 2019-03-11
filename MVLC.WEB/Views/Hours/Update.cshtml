@@ -10,8 +10,14 @@
         <div class="TableSelectorSection">
             <div class="Small2Column">
             Term: @Html.Partial("_DropDownDivPartial", Model.TermsDD)
-            Tutor: @Html.Partial("_DropDownDivPartial", Model.TutorsDD)</div>
-            <div class="Big2Column">Class: @Html.Partial("_DropDownDivPartial", Model.ClassesDD)</div>
+           </div>
+            <div class="Big2Column">
+                Tutor: @Html.Partial("_DropDownDivPartial", Model.TutorsDD)
+            </div>
+            <div>
+                Class: @Html.Partial("_DropDownDivPartial", Model.ClassesDD)
+            </div>
+           
             <div id="LoadingDiv" style="display:none">
                 <div class="loader"></div>
                 Retrieving Data...
@@ -46,7 +52,7 @@
                 //!!!!Can't used the passed new value, since other DD's may call
                 //Getting value from HF_Value_ClassesDD directly
                 var ClassValue = $('#HF_Value_ClassesDD').val();
-                alert(ClassValue);
+                TestAlert(ClassValue);
                 if (ClassValue > 0) {
 
                     $('#LoadingDiv').show();
@@ -55,9 +61,9 @@
                         $('#GridSection').html(data);
                         $('#GridSection').fadeIn('fast');
                         $('#LoadingDiv').hide();
-                       // alert('ss');
+                       // TestAlert('ss');
                         OnGridReady();
-                       
+
                         SetActiveRow(1);
                     });
                 }
@@ -68,13 +74,78 @@
             }
 
             function OnGridReady() {
-              //  alert('ds');
+              //  TestAlert('ds');
                 SetActiveandMaxColumns();
                 MaxRow = document.getElementsByClassName('DataRow').length
                 UpdateClassTotalsForAllRows();
                 UpdateTotalsForAllColumns();
                 MarkMissingHours();
             }
+
+
+
+            function HoursDropDownClick(idText) {
+                var DDR_isVisible = $('#DDR' + idText).css('display') == 'block';
+
+                if (DDR_isVisible) {
+                    $('#DDR' + idText).css("display", "none");
+                    $('#RadioDiv' + idText).css("display", "block");
+                }
+                else {
+                    $('#DDR' + idText).css("display", "block");
+                    $('#RadioDiv' + idText).css("display", "none");
+                //    alert($('#DDR' + idText).css('display'));
+                }
+                //DDSelector
+                $(document).mouseup(function (e) {
+         
+                var ddSelect = $('#' + 'DDSelector' + idText);
+                //alert('ff');
+                var ClickedOutsideDDSelector = (!ddSelect.is(e.target) && ddSelect.has(e.target).length === 0);
+               // alert('Clicked DDSelect: ' + ClickedinDDSelector);
+
+                var ddr = $('#' + 'DDR' + idText);
+                var ClickedOutsideDDR = (!ddr.is(e.target) && ddr.has(e.target).length === 0);
+
+                if (ClickedOutsideDDSelector && ClickedOutsideDDR) {
+                    $('#DDR' + idText).css("display", "none");
+                    $('#RadioDiv' + idText).css("display", "block");
+                }
+               
+               // alert('Clicked DDR: ' + ClickedinDDR);
+                });
+
+                //        $('#DDR' + idText).css("display", "none");
+                    //        $('#BottomDiv' + idText).css("display", "block");
+   
+                //$(document).mouseup(function (e) {
+
+                //    var ddr = $('#' + 'DDR' + idText);
+                //    var BottomDiv = $('#' + 'BottomDiv' + idText);
+
+
+                //    // if the target of the click isn't the container nor a descendant of the container
+                //    if (!ddr.is(e.target) && ddr.has(e.target).length === 0) {
+                //        $('#DDR' + idText).css("display", "none");
+                //        $('#BottomDiv' + idText).css("display", "block");
+                //    }
+                //});
+         
+
+            }
+
+            function ToggleMissingDisplay(column) {
+
+
+                var vis = $('#MissingHoursDetailsDiv' + column).is(":visible");
+
+                $(".MissingHoursDetails").hide();
+
+                SetActiveColumn(column);
+                if (!vis) { $('#MissingHoursDetailsDiv' + column).show(); }
+
+            }
+
 
             function SetHideDiv(activeDivID)
             {
@@ -87,17 +158,17 @@
                     }
                 });
             }
-           
-           
+
+
 
 
 
 
             function SetElementText(elemID, newText) {
-                alert(newText);
+                TestAlert(newText);
                 var elem = $('#' + elemID);
                 elem.text(newText);
-                alert(elem.text());
+                TestAlert(elem.text());
             }
 
             function fireChangeFor(ctrlID) {
@@ -109,44 +180,31 @@
             }
 
 
-            function ToggleMissingDisplay(column)
-            {
-               
-              //  alert('dsds   P1   ' + column);
-                var vis = $('#MissingHoursDetailsDiv' + column).is(":visible");
-                // $('#MissingHoursDetailsDiv' + column).isVisible();
-              //  alert('dsds   P2');
-
-                $(".MissingHoursDetails").hide();
-                //  alert('dsds   P3');
-                SetActiveColumn(column);
-                if (!vis) { $('#MissingHoursDetailsDiv' + column).show(); }
-            //    alert('dsds   P4');
-            }
            
+
             function UpdateTotalsForColumn(column) {
                 var hrsTotal = 0;
                 var numberAttended = 0;
-               // alert('MaxRow'+ MaxRow);
+               // TestAlert('MaxRow'+ MaxRow);
                 for (var i = 1; i <= MaxRow; i++) {
                     var idTxt = "Text_" + i + "_" + column;
                     var currentValue = $('#' + idTxt).text();
-                    //alert('current:'+currentValue);
+                    //TestAlert('current:'+currentValue);
                     hrsTotal = parseFloat(hrsTotal) + parseFloat(currentValue);
                     if (parseFloat(currentValue) > 0) { numberAttended++; }
                 }
                 $('#ColumnTotal' + column).text(hrsTotal);
                 $('#TotalAttendeesColumn' + column).text(numberAttended);
-                // alert('hrstotal'+hrsTotal)
+                // TestAlert('hrstotal'+hrsTotal)
 
-               
+
 
                 return hrsTotal
 
             }
             function UpdateTotalsForAllColumns() {
-               // alert('MaxColumn' + MaxColumn);
-               // alert('MaxRow' + MaxRow);
+               // TestAlert('MaxColumn' + MaxColumn);
+               // TestAlert('MaxRow' + MaxRow);
                 for (var i = 1; i <= MaxColumn; i++) {
                     UpdateTotalsForColumn(i);
                 }
@@ -154,8 +212,8 @@
             function MarkMissingHoursForColumn(column) {
                 var elem = $('#DateColumn' + column);
                 $('#DateColumn' + column).removeClass("HasHours");
-                //alert('Col' + column);
-               // alert('sss' + $('#ColumnTotal' + column).val());
+                //TestAlert('Col' + column);
+               // TestAlert('sss' + $('#ColumnTotal' + column).val());
 
                 $('#DateColumn' + column).removeClass('HasHours');
                 $('#DateColumn' + column).removeClass('MissingHours');
@@ -176,11 +234,11 @@
 
             function MarkMissingHours()
             {
-              
+
                 for (var i = 1; i <= MaxColumn; i++) {
                     MarkMissingHoursForColumn(i);
                 }
-           
+
             }
 
             function UpdateClassTotalsForAllRows() {
@@ -190,7 +248,7 @@
                 }
             }
             function UpdateClassTotals(row) {
-               // alert('UpdatingRowTotals');
+               // TestAlert('UpdatingRowTotals');
                 var HoursTotalElem = $('#' + "HoursTotal" + row);
                 var ClassTotalElem = $('#' + "ClassTotal" + row);
                 var classTotal = 0;
@@ -199,17 +257,17 @@
                 for (var i = 1; i <= MaxColumn; i++) {
                     var idTxt = "Text_" + row + "_" + i;
                     var currentValue = $('#' + idTxt).text();
-                   // alert(currentValue);
+                   // TestAlert(currentValue);
                     hrsTotal = parseFloat(hrsTotal) + parseFloat(currentValue);
                     if (parseFloat(currentValue) > 0) {
                         classTotal++;
 
                     }
                 }
-               // alert('hrsTotal' + hrsTotal + ' -ClassTotal:' + classTotal);
+               // TestAlert('hrsTotal' + hrsTotal + ' -ClassTotal:' + classTotal);
                 ClassTotalElem.html(classTotal);
                 HoursTotalElem.html(hrsTotal);
-                // alert(ClassTotalElem.html());
+                // TestAlert(ClassTotalElem.html());
             }
             function DisplaySavedMessage(row) {
                 var msgElem = $('#' + "RowMsg" + row);
@@ -220,28 +278,28 @@
                 }, 3000);
             }
             function ToggleVisibility(elemID) {
-                //alert('P1');
+                //TestAlert('P1');
                 var dropdownElem = $('#' + elemID);
-                // alert(dropdownElem);
+                // TestAlert(dropdownElem);
                 // dropdownElem.ToggleVisibility();
                 //dropdownElem.hide();
 
                 var isVisible = dropdownElem.is(':visible');
-                //alert('P2' + isVisible);
+                //TestAlert('P2' + isVisible);
                 if (isVisible === true) {
-                    //  alert('hiding');
+                    //  TestAlert('hiding');
                     dropdownElem.hide();
                 }
                 else {
-                    //  alert('showing');
+                    //  TestAlert('showing');
                     dropdownElem.show();
                 }
             }
             function UpdateVal(ParticipantID, DateOfClass, row, column, newVal) {
-                //alert('p1');
+                //TestAlert('p1');
                 var idText = "_" + row + "_" + column;
 
-                // alert('You selected:' + newVal);
+                // TestAlert('You selected:' + newVal);
                 var dropdownElem = $('#' + "DDSpan" + idText);
                 var DDRDivElem = $('#' + "DDR" + idText);
 
@@ -249,7 +307,7 @@
                 CommitChange("Input", row, column, idText, ParticipantID, DateOfClass, newVal)
                 DDRDivElem.hide();
                 UpdateClassTotals(row);
-                // alert('p1');
+                // TestAlert('p1');
             }
 
             function CommitChange(InputMethod, row, column, idText, Participant, DateOfClass, newVal) {
@@ -282,10 +340,10 @@
                         dropdownElem.text(newVal);
                     }
                     else {
-                        // alert("DD Changed-p1");
+                        // TestAlert("DD Changed-p1");
                         var radios = document.getElementsByName(radioName)
                         for (var i = 0; i < radios.length; i++) {
-                            //alert(radios[i].value);
+                            //TestAlert(radios[i].value);
                             radios[i].checked = (radios[i].value == newVal);
                         }
                         if (newVal > 2.5) {
@@ -300,29 +358,29 @@
 
                     spanElem.text(newVal);
                     var cid = $('#HF_Value_ClassesDD').val()
- 
+
                     $.post("http://localhost:49916/Hours/SetClassHours",
                         { Hours: newVal, ClassID: cid, PersonID: Participant, ClassDate: DateOfClass },
-                        function (data) {alert(data) }
+                        function (data) {TestAlert(data) }
                         );
                     UpdateTotalsForColumn(column);
 
-                    alert('New: ' + newVal + ', column:' + column + ',   Met?' + $('#ColumnClassMet' + column).val());
+                    TestAlert('New: ' + newVal + ', column:' + column + ',   Met?' + $('#ColumnClassMet' + column).val());
                     if ((newVal >= 0) && $('#ColumnClassMet' + column).val()=="N")
                     {
                         SetDidClassMeet(column, DateOfClass, "Y");
-                        
-                        alert('ClassDidMeet   After');
+
+                        TestAlert('ClassDidMeet   After');
                     }
                     else {
                         MarkMissingHoursForColumn(column);
                     }
-                   
+
 
 
                     UpdateClassTotals(row);
                     DisplaySavedMessage(row);
-                     alert('Change Saved for Partcipant:' + Participant + "On :" + DateOfClass + "For Class: " + cid);
+                     TestAlert('Change Saved for Partcipant:' + Participant + "On :" + DateOfClass + "For Class: " + cid);
                 }
             }
             function ToggleDidClassMeet(column, dateOfClass)
@@ -337,9 +395,9 @@
             }
             function UncheckMe(elem)
             {
-                alert('HI!!!');
+                TestAlert('HI!!!');
                 elem.checked = false;
-                alert('BYE!!!');
+                TestAlert('BYE!!!');
             }
             function SetDidClassMeet(column,dateOfClass,didMeet)
             {
@@ -347,28 +405,28 @@
                 $.post("http://localhost:49916/Hours/SetDidClassMeet",
                     { ClassID: cid, ClassDate: dateOfClass, meet: didMeet },
                     function (data) {
-                       // alert('ClassMetResponse:' + data)
+                       // TestAlert('ClassMetResponse:' + data)
                         if (data==true)
                         {
                             $('#ColumnClassMet' + column).val(didMeet)
                             //$(".MissingHoursDetails").hide();
-                           // alert('P1');
+                           // TestAlert('P1');
                             MarkMissingHoursForColumn(column);
-                            alert('Set Class Met to:'+didMeet);
+                            TestAlert('Set Class Met to:'+didMeet);
                         }
                         else {
-                            alert('Error Saving!!! ');
+                            TestAlert('Error Saving!!! ');
                         }
 
                     });
 
-               
+
             }
             function callj(ctrlID, jsonURL, pname, pVal, pname2, pVal2) {
                 var paramName = "Term";
                 var link = '@Url.Action("xurlx", new { PN1 = "PV1", PN2 = "PV2" })';
                 //var link = "Hours/xurlx?PN1=PV1&PN2=PV2"
-                alert("Pval2:" + pVal2);
+                TestAlert("Pval2:" + pVal2);
 
                 //http://localhost:49906/Hours/GetTermTutorClasses?TutorID=101&Term=Spring%202019
                 //,new {xpNamex= "xvalx",xpName2x= "xval2x"}
@@ -381,7 +439,7 @@
                 link = link.replace(" ", "%20");
                 link = link.replace("&amp;", "&");
 
-                alert("link:" + link);
+                TestAlert("link:" + link);
 
                 if (pVal != null && pVal != '') {
                     // $.getJSON(link, { Term: selectedItem },
@@ -393,7 +451,7 @@
 
             function PopulateNameIDDropDown(data, ctrlID) {
 
-                //  alert("here1xx_" + ctrlID);
+                //  TestAlert("here1xx_" + ctrlID);
                 var currentSelect = $('#' + ctrlID);
                 currentSelect.empty();
 

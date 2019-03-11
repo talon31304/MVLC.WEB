@@ -2,7 +2,6 @@
 .hover_bkgr_fricc,
 #DynamicDivPopup
  {
-    background:rgba(0,0,0,.4);
     cursor:pointer;
     display:none;
     height:100%;
@@ -21,8 +20,7 @@
     vertical-align:middle;
 }
 #DynamicDivPopup > div {
-    background-color: #fff;
-    box-shadow: 10px 10px 60px #555;
+    box-shadow: 10px 10px 60px;
     display: inline-block;
     height: auto;
     max-width: 551px;
@@ -34,12 +32,10 @@
     padding: 15px 5%;
 }
 .popupCloseButton {
-    background-color: #fff;
-    border: 3px solid #999;
+    border: 3px solid;
     border-radius: 50px;
     cursor: pointer;
     display: inline-block;
-    font-family: arial;
     font-weight: bold;
     position: absolute;
     top: -20px;
@@ -52,9 +48,7 @@
 }
 
 
-.popupCloseButton:hover {
-    background-color: #ccc;
-}
+
 .trigger_popup_fricc {
     cursor: pointer;
     font-size: 20px;

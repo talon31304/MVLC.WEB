@@ -137,8 +137,10 @@ namespace MVLC.WEB.Controllers
 
             for (int row = 0; row < Participants.Count(); row++)
             {
-                
+               
                 rows[row] = new ParticipantHoursGridRow();
+                rows[row].IsLast = (row == (Participants.Count() - 1));
+
                 rows[row].RowNumber = StartingRow + row;
                 rows[row].ParticpantID = Int32.Parse(Participants[row].ID);
                 rows[row].PartipantName = Participants[row].Name;
@@ -146,6 +148,7 @@ namespace MVLC.WEB.Controllers
                 rows[row].DataCells = new ParticipantsHoursGridCellContent[classDates.Length];
                 for (int column = 0; column < classDates.Length; column++)
                 {
+                    
                     currentDate = classDates[column];
                     currentPersonHours = PersonHoursList.FirstOrDefault(a => a.PersonID == rows[row].ParticpantID && a.ClassID == ClassID && a.ClassDate == currentDate);
                     double hrsTemp = 0;
@@ -158,17 +161,17 @@ namespace MVLC.WEB.Controllers
                         hrsTemp = currentPersonHours.Hours;
                     }
                     rows[row].DataCells[column] = new ParticipantsHoursGridCellContent()
-                        {
-                          
-                            Hours = hrsTemp,
-                            DateString = currentDate.ToString("MM/dd/yyyy"),
-                            Row = rows[row].RowNumber,
-                            Column = column + 1,
-                            ParticipantID = rows[row].ParticpantID
+                    {
 
-                        };
+                        Hours = hrsTemp,
+                        DateString = currentDate.ToString("MM/dd/yyyy"),
+                        Row = rows[row].RowNumber,
+                        Column = column + 1,
+                        ParticipantID = rows[row].ParticpantID
+
+                    };
                     rows[row].Hours[column] = new DateHours() { Hours = 0, DateString = currentDate.ToString("MM/dd/yyyy") };
-                    
+
                 }
 
             }
