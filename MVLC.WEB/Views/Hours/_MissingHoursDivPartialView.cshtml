@@ -20,7 +20,7 @@
 
     <div class="Missing">
         <div class="Small2Column">
-            <a href="#" onmouseover="@("ToggleMissingDisplay("+Model.Column.ToString()+");" )">
+            <a href="#" onclick="@("SetActiveColumn("+Model.Column.ToString()+");" )">
                 <img src="~/Content/Images/ExclamationMark.png" class="HoursStatusImage" />
             </a>
         </div>
@@ -38,7 +38,7 @@
                 <span class="MVLCTable_SmallHelpLabel BlueHint">How Do I fix this?</span>*@
             </div>
         </div>
-        <div class="MissingHoursDetails" id="@("MissingHoursDetailsDiv"  + Model.Column.ToString())" onclick="@("ToggleVisibility('MissingHoursDetailsDiv"+Model.Column.ToString()+"');" )">
+        <div class="MissingHoursDetails" id="@("MissingHoursDetailsDiv"  + Model.Column.ToString())" onclick="@("SetActiveColumn('MissingHoursDetailsDiv"+Model.Column.ToString()+"');" )">
         </div>
 
         <div class="HoursStatusActionBox">
@@ -57,7 +57,7 @@
     </div>
     <div class="NoClass">
         <div class="Small2Column">
-            <a href="#" onmouseover="@("ToggleMissingDisplay("+Model.Column.ToString()+");" )">
+            <a href="#" onclick="@("SetActiveColumn("+Model.Column.ToString()+");" )">
                 <img src="~/Content/Images/NoClass.png" class="HoursStatusImage" />
             </a>
         </div>
@@ -67,7 +67,7 @@
     </div>
     <div class="HasHours">
         <div class="Small2Column">
-            <a href="#" onmouseover="@("ToggleMissingDisplay("+Model.Column.ToString()+");" )">
+            <a href="#" onclick="@("SetActiveColumn("+Model.Column.ToString()+");" )">
                 <img src="~/Content/Images/GreenCheck.png" class="HoursStatusImage" />
             </a>
         </div>

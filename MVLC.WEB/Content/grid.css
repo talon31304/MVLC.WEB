@@ -1,6 +1,10 @@
 ﻿.MVCL_GridTable {
     text-align:center;
-    width:700px;
+    width:800px;
+}
+.TableSelectorSection{
+
+    width:800px;
 }
 .MVCL_GridTable .header
 {
@@ -10,7 +14,10 @@
 {
 
 }
-
+#ClassesDD_Div {
+    display:block;
+    width:800px;
+}
 /*Colum Header CSS*/
 .MVCL_GridTable  th {
   border-bottom: 2px solid;

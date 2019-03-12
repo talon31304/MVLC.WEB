@@ -29,7 +29,17 @@
 
             <tr>
                 <th class="EntryNameColumn">
-                    <div onclick="MoveLeft()" class="NavDirectionBox">❮❮❮</div>
+            
+                         <div class="Left GridNavButton">
+                        <div class="GridNavButtonText">
+                            <div id="TopLeftDateNav" onclick="MoveLeft()" class="SmallestDate NavDirectionBox Hide">  ❮❮❮</div>
+                        </div>
+                        <div class="GridNavButtonGraphic">
+                            <div id="TopLeftNavCircle" onclick="MoveLeft()" class="NavDirectionCircle Show">  ❮❮</div>
+                        </div>
+                    </div>
+
+                
                     @*<button onclick="MoveLeft()">Move Left</button>*@
                 </th>
                 @for (var j = 0; j < Model.ClassDates.Count(); j++)
@@ -58,13 +68,20 @@
                     }
                     <th id="@("DateColumn" + (j + 1).ToString())" onclick="SetActiveColumn(@(j+1))" class="EntryDataColumn @columnClass EntryDataColumn@(j + 1) ">
                         <div class="BigDate" >@Model.ClassDates[j].ToString("dddd, MMMM dd") </div>
-                        <div class="SmallestDate">@Model.ClassDates[j].ToString("M/d") </div>
+                        <div id="@("SmallDateDiv" + (j + 1).ToString())" class="SmallestDate">@Model.ClassDates[j].ToString("M/d") </div>
                         @Html.Partial("_MissingHoursDivPartialView", new MVLC.WEB.ViewModels.HoursColumnHead() { ClassDate = Model.ClassDates[j], Column = (j + 1) })
                     </th>
                 }
                 <th span="1" class="ActionColumn">
-                    <div onclick="MoveRight()" class="NavDirectionBox"> ❯❯❯</div>
-                @*<button onclick="MoveRight()">Move Right</button>*@
+                    <div class="Right GridNavButton">
+                        <div class="GridNavButtonText">
+                            <div id="TopRightDateNav" onclick="MoveRight()" class="SmallestDate NavDirectionBox Hide"> ❯❯❯</div>
+                        </div>
+                        <div class="GridNavButtonGraphic">
+                            <div id="TopRightNavCircle" onclick="MoveRight()" class="NavDirectionCircle Show"> ❯❯</div>
+                        </div>
+                    </div>
+                    @*<button onclick="MoveRight()">Move Right</button>*@
                 </th>
             </tr>
         </thead>

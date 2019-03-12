@@ -177,12 +177,27 @@ namespace MVLC.WEB.Controllers
             }
             return rows;
         }
+        public ActionResult GetMaxVisbleJSON()
+        {
+            return Json(
+                   GetMaxVisble(),
+                   JsonRequestBehavior.AllowGet
+               );
+
+        }
+
+        public int GetMaxVisble()
+        {
+            return 7;
+        }
+
 
         public ParticipantsHoursEntryGrid GetParticipantsHoursEntryGrid(int ClassID)
         {
             HoursRepository hours = new HoursRepository();
             
             ParticipantsHoursEntryGrid gridModel = new ParticipantsHoursEntryGrid();
+            gridModel.NumberOfVisibleDates = GetMaxVisble();
             gridModel.ClassDates = hours.GetOnlyPastandPresentClassDatesByClassID(ClassID).OrderBy(d => d.Date).ToArray();
 
             // gridModel.DatesWithNoClass = hours.GetDatesWithNoClassByClassID(ClassID).OrderBy(d => d.Date).ToArray();
@@ -218,7 +233,7 @@ namespace MVLC.WEB.Controllers
             HoursRepository hours = new HoursRepository();
             List<NameID> ActiveTutors = hours.GetTutorListByTerm(term);
             ActiveTutors.Insert(0, new NameID() { Name = " (Select Tutor)", ID = defaultValue });
-            DropDownDiv model = new DropDownDiv("TutorsDD", defaultValue, ActiveTutors, isRefresh, "ClassesDD", "ClassesChanged");
+            DropDownDiv model = new DropDownDiv("TutorsDD", defaultValue, ActiveTutors, isRefresh, "ClassesDD", "TutorChanged");
             return PartialView("_DropDownDivPartial", model);
 
         }
@@ -301,14 +316,14 @@ namespace MVLC.WEB.Controllers
             DropDownToCascadeTo = "TutorsDD"; 
             string selectedTerm = hours.GetCurrentOrNewestTerm();
             List<string> termsToShow = hours.GetCurrentTermsWithClassesEndingAfterLastWeek();
-            model.TermsDD = new DropDownDiv("TermsDD", selectedTerm, termsToShow, isRefresh, DropDownToCascadeTo, "ClassesChanged");
+            model.TermsDD = new DropDownDiv("TermsDD", selectedTerm, termsToShow, isRefresh, DropDownToCascadeTo, "TermChanged");
 
             DropDownToCascadeTo = "ClassesDD";
             refreshURL = this.Url.Action("GetTutorsByTerm", "Hours");
            List<NameID> tutorList = hours.GetTutorListByTerm(selectedTerm);
             string defaultTutorID = "-1";
             tutorList.Insert(0, new NameID() { Name = " (Select Tutor)", ID = defaultTutorID });
-            model.TutorsDD = new DropDownDiv("TutorsDD", defaultTutorID, tutorList, isRefresh, DropDownToCascadeTo, "ClassesChanged", refreshUrl: refreshURL);
+            model.TutorsDD = new DropDownDiv("TutorsDD", defaultTutorID, tutorList, isRefresh, DropDownToCascadeTo, "TutorChanged", refreshUrl: refreshURL);
 
             DropDownToCascadeTo = "";
             refreshURL = this.Url.Action("GetClassesByTutorandTerm", "Hours");

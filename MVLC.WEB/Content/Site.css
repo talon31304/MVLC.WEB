@@ -534,7 +534,14 @@ div.MVCL-DropdownMenuSelectorCaretContainer {
   padding:0px 0px 0px 0px;
 }
 
-
+#TopLeftDateNav {
+        text-align: Right;
+        float:right;
+}
+#TopRightDateNav {
+        text-align: Left;
+        float:left;
+}
 .NavDirectionBox {
     /*border: 2px solid;*/
     padding-top:1em;
@@ -543,12 +550,46 @@ div.MVCL-DropdownMenuSelectorCaretContainer {
     display: inline-block;
     font-weight: bold;
     position: relative;
-    top: -9px;
+    top: -14px;
     right: -3px;
-    font-size: 2.1em;
+    font-size: 1em;
     line-height: 1.5em;
     width: 85px;
     height: 55px;
+
+}
+.GridNavButton {
+                             width: 45px;
+    max-width:45px;
+}
+.Right.GridNavButton {float:left;position:relative;}
+.Left.GridNavButton {float:right;position:relative;}
+.GridNavButtonGraphic {
+    width: 45px;
+    max-width:45px;
+    position:absolute;
+     top: 31px;
+     left:10px;
+}
+.GridNavButtonText {position:relative;
+                         width: 45px;
+    max-width:45px;
+
+}
+
+.NavDirectionCircle{
+    border: 1px solid;
+    border-radius: 25px;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+    top: -11px;
+    right: -3px;
+    font-size: 1em;
+    line-height: 1.7em;
+    width: 25px;
+    height: 25px;
     text-align: center;
 }
 
@@ -593,4 +634,9 @@ div.MVCL-DropdownMenuSelectorCaretContainer {
     margin-top: -10px;
     margin-bottom: 0px;
 }
-    
+  .Show {display:block;}  
+  .Hide {display:none;} 
+
+     .AlignRight{text-align:right;}
+       .AlignLeft{text-align:left;}
+      .NoPadding {padding:0px 0px 0px 0px !important;}

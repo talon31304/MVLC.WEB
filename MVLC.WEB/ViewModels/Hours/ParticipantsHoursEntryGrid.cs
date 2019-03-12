@@ -7,6 +7,7 @@ namespace MVLC.WEB.ViewModels
 {
     public class ParticipantsHoursEntryGrid
     {
+        public int NumberOfVisibleDates { get; set; }
         public List<DateTime> DatesClassDidNotMeet { get; set; }
         public List<DateTime> DatesWithNoHours { get; set; }
        

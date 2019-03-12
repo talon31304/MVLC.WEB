@@ -9,14 +9,35 @@
     <div class="OuterTableWrapper">
         <div class="TableSelectorSection">
             <div class="Small2Column">
-            Term: @Html.Partial("_DropDownDivPartial", Model.TermsDD)
-           </div>
+                <div class="Small2Column"  style="padding-top:1px;">
+                    Term:
+                </div>
+                <div class="Big2Column">
+                    @Html.Partial("_DropDownDivPartial", Model.TermsDD)
+                </div>
+
+                <div class="Small2Column " style="padding-top:1px;">
+                    Tutor:
+                </div>
+                <div class="Big2Column ">
+                    @Html.Partial("_DropDownDivPartial", Model.TutorsDD)
+                </div>
+
+            </div>
+
+
             <div class="Big2Column">
-                Tutor: @Html.Partial("_DropDownDivPartial", Model.TutorsDD)
+                <div id="ClassesDD_Div">
+                    <div class="Small2Column">Class:  </div>
+                    <div class="Big2Column">
+                        @Html.Partial("_DropDownDivPartial", Model.ClassesDD)
+                    </div>
+                </div>
+               
             </div>
-            <div>
-                Class: @Html.Partial("_DropDownDivPartial", Model.ClassesDD)
-            </div>
+
+
+           
            
             <div id="LoadingDiv" style="display:none">
                 <div class="loader"></div>
@@ -43,11 +64,25 @@
 
         <script type="text/javascript">
 
-
+            $('#ClassesDD_Div').hide();
 
             $('#GridSection').hide();
             $('#Classes').hide();
-
+            function TermChanged(DropDownID, newText, newValue) {
+                $('#ClassesDD_Div').hide();
+                ClassesChanged(DropDownID, newText, newValue);
+            }
+            function TutorChanged(DropDownID, newText, newValue) {
+                var TutorValue = $('#HF_Value_TutorsDD').val();
+                if (TutorValue > 0) {
+                    $('#ClassesDD_Div').show();
+                }
+                else
+                {
+                    $('#ClassesDD_Div').hide();
+                }
+                ClassesChanged(DropDownID, newText, newValue);
+            }
             function ClassesChanged(DropDownID, newText, newValue) {
                 //!!!!Can't used the passed new value, since other DD's may call
                 //Getting value from HF_Value_ClassesDD directly
@@ -80,6 +115,7 @@
                 UpdateClassTotalsForAllRows();
                 UpdateTotalsForAllColumns();
                 MarkMissingHours();
+                SetAllColumnVisibility();
             }
 
 
@@ -137,12 +173,12 @@
             function ToggleMissingDisplay(column) {
 
 
-                var vis = $('#MissingHoursDetailsDiv' + column).is(":visible");
-
-                $(".MissingHoursDetails").hide();
+              //  var vis = $('#MissingHoursDetailsDiv' + column).is(":visible");
+//
+           //     $(".MissingHoursDetails").hide();
 
                 SetActiveColumn(column);
-                if (!vis) { $('#MissingHoursDetailsDiv' + column).show(); }
+              //  if (!vis) { $('#MissingHoursDetailsDiv' + column).show(); }
 
             }
 
@@ -422,47 +458,62 @@
 
 
             }
-            function callj(ctrlID, jsonURL, pname, pVal, pname2, pVal2) {
-                var paramName = "Term";
-                var link = '@Url.Action("xurlx", new { PN1 = "PV1", PN2 = "PV2" })';
-                //var link = "Hours/xurlx?PN1=PV1&PN2=PV2"
-                TestAlert("Pval2:" + pVal2);
 
-                //http://localhost:49906/Hours/GetTermTutorClasses?TutorID=101&Term=Spring%202019
-                //,new {xpNamex= "xvalx",xpName2x= "xval2x"}
+            GetMaxVisible();
+            function GetMaxVisible() {
+                MaxVisible = 3;
+                var link = '@Url.Action("GetMaxVisbleJSON")';
+                $.getJSON(link,
+                       function (data) {
+                            if (data > 0) {
+                                MaxVisible = data;
+                            }
+                        }
+                   );  
+                }
 
-                link = link.replace("xurlx", jsonURL);
-                link = link.replace("PN1", $.trim(pname));
-                link = link.replace("PV1", $.trim(pVal));
-                link = link.replace("PN2", $.trim(pname2));
-                link = link.replace("PV2", $.trim(pVal2));
-                link = link.replace(" ", "%20");
-                link = link.replace("&amp;", "&");
 
-                TestAlert("link:" + link);
+                function callj(ctrlID, jsonURL, pname, pVal, pname2, pVal2) {
+                    var paramName = "Term";
+                    var link = '@Url.Action("xurlx", new { PN1 = "PV1", PN2 = "PV2" })';
+                    //var link = "Hours/xurlx?PN1=PV1&PN2=PV2"
+                    TestAlert("Pval2:" + pVal2);
 
-                if (pVal != null && pVal != '') {
+                    //http://localhost:49906/Hours/GetTermTutorClasses?TutorID=101&Term=Spring%202019
+                    //,new {xpNamex= "xvalx",xpName2x= "xval2x"}
+
+                    link = link.replace("xurlx", jsonURL);
+                    link = link.replace("PN1", $.trim(pname));
+                    link = link.replace("PV1", $.trim(pVal));
+                    link = link.replace("PN2", $.trim(pname2));
+                    link = link.replace("PV2", $.trim(pVal2));
+                    link = link.replace(" ", "%20");
+                    link = link.replace("&amp;", "&");
+
+                    TestAlert("link:" + link);
+
+                    if (pVal != null && pVal != '') {
                     // $.getJSON(link, { Term: selectedItem },
                     $.getJSON(link,
                            function (data) { PopulateNameIDDropDown(data, ctrlID); }
                        );  //endJSON Line
+                    }
                 }
-            }
 
-            function PopulateNameIDDropDown(data, ctrlID) {
+                function PopulateNameIDDropDown(data, ctrlID) {
 
-                //  TestAlert("here1xx_" + ctrlID);
-                var currentSelect = $('#' + ctrlID);
-                currentSelect.empty();
+                    //  TestAlert("here1xx_" + ctrlID);
+                    var currentSelect = $('#' + ctrlID);
+                    currentSelect.empty();
 
                 $.each(data, function (index, item) {
-                    currentSelect.append($('<option/>', {
+                        currentSelect.append($('<option/>', {
                         value: item.ID,
                         text: item.Name
-                    }));
-                });
-                fireChangeFor(ctrlID);
-            }
+                        }));
+                    });
+                    fireChangeFor(ctrlID);
+                }
 
         </script>
 

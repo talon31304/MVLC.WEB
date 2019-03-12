@@ -1,8 +1,10 @@
 ﻿var ActiveColumn = -1;
 var MaxColumn = -1;
 var ActiveRow = -1;
-var MaxVisible = 5;
+var MaxVisible = 1;
 var MaxRow = -1;
+
+
 
 
 
@@ -99,32 +101,84 @@ function SetColumnVisibilityClass(IDName, AddName) {
         elemsToSwapClass[i].classList.add(AddName);
     }
 }
+function SetNavVisibility(FirstVisibleColumn)
+{
+   // alert(FirstVisibleColumn);
+    if (FirstVisibleColumn <= 1) {
+        $('#TopLeftDateNav').removeClass('Show');
+        $('#TopLeftDateNav').addClass('Hide');
+       // TopRightNavCircle
+        $('#TopLeftNavCircle').removeClass('Show');
+        $('#TopLeftNavCircle').addClass('Hide');
+    }
+    else {
+        var leftSideDate = $('#SmallDateDiv' + (FirstVisibleColumn - 1)).html();
+        $('#TopLeftDateNav').html('...'+leftSideDate)
+        $('#TopLeftDateNav').removeClass('Hide');
+        $('#TopLeftDateNav').addClass('Show');
+        $('#TopLeftNavCircle').removeClass('Hide');
+        $('#TopLeftNavCircle').addClass('Show');
 
+    }
+
+    if ((FirstVisibleColumn + MaxVisible) > MaxColumn) {
+        $('#TopRightDateNav').removeClass('Show');
+        $('#TopRightDateNav').addClass('Hide');
+        $('#TopRightNavCircle').removeClass('Show');
+        $('#TopRightNavCircle').addClass('Hide')
+    }
+    else {
+        var rightSideDate = $('#SmallDateDiv' + (FirstVisibleColumn + MaxVisible)).html();
+        $('#TopRightDateNav').html(rightSideDate+'...')
+        $('#TopRightDateNav').removeClass('Hide');
+        $('#TopRightDateNav').addClass('Show');
+        $('#TopRightNavCircle').removeClass('Hide');
+        $('#TopRightNavCircle').addClass('Show');
+
+    }
+}
 
 function SetOneColumnVisibility(currentColumn, ColumnsVisiblePerSide) {
     var colsAbove = MaxColumn - ActiveColumn;
     var colsBelow = ActiveColumn - 1;
 
     var FirstVisibleColumn = ActiveColumn - ColumnsVisiblePerSide
+
     while (FirstVisibleColumn < 1) { FirstVisibleColumn++ }
    // alert(FirstVisibleColumn);//2>4-3
     while (((FirstVisibleColumn + MaxVisible - 1) > MaxColumn) && (FirstVisibleColumn > 0)) { FirstVisibleColumn-- }
 
-   // while (FirstVisibleColumn > (MaxColumn - MaxVisible) && (FirstVisibleColumn>0)) { FirstVisibleColumn-- }
-   // alert(FirstVisibleColumn);
+   
+    SetNavVisibility(FirstVisibleColumn);
+
+
+
+
+
     if ((currentColumn < FirstVisibleColumn)
         || currentColumn > (FirstVisibleColumn + MaxVisible - 1)
        )
-    //if (currentColumn < (ActiveColumn - ColumnsVisiblePerSide)
-    //    || currentColumn > (ActiveColumn + ColumnsVisiblePerSide)
-    //    ) 
-    {//Hide it 
-
+        {
+        //Hide Column and add to left/right nav if needed
         SetColumnVisibilityClass('EntryDataColumn' + (currentColumn).toString(), 'HiddenColumn');
-       // SwapClassNameOnElements('EntryDataColumn' + (currentColumn).toString(), 'InactiveColumn', 'HiddenColumn')
-       // SwapClassNameOnElements('EntryDataColumn' + (ActiveColumn - 2).toString(), 'HiddenColumn', 'InactiveColumn')
 
-    }
+        //var currentDate = $('#SmallDateDiv' + currentColumn).html();
+        //if (currentColumn == (FirstVisibleColumn-1))
+        //{
+        //    $('#TopLeftDateNav').html(currentDate)
+        //    $('#TopLeftDateNav').removeClass('Hide');
+        //    $('#TopLeftDateNav').addClass('Show');
+        //}
+        //else if (currentColumn == (FirstVisibleColumn + MaxVisible))
+        //{
+        //    $('#TopRightDateNav').html(currentDate)
+        //    $('#TopRightDateNav').removeClass('Hide');
+        //    $('#TopRightDateNav').addClass('Show');
+
+        //}
+
+
+        }
     else {
         if (currentColumn != ActiveColumn) {
             //ShowIt as inactive
