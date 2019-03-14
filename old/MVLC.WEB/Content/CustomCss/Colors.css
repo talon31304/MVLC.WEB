@@ -1,0 +1,185 @@
+﻿body {
+      background-color:white;
+}
+
+
+.MainTheme {
+     background-color:white;
+     color:darkslategray;
+}
+
+.MainTheme div.MainContent {
+     background-color:white;
+     border:black;
+     color:darkslategray;
+}
+
+.MainTheme .MainContent table {
+     background-color:white;
+     border:black;
+     color:darkslategray;
+
+}
+
+
+  .MVCL_GridTable caption {
+      border-left: 1px solid #FFF;
+      border-right: 1px solid #FFF;
+
+  }
+.MVCL_GridTable caption {
+       background: #1C6EA4;
+  background: -moz-linear-gradient(top, #5592bb %, #4285b3 66%, #3b81b0 100%);
+  background: -webkit-linear-gradient(top, #5592bb 0%, #4285b3 66%, #3b81b0 100%);
+  background: linear-gradient(to bottom, #5592bb 0%, #4285b3 66%, #3b81b0 100%);
+  /*border-bottom:  #444444;*/
+}
+.MainTheme .MainContent table  th {
+          border-left: 1px solid #FFF;
+      border-right: 1px solid #FFF;
+    background: #1C6EA4;
+  background: -moz-linear-gradient(top, #3b81b0 0%, #327bad 66%, #1C6EA4 100%);
+  background: -webkit-linear-gradient(top, #3b81b0 0%, #327bad 66%, #1C6EA4 100%);
+  background: linear-gradient(to bottom, #3b81b0 0%, #327bad 66%, #1C6EA4 100%);
+  border-bottom:  #444444;
+}
+.MainTheme .MainContent table  th.InactiveColumn {
+        color:aliceblue;
+}
+.MainTheme .MainContent table  th.ActiveColumn {
+        color:black;
+}
+
+.MainTheme .MainContent table tr.OddRow {
+  background-color:aqua;
+  color:black;
+        border-left: 1px solid #FFF;
+      border-right: 1px solid #FFF;
+}
+.MainTheme .MainContent table tr.EvenRow {
+  background-color: #EEEEEE;
+  color:black;
+        border-left: 1px solid #FFF;
+      border-right: 1px solid #FFF;
+}
+.MainTheme .MainContent table tr.Separator td {
+  background-color:darkblue !important;
+  color:white;
+}
+.MainTheme .MainContent col.EntryDataColumn.ActiveColumn 
+{
+ border: gray;
+}
+
+
+
+/*Cell CSS*/
+.MainTheme .MainContent .MVLC_ActiveCell,
+.MainTheme .MainContent  .ActiveRow .ActiveColumn.MVLC_TableCell
+{
+    background-color:white;
+    border: Black
+}
+
+
+/*Cell Content CSS*/
+.MainTheme .MainContent .MVCL_GridTable div.DataSection{
+        color:black;
+        background-color:inherit;
+}
+
+
+div.BlankBackground
+{
+     /*background: rgba(76, 175, 80, 0.1);*/
+     background: rgba(255, 255, 255, 0.1);
+}
+
+.DynamicText,
+.DynamicValueLabel
+{
+color:black;
+}
+
+.DynamicValue,
+.MVLCTable_SmallValue {
+color:blue;
+}
+
+
+
+.HelpInfoBox 
+{
+    color:darkslategray;
+    background-color:white;
+    border: blue;
+}
+
+.ColorRed {
+    color: red;
+}
+
+
+.InactiveColumn span {
+   color:darkgrey;
+    }
+
+
+
+.BlueHint{
+    color:blue;
+}
+
+
+
+
+.loader {
+  background-color: #ddd;
+}
+
+.loader:before{
+  background-color: #2980b9;
+}
+
+a.MVCL-DropdownMenuSelector {
+    color:black;
+}
+
+.MVCL-DropdownMenuSelectorTextContainer span
+{
+     color:inherit;
+}
+
+.ActionColumn {
+    background-color:aliceblue !important;
+
+}
+
+.NavDirectionBox {
+    color:white;
+}
+
+
+.droppedDownDiv
+{
+    background: rgba(255, 255, 255, 1)
+}
+
+#DynamicDivPopup > div {
+    background-color: #fff;
+  
+}
+.popupCloseButton {
+    background-color: #fff;
+    border:  #999;
+  
+}
+.popupCloseButton:hover {
+    background-color: #ccc;
+}
+#DynamicDivPopup > div {
+    box-shadow:  #555;
+}
+#DynamicDivPopup {
+    background: rgba(0,0,0,.4);
+}

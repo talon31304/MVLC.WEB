@@ -1,0 +1,549 @@
+﻿.MVLC_GridTable {
+    text-align:center;
+    width:800px;
+}
+.TableSelectorSection{
+
+    width:800px;
+}
+.MVLC_GridTable .header
+{
+
+}
+.MVLC_GridTable .footer
+{
+
+}
+#ClassesDD_Div {
+    display:block;
+    width:800px;
+}
+/*Colum Header CSS*/
+.MVLC_GridTable  th {
+  border-bottom: 2px solid;
+}
+.MVLC_GridTable  th.InactiveColumn {
+    font-weight:Bold;
+    font-size:1em;
+}
+.MVLC_GridTable  th.ActiveColumn {
+    font-weight:Bold;
+        font-size:1.2em;
+}
+
+
+.MVLC_GridTable  th.ActiveColumn .SmallestDate{
+  display:none;
+}
+.MVLC_GridTable  th.ActiveColumn .BigDate{
+  display:block;
+}
+.MVLC_GridTable  th.InactiveColumn .SmallestDate{
+  display:block;
+}
+.MVLC_GridTable  th.InactiveColumn .BigDate{
+  display:none;
+}
+
+
+
+
+
+/*Row CSS*/
+
+.MVLC_GridTable .ActiveRow {
+opacity: .75;
+max-height:70px;
+height:70px;
+}
+
+.MVLC_GridTable tr.OddRow {
+}
+
+.MVLC_GridTable tr.EvenRow {
+}
+.MVLC_GridTable .Separator {
+  display:block;
+
+}
+.MVLC_GridTable {
+        margin-bottom:5px;
+}
+.MVLC_GridTable caption {
+    margin-bottom:0px;
+    margin-top:0px;
+    padding-top:0px;
+    /*background: url('https://farm3.staticflickr.com/2878/10944255073_973d2cd25c.jpg');
+  background-size: cover;*/
+       /*background: rgba(255, 255, 255, 0.1);*/
+}
+.MVLC_GridTable  div.caption {
+  position: relative;
+  display: block;
+  padding: 0em 0em 0em 0em;
+  overflow: hidden;
+  color: #fff;
+  width: 100%;
+    z-index: 5;
+}
+
+.MVLC_GridTable caption div:after {
+  position: absolute;
+  content:' ';
+  top: 0px;
+
+  left: 100px;
+  width: 100%;
+  height: 90px;
+  min-height: 90px;
+  margin-top:-60px;
+
+  background: #fff;
+  -webkit-transform-origin: 100% 0;
+  -ms-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+  -webkit-transform: skew(45deg);
+  -ms-transform: skew(45deg);
+  transform: skew(45deg);
+  z-index: -2;
+}
+
+
+
+.MVLC_GridTable tr.LastRow {
+
+}
+.MVLC_GridTable tr.Separator.Narrow td {
+    width:100%;
+
+max-height:5px;
+min-height:5px;
+height:5px;
+}
+.MVLC_GridTable .Separator.Medium {
+max-height:10px;
+min-height:10px;
+height:10px;
+}
+.MVLC_GridTable tr.Separator.Wide {
+max-height:20px;
+min-height:20px;
+height:20px;
+}
+
+
+/*Column CSS*/
+.MVLC_GridTable .HiddenColumn  {
+   display:none;
+}
+.MVLC_GridTable {
+   
+}
+.MVLC_TableCell,
+.MVLC_GridTable td {
+    padding-top: 0px !important;
+    padding-bottom:0px !important;
+}
+.MVLC_GridTable col.EntryDataColumn.ActiveColumn 
+{
+ border: 2px dashed;
+    opacity: 1;
+     width:220px;
+     min-width:220px;
+}
+.MVLC_GridTable .ActiveColumn {
+       width:220px;
+     min-width:220px;  
+}
+.MVLC_GridTable .InactiveColumn {
+    opacity: .75;
+    width:45px;
+    max-width:45px;
+    margin-left:0px;
+    margin-right:0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    overflow-x:hidden;
+    
+}
+.MVLC_GridTable .ActiveRow .InactiveColumn {
+
+}
+
+
+
+
+/*Cell CSS*/
+
+.MVLC_GridTable .MVLC_ActiveCell,
+.ActiveRow .ActiveColumn.MVLC_TableCell
+{
+    border: 2px solid;
+}
+
+
+
+/*Cell Content CSS*/
+.MVLC_GridTable .InactiveColumn.MVLC_TableCell div.DataSection{
+    font-size:1.2em;
+    font-weight:Bold;
+}
+
+.MVLC_GridTable .ActiveColumn.MVLC_TableCell div.DataSection{
+    font-size:1.2em;
+    font-weight:Bold;
+}
+.MVLC_GridTable .ActiveColumn.MVLC_TableCell div.DataSection:hover{
+    font-size:1.2em;
+    font-weight:Bold;
+        border:1px solid;
+}
+
+.MVLC_GridTable .MVLC_TableCell .DataValue{
+    font-size:1.2em;
+    font-weight:Bold;
+}
+
+.MVLC_GridTable .MVLC_TableCell span.DataValue.LargeDataValue{
+    font-size:2.1em;
+}
+
+.MVLC_GridTable .ActiveColumn.MVLC_TableCell div.HoursViewSpan{
+    margin-top:8px;
+    width:40px;
+    max-width:43px;
+}
+.MVLC_GridTable .InactiveColumn.MVLC_TableCell div.HoursViewSpan{
+    margin-top:4px;
+    margin-left:-20px;
+}
+
+
+.ActiveRow .ActiveColumn div.HoursEntryRadio{ 
+    display:block;
+}
+.ActiveRow div.EditGridCell{ 
+    display:none;
+}
+.ActiveColumn div.EditGridCell{ 
+    display:none;
+}
+.MVLC_GridTable th.InactiveColumn div.HoursStatus a img.HoursStatusImage {
+    display:block;
+    height: 25px;
+}
+.MVLC_GridTable th.ActiveColumn div.HoursStatus a img.HoursStatusImage {
+    display:block;
+    height: 35px;
+}
+.MVLC_GridTable th div.HoursStatus div.Missing,
+.MVLC_GridTable th div.HoursStatus div.HasHours,
+.MVLC_GridTable th div.HoursStatus div.NoClass
+  {
+    display:none;
+}
+.MVLC_GridTable th.ActiveColumn.PastHours.MissingHours div.HoursStatus {
+    margin-top:-10px;
+}
+.MVLC_GridTable th.PastHours.MissingHours div.HoursStatus div.Missing,
+.MVLC_GridTable th.HasHours div.HoursStatus div.HasHours,
+.MVLC_GridTable th.NoClass div.HoursStatus div.NoClass
+  {
+    display:block;
+    min-height: 35px;
+}
+.MVLC_GridTable th.InactiveColumn div.HoursStatus div.HoursStatusActionBox {
+    display:none;
+}
+.MVLC_GridTable th.ActiveColumn div.HoursStatus div.HoursStatusActionBox {
+    display:block;
+     min-height: 35px;
+}
+
+.HoursStatusActionBox input{
+    line-height:.9em;
+    margin-top:-5px;
+    margin-bottom:-5px;
+
+}
+.HiddenColumn div.CellWrapper,
+.RightSide,
+.InactiveColumn .CellWrapper div.TopLeft,
+.InactiveColumn .CellWrapper div.RightSide,
+.InactiveColumn .CellWrapper div.Bottom,
+.InactiveColumn .CellWrapper .TopCenter div.HoursSelectDropDown,
+
+.ActiveColumn .CellWrapper div.RightSide,
+.ActiveColumn .CellWrapper div.Bottom,
+.ActiveColumn .CellWrapper .TopCenter div.HoursSelectDropDown,
+.ActiveRow .ActiveColumn .CellWrapper .TopCenter div.HoursViewSpan
+ {display:none;}
+
+
+
+.ActiveRow .ActiveColumn .CellWrapper div.TopLeft,
+.ActiveRow .ActiveColumn .CellWrapper div.TopCenter,
+.ActiveRow .ActiveColumn .CellWrapper .TopCenter div.HoursSelectDropDown,
+.ActiveRow .ActiveColumn .CellWrapper div.Bottom
+{
+    display:block;
+ max-height:45px;
+ min-height:45px;
+ height:45px;
+ 
+}
+
+div.RightSide {
+     position:absolute;
+      top:0px;
+       right:0px;
+      z-index:11;
+}
+div.Bottom{
+        width:160px;
+     min-width:160px;
+     max-width:160px;
+       position:absolute;
+       top:45px;
+       left:0px;
+   z-index:5;
+  
+}
+
+div.CellWrapper {
+         width:160px;
+     min-height:21px;
+     max-width:160px;
+     max-height:90px;
+     min-width:50px;
+     position:absolute;
+     margin-top:-9px;
+    
+}
+
+.CellWrapper div.TopLeft,
+.CellWrapper div.TopCenter
+{
+    float:left;
+    min-height:20px;
+}
+
+.CellWrapper div.TopCenter {
+        max-width: 70px;
+    min-width: 70px;
+    width:70px;
+}
+.CellWrapper div.TopLeft,
+.CellWrapper div.RightSide {
+    max-width: 45px;
+    min-width: 45px;
+    width:45px;
+}
+.CellWrapper div.RightSide {
+ min-height:80px;
+ max-height:80px;
+ height:80px;
+
+}
+
+a.MVCL-DropdownMenuSelector {
+    text-decoration:none;
+    font-size:25px;
+    font-weight:bold;
+     opacity:1;
+}
+div.HoursSelectDropDown {
+     opacity:1;z-index:2;                   
+}
+
+#TopLeftDateNav {
+        text-align: Right;
+        float:right;
+}
+#TopRightDateNav {
+        text-align: Left;
+        float:left;
+}
+.NavDirectionBox {
+    /*border: 2px solid;*/
+    padding-top:1em;
+    /*border-radius: 45px;*/
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+    top: -14px;
+    right: -3px;
+    font-size: 1em;
+    line-height: 1.5em;
+    width: 85px;
+    height: 55px;
+
+}
+.GridNavButton {
+                             width: 45px;
+    max-width:45px;
+}
+.Right.GridNavButton {float:left;position:relative;}
+.Left.GridNavButton {float:right;position:relative;}
+.GridNavButtonGraphic {
+    width: 45px;
+    max-width:45px;
+    position:absolute;
+     top: 31px;
+     left:10px;
+}
+.GridNavButtonText {position:relative;
+                         width: 45px;
+    max-width:45px;
+
+}
+.MVLC_GridTable th.MissingHours div.MissingHours div.InnerMissingHours {
+}
+
+
+.EditGridCell, .EditGridCellOuter {
+    width:100%;
+}
+
+
+.EntryNameData {
+    display:none;
+}
+.ActiveRow Div.EntryNameData {
+    display:block;
+    
+}
+
+
+.ActiveRow .ActiveColumn .HoursEntryInputSection span {display:block;}
+.ActiveRow .ActiveColumn .xxx span {display:none;}
+
+
+.InactiveColumn div.HoursEntryInputSection {display:none;}
+.ActiveColumn div.HoursEntryInputSection {display:none;}
+.ActiveRow .ActiveColumn div.HoursEntryInputSection {display:block;}
+
+.InactiveColumn input {display:none;}
+.InactiveColumn span {
+         font-size:1.2em;
+    font-weight:bold;
+    line-height:1.9em;
+   margin-top:25px;
+   vertical-align:middle;
+    }
+
+
+table.HoursEntryRadio {
+    width:212px;
+    max-width:212px;
+     margin-left:-2px;
+    overflow-x:hidden;
+}
+
+.HoursEntryRadio td {
+        width:212px;
+    max-width:212px;
+ overflow-x:hidden;
+ margin-left:-15px;
+  margin-left:-2px;
+}
+
+span.HoursEntryRadio {
+    padding-right:12px;
+    font-size:1.2em;
+    font-weight:bold;
+}
+
+
+.HoursEntryRadio input{
+    margin-right:0px;
+     padding-left:0px;
+        padding-right:0px;
+}
+.MVLCTable_SmallLabel {
+font-size:.9em;
+font-style:italic;
+line-height:105%;
+margin-top: -10px;
+margin-bottom: 0px;
+height:.92em;
+font-weight:normal;
+margin-left: 20px;
+}
+.MVLCTable_SmallHelpLabel {
+    font-size: .7em;
+    font-style: italic;
+    line-height: .72em;
+    margin-top: -10px;
+    margin-bottom: 0px;
+    height: .72em;
+    font-weight: normal;
+    margin-left: 20px;
+}
+.MVLCTable_SmallValue {
+font-size:.9em;
+font-style:normal;
+line-height:105%;
+height:.92em;
+margin-top: -10px;
+margin-bottom: 0px;
+font-weight:normal;
+}
+.EntryNameColumn {
+
+    width: 190px;
+}
+
+.MainGridHoursEntry table {
+    max-width: 600px;
+    width: 600px;
+}
+.HoursDataEntry {
+    font-size:2em;
+}
+
+
+.CenterText {text-align:center}
+div.HoursStatusCB { margin-top:10px;margin-left:35px;margin-right:35px; width:110px;}
+
+
+ .MVLC_GridTable th  div.HoursStatus a img.MissingHoursImage {
+    
+     display:none;
+}
+  .MVLC_GridTable th  div.HoursStatus a img.OKHoursImage {
+    
+     display:none;
+}
+  .MVLC_GridTable th  div.HoursStatus a img.NoClassImage {
+    
+     display:none;
+}
+
+ div.MissingHoursDetails
+{
+    display:none;
+
+}
+.MVLC_GridTable th.MissingHours.ActiveColumn div.MissingHours div.MissingHoursActionBox
+{
+    min-height: 25px;
+    display:block;
+}
+.MVLC_GridTable th div.MissingHours div.MissingHoursActionBox
+{
+    display:none;
+}
+div.OuterCellWrap {
+     width:100%;
+     height:100%;
+     min-height:31px;
+
+}
+div.InnerCellWrap {
+   
+}
+.EditGridCellOuter {
+       z-index: 1;
+}

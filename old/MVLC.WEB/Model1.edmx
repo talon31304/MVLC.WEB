@@ -1,0 +1,578 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MVLC.LIVEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BulkClassHours">
+          <Key>
+            <PropertyRef Name="ClassID" />
+          </Key>
+          <Property Name="ClassID" Type="int" Nullable="false" />
+          <Property Name="NumberOfStudents" Type="int" />
+          <Property Name="TotalStudentHours" Type="float" />
+          <Property Name="NumberofTutors" Type="int" />
+          <Property Name="TotalTutorHours" Type="float" />
+        </EntityType>
+        <EntityType Name="ClassDates">
+          <Key>
+            <PropertyRef Name="ClassID" />
+            <PropertyRef Name="ClassDate" />
+          </Key>
+          <Property Name="ClassID" Type="int" Nullable="false" />
+          <Property Name="ClassDate" Type="datetime" Nullable="false" />
+          <Property Name="DidClassMeet" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Classes">
+          <Key>
+            <PropertyRef Name="ClassID" />
+          </Key>
+          <Property Name="ClassID" Type="int" Nullable="false" />
+          <Property Name="ClassName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Term" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HoursEntryIssues">
+          <Key>
+            <PropertyRef Name="IssueID" />
+          </Key>
+          <Property Name="IssueID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Issue" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="People">
+          <Key>
+            <PropertyRef Name="PersonID" />
+          </Key>
+          <Property Name="PersonID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="15" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="PersonClasses">
+          <Key>
+            <PropertyRef Name="PersonID" />
+            <PropertyRef Name="ClassID" />
+          </Key>
+          <Property Name="PersonID" Type="int" Nullable="false" />
+          <Property Name="ClassID" Type="int" Nullable="false" />
+          <Property Name="PersonRole" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="WithdrawDate" Type="datetime" />
+          <Property Name="RecentHours" Type="float" />
+        </EntityType>
+        <EntityType Name="PersonClassHours">
+          <Key>
+            <PropertyRef Name="PersonID" />
+            <PropertyRef Name="ClassID" />
+            <PropertyRef Name="ClassDate" />
+          </Key>
+          <Property Name="PersonID" Type="int" Nullable="false" />
+          <Property Name="ClassID" Type="int" Nullable="false" />
+          <Property Name="ClassDate" Type="datetime" Nullable="false" />
+          <Property Name="ClassHours" Type="float" />
+        </EntityType>
+        <EntityType Name="PersonClassHoursHistory">
+          <Key>
+            <PropertyRef Name="PersonID" />
+            <PropertyRef Name="ClassID" />
+            <PropertyRef Name="ClassDate" />
+            <PropertyRef Name="Modified" />
+          </Key>
+          <Property Name="PersonID" Type="int" Nullable="false" />
+          <Property Name="ClassID" Type="int" Nullable="false" />
+          <Property Name="ClassDate" Type="datetime" Nullable="false" />
+          <Property Name="ClassHours" Type="float" />
+          <Property Name="Modified" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__BulkClass__Class__145C0A3F">
+          <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
+          <End Role="BulkClassHours" Type="Self.BulkClassHours" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Classes">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="BulkClassHours">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ClassDate__Class__1B0907CE">
+          <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
+          <End Role="ClassDates" Type="Self.ClassDates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classes">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="ClassDates">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonCla__Class__182C9B23">
+          <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
+          <End Role="PersonClasses" Type="Self.PersonClasses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classes">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="PersonClasses">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonCla__Class__1ED998B2">
+          <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
+          <End Role="PersonClassHours" Type="Self.PersonClassHours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classes">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="PersonClassHours">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonCla__Class__22AA2996">
+          <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
+          <End Role="PersonClassHoursHistory" Type="Self.PersonClassHoursHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classes">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="PersonClassHoursHistory">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonCla__Perso__173876EA">
+          <End Role="People" Type="Self.People" Multiplicity="1" />
+          <End Role="PersonClasses" Type="Self.PersonClasses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="PersonClasses">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonCla__Perso__1DE57479">
+          <End Role="People" Type="Self.People" Multiplicity="1" />
+          <End Role="PersonClassHours" Type="Self.PersonClassHours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="PersonClassHours">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonCla__Perso__21B6055D">
+          <End Role="People" Type="Self.People" Multiplicity="1" />
+          <End Role="PersonClassHoursHistory" Type="Self.PersonClassHoursHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="PersonClassHoursHistory">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MVLCLIVEModelStoreContainer">
+          <EntitySet Name="BulkClassHours" EntityType="Self.BulkClassHours" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassDates" EntityType="Self.ClassDates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Classes" EntityType="Self.Classes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HoursEntryIssues" EntityType="Self.HoursEntryIssues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="People" EntityType="Self.People" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonClasses" EntityType="Self.PersonClasses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonClassHours" EntityType="Self.PersonClassHours" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonClassHoursHistory" EntityType="Self.PersonClassHoursHistory" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__BulkClass__Class__145C0A3F" Association="Self.FK__BulkClass__Class__145C0A3F">
+            <End Role="Classes" EntitySet="Classes" />
+            <End Role="BulkClassHours" EntitySet="BulkClassHours" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ClassDate__Class__1B0907CE" Association="Self.FK__ClassDate__Class__1B0907CE">
+            <End Role="Classes" EntitySet="Classes" />
+            <End Role="ClassDates" EntitySet="ClassDates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonCla__Class__182C9B23" Association="Self.FK__PersonCla__Class__182C9B23">
+            <End Role="Classes" EntitySet="Classes" />
+            <End Role="PersonClasses" EntitySet="PersonClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonCla__Class__1ED998B2" Association="Self.FK__PersonCla__Class__1ED998B2">
+            <End Role="Classes" EntitySet="Classes" />
+            <End Role="PersonClassHours" EntitySet="PersonClassHours" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonCla__Class__22AA2996" Association="Self.FK__PersonCla__Class__22AA2996">
+            <End Role="Classes" EntitySet="Classes" />
+            <End Role="PersonClassHoursHistory" EntitySet="PersonClassHoursHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonCla__Perso__173876EA" Association="Self.FK__PersonCla__Perso__173876EA">
+            <End Role="People" EntitySet="People" />
+            <End Role="PersonClasses" EntitySet="PersonClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonCla__Perso__1DE57479" Association="Self.FK__PersonCla__Perso__1DE57479">
+            <End Role="People" EntitySet="People" />
+            <End Role="PersonClassHours" EntitySet="PersonClassHours" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonCla__Perso__21B6055D" Association="Self.FK__PersonCla__Perso__21B6055D">
+            <End Role="People" EntitySet="People" />
+            <End Role="PersonClassHoursHistory" EntitySet="PersonClassHoursHistory" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MVLC.LIVEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BulkClassHour">
+          <Key>
+            <PropertyRef Name="ClassID" />
+          </Key>
+          <Property Name="ClassID" Type="Int32" Nullable="false" />
+          <Property Name="NumberOfStudents" Type="Int32" />
+          <Property Name="TotalStudentHours" Type="Double" />
+          <Property Name="NumberofTutors" Type="Int32" />
+          <Property Name="TotalTutorHours" Type="Double" />
+          <NavigationProperty Name="Class" Relationship="Self.FK__BulkClass__Class__145C0A3F" FromRole="BulkClassHours" ToRole="Classes" />
+        </EntityType>
+        <EntityType Name="ClassDate">
+          <Key>
+            <PropertyRef Name="ClassID" />
+            <PropertyRef Name="ClassDate1" />
+          </Key>
+          <Property Name="ClassID" Type="Int32" Nullable="false" />
+          <Property Name="ClassDate1" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DidClassMeet" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Class" Relationship="Self.FK__ClassDate__Class__1B0907CE" FromRole="ClassDates" ToRole="Classes" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="ClassID" />
+          </Key>
+          <Property Name="ClassID" Type="Int32" Nullable="false" />
+          <Property Name="ClassName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Term" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="BulkClassHour" Relationship="Self.FK__BulkClass__Class__145C0A3F" FromRole="Classes" ToRole="BulkClassHours" />
+          <NavigationProperty Name="ClassDates" Relationship="Self.FK__ClassDate__Class__1B0907CE" FromRole="Classes" ToRole="ClassDates" />
+          <NavigationProperty Name="PersonClasses" Relationship="Self.FK__PersonCla__Class__182C9B23" FromRole="Classes" ToRole="PersonClasses" />
+          <NavigationProperty Name="PersonClassHours" Relationship="Self.FK__PersonCla__Class__1ED998B2" FromRole="Classes" ToRole="PersonClassHours" />
+          <NavigationProperty Name="PersonClassHoursHistories" Relationship="Self.FK__PersonCla__Class__22AA2996" FromRole="Classes" ToRole="PersonClassHoursHistory" />
+        </EntityType>
+        <EntityType Name="HoursEntryIssue">
+          <Key>
+            <PropertyRef Name="IssueID" />
+          </Key>
+          <Property Name="IssueID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Issue" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="PersonID" />
+          </Key>
+          <Property Name="PersonID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PersonClasses" Relationship="Self.FK__PersonCla__Perso__173876EA" FromRole="People" ToRole="PersonClasses" />
+          <NavigationProperty Name="PersonClassHours" Relationship="Self.FK__PersonCla__Perso__1DE57479" FromRole="People" ToRole="PersonClassHours" />
+          <NavigationProperty Name="PersonClassHoursHistories" Relationship="Self.FK__PersonCla__Perso__21B6055D" FromRole="People" ToRole="PersonClassHoursHistory" />
+        </EntityType>
+        <EntityType Name="PersonClass">
+          <Key>
+            <PropertyRef Name="PersonID" />
+            <PropertyRef Name="ClassID" />
+          </Key>
+          <Property Name="PersonID" Type="Int32" Nullable="false" />
+          <Property Name="ClassID" Type="Int32" Nullable="false" />
+          <Property Name="PersonRole" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="WithdrawDate" Type="DateTime" Precision="3" />
+          <Property Name="RecentHours" Type="Double" />
+          <NavigationProperty Name="Class" Relationship="Self.FK__PersonCla__Class__182C9B23" FromRole="PersonClasses" ToRole="Classes" />
+          <NavigationProperty Name="Person" Relationship="Self.FK__PersonCla__Perso__173876EA" FromRole="PersonClasses" ToRole="People" />
+        </EntityType>
+        <EntityType Name="PersonClassHour">
+          <Key>
+            <PropertyRef Name="PersonID" />
+            <PropertyRef Name="ClassID" />
+            <PropertyRef Name="ClassDate" />
+          </Key>
+          <Property Name="PersonID" Type="Int32" Nullable="false" />
+          <Property Name="ClassID" Type="Int32" Nullable="false" />
+          <Property Name="ClassDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ClassHours" Type="Double" />
+          <NavigationProperty Name="Class" Relationship="Self.FK__PersonCla__Class__1ED998B2" FromRole="PersonClassHours" ToRole="Classes" />
+          <NavigationProperty Name="Person" Relationship="Self.FK__PersonCla__Perso__1DE57479" FromRole="PersonClassHours" ToRole="People" />
+        </EntityType>
+        <EntityType Name="PersonClassHoursHistory">
+          <Key>
+            <PropertyRef Name="PersonID" />
+            <PropertyRef Name="ClassID" />
+            <PropertyRef Name="ClassDate" />
+            <PropertyRef Name="Modified" />
+          </Key>
+          <Property Name="PersonID" Type="Int32" Nullable="false" />
+          <Property Name="ClassID" Type="Int32" Nullable="false" />
+          <Property Name="ClassDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ClassHours" Type="Double" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Class" Relationship="Self.FK__PersonCla__Class__22AA2996" FromRole="PersonClassHoursHistory" ToRole="Classes" />
+          <NavigationProperty Name="Person" Relationship="Self.FK__PersonCla__Perso__21B6055D" FromRole="PersonClassHoursHistory" ToRole="People" />
+        </EntityType>
+        <Association Name="FK__BulkClass__Class__145C0A3F">
+          <End Role="Classes" Type="Self.Class" Multiplicity="1" />
+          <End Role="BulkClassHours" Type="Self.BulkClassHour" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Classes">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="BulkClassHours">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ClassDate__Class__1B0907CE">
+          <End Role="Classes" Type="Self.Class" Multiplicity="1" />
+          <End Role="ClassDates" Type="Self.ClassDate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classes">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="ClassDates">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonCla__Class__182C9B23">
+          <End Role="Classes" Type="Self.Class" Multiplicity="1" />
+          <End Role="PersonClasses" Type="Self.PersonClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classes">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="PersonClasses">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonCla__Class__1ED998B2">
+          <End Role="Classes" Type="Self.Class" Multiplicity="1" />
+          <End Role="PersonClassHours" Type="Self.PersonClassHour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classes">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="PersonClassHours">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonCla__Class__22AA2996">
+          <End Role="Classes" Type="Self.Class" Multiplicity="1" />
+          <End Role="PersonClassHoursHistory" Type="Self.PersonClassHoursHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classes">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="PersonClassHoursHistory">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonCla__Perso__173876EA">
+          <End Role="People" Type="Self.Person" Multiplicity="1" />
+          <End Role="PersonClasses" Type="Self.PersonClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="PersonClasses">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonCla__Perso__1DE57479">
+          <End Role="People" Type="Self.Person" Multiplicity="1" />
+          <End Role="PersonClassHours" Type="Self.PersonClassHour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="PersonClassHours">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonCla__Perso__21B6055D">
+          <End Role="People" Type="Self.Person" Multiplicity="1" />
+          <End Role="PersonClassHoursHistory" Type="Self.PersonClassHoursHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="PersonClassHoursHistory">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MVLC_Live_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BulkClassHours" EntityType="Self.BulkClassHour" />
+          <EntitySet Name="ClassDates" EntityType="Self.ClassDate" />
+          <EntitySet Name="Classes" EntityType="Self.Class" />
+          <EntitySet Name="HoursEntryIssues" EntityType="Self.HoursEntryIssue" />
+          <EntitySet Name="People" EntityType="Self.Person" />
+          <EntitySet Name="PersonClasses" EntityType="Self.PersonClass" />
+          <EntitySet Name="PersonClassHours" EntityType="Self.PersonClassHour" />
+          <EntitySet Name="PersonClassHoursHistories" EntityType="Self.PersonClassHoursHistory" />
+          <AssociationSet Name="FK__BulkClass__Class__145C0A3F" Association="Self.FK__BulkClass__Class__145C0A3F">
+            <End Role="Classes" EntitySet="Classes" />
+            <End Role="BulkClassHours" EntitySet="BulkClassHours" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ClassDate__Class__1B0907CE" Association="Self.FK__ClassDate__Class__1B0907CE">
+            <End Role="Classes" EntitySet="Classes" />
+            <End Role="ClassDates" EntitySet="ClassDates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonCla__Class__182C9B23" Association="Self.FK__PersonCla__Class__182C9B23">
+            <End Role="Classes" EntitySet="Classes" />
+            <End Role="PersonClasses" EntitySet="PersonClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonCla__Class__1ED998B2" Association="Self.FK__PersonCla__Class__1ED998B2">
+            <End Role="Classes" EntitySet="Classes" />
+            <End Role="PersonClassHours" EntitySet="PersonClassHours" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonCla__Class__22AA2996" Association="Self.FK__PersonCla__Class__22AA2996">
+            <End Role="Classes" EntitySet="Classes" />
+            <End Role="PersonClassHoursHistory" EntitySet="PersonClassHoursHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonCla__Perso__173876EA" Association="Self.FK__PersonCla__Perso__173876EA">
+            <End Role="People" EntitySet="People" />
+            <End Role="PersonClasses" EntitySet="PersonClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonCla__Perso__1DE57479" Association="Self.FK__PersonCla__Perso__1DE57479">
+            <End Role="People" EntitySet="People" />
+            <End Role="PersonClassHours" EntitySet="PersonClassHours" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonCla__Perso__21B6055D" Association="Self.FK__PersonCla__Perso__21B6055D">
+            <End Role="People" EntitySet="People" />
+            <End Role="PersonClassHoursHistory" EntitySet="PersonClassHoursHistories" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MVLCLIVEModelStoreContainer" CdmEntityContainer="MVLC_Live_Entities">
+          <EntitySetMapping Name="BulkClassHours">
+            <EntityTypeMapping TypeName="MVLC.LIVEModel.BulkClassHour">
+              <MappingFragment StoreEntitySet="BulkClassHours">
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="NumberOfStudents" ColumnName="NumberOfStudents" />
+                <ScalarProperty Name="TotalStudentHours" ColumnName="TotalStudentHours" />
+                <ScalarProperty Name="NumberofTutors" ColumnName="NumberofTutors" />
+                <ScalarProperty Name="TotalTutorHours" ColumnName="TotalTutorHours" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassDates">
+            <EntityTypeMapping TypeName="MVLC.LIVEModel.ClassDate">
+              <MappingFragment StoreEntitySet="ClassDates">
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="ClassDate1" ColumnName="ClassDate" />
+                <ScalarProperty Name="DidClassMeet" ColumnName="DidClassMeet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Classes">
+            <EntityTypeMapping TypeName="MVLC.LIVEModel.Class">
+              <MappingFragment StoreEntitySet="Classes">
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="Term" ColumnName="Term" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HoursEntryIssues">
+            <EntityTypeMapping TypeName="MVLC.LIVEModel.HoursEntryIssue">
+              <MappingFragment StoreEntitySet="HoursEntryIssues">
+                <ScalarProperty Name="IssueID" ColumnName="IssueID" />
+                <ScalarProperty Name="Issue" ColumnName="Issue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="People">
+            <EntityTypeMapping TypeName="MVLC.LIVEModel.Person">
+              <MappingFragment StoreEntitySet="People">
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonClasses">
+            <EntityTypeMapping TypeName="MVLC.LIVEModel.PersonClass">
+              <MappingFragment StoreEntitySet="PersonClasses">
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="PersonRole" ColumnName="PersonRole" />
+                <ScalarProperty Name="WithdrawDate" ColumnName="WithdrawDate" />
+                <ScalarProperty Name="RecentHours" ColumnName="RecentHours" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonClassHours">
+            <EntityTypeMapping TypeName="MVLC.LIVEModel.PersonClassHour">
+              <MappingFragment StoreEntitySet="PersonClassHours">
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="ClassDate" ColumnName="ClassDate" />
+                <ScalarProperty Name="ClassHours" ColumnName="ClassHours" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonClassHoursHistories">
+            <EntityTypeMapping TypeName="MVLC.LIVEModel.PersonClassHoursHistory">
+              <MappingFragment StoreEntitySet="PersonClassHoursHistory">
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="ClassDate" ColumnName="ClassDate" />
+                <ScalarProperty Name="ClassHours" ColumnName="ClassHours" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

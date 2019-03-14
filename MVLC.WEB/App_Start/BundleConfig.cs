@@ -24,14 +24,16 @@ namespace MVLC.WEB
 
             bundles.Add(new ScriptBundle("~/bundles/customJQuery").Include(
                        "~/Scripts/Custom/DynamicDiv.js",
+                       "~/Scripts/Custom/Grid.js",
                        "~/Scripts/Custom/SharedUtility.js",
                        "~/Scripts/Custom/DropDownDiv.js"
                        ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css", "~/Content/grid.css",
-                      "~/Content/bootstrap.css", "~/Content/DynamicDiv.css",
-                      "~/Content/CustomCss/Colors.css", "~/Content/site.css"));
+              "~/Content/bootstrap.css", "~/Content/CustomCss/grid.css",
+              "~/Content/bootstrap.css", "~/Content/CustomCss/DynamicDiv.css",
+              "~/Content/CustomCss/ContextCircles.css",
+              "~/Content/CustomCss/Colors.css", "~/Content/site.css"));
         }
     }
 }

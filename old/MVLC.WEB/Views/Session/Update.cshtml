@@ -1,0 +1,68 @@
+﻿@model MVLC.WEB.ViewModels.HoursEntryViewModel
+@{
+    ViewBag.Title = "Update";
+}
+<button onclick="MoveLeft()">Move Left</button><button onclick="MoveRight()">Move Right</button>
+<div class="HoursEntry">
+    <table class="table table-bordered">
+        <colgroup>
+            <col span="1" class="EntryNameColumn">
+            @for (var j = 0; j < Model.SessionDates.Count() - 1; j++)
+            {
+                if (j < Model.SessionDates.Count() - 3)
+                {
+                    <col span="1" class = "EntryDataColumn HiddenColumn EntryDataColumn@(j + 1)">
+                }
+                else
+                {
+                    <col span="1" class="EntryDataColumn InactiveColumn EntryDataColumn@(j + 1)">                   
+                }
+            }
+            <col span="1" class="EntryDataColumn ActiveColumn EntryDataColumn@(Model.SessionDates.Count())"> 
+            <col span="1" class="ActionColumn">                      
+        </colgroup>
+
+        <thead>
+            <tr>
+                <th class="EntryNameColumn"></th>
+                @for (var j = 0; j < Model.SessionDates.Count() - 1; j++)
+                {
+                    if (j < Model.SessionDates.Count() - 3)
+                    {
+                        <th class="EntryDataColumn HiddenColumn EntryDataColumn@(j + 1)">@Model.SessionDates[j] </th>
+                    }
+                    else
+                    {
+                        <th class="EntryDataColumn InactiveColumn EntryDataColumn@(j + 1)">@Model.SessionDates[j] </th>
+                    }
+                }
+                <th class="EntryDataColumn ActiveColumn EntryDataColumn@(Model.SessionDates.Count())">@Model.SessionDates[Model.SessionDates.Count()-1] </th>
+                    <th span="1" class="ActionColumn"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @for (var i = 0; i < Model.Students.Count(); i++)
+            {
+                @Html.DisplayFor(m => m.Students[i]) //Display Template SessionAttendee            
+            }
+            <tr></tr>
+            @for (var i = 0; i < Model.Tutors.Count(); i++)
+            {
+                @Html.DisplayFor(m => m.Tutors[i]) //Display Template SessionAttendee
+            }
+
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+@section CustomScripts
+   {
+
+    <script src="@Url.Content("~/Scripts/HoursEntryViewModel.js")" type="text/javascript"></script>
+}

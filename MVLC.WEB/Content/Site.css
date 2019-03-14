@@ -79,34 +79,34 @@ select.HoursEntryInput {
 .ActiveColumn div.EditGridCell{ 
     display:none;
 }
-.MVCL_GridTable th.InactiveColumn div.HoursStatus a img.HoursStatusImage {
+.MVLC_GridTable th.InactiveColumn div.HoursStatus a img.HoursStatusImage {
     display:block;
     height: 25px;
 }
-.MVCL_GridTable th.ActiveColumn div.HoursStatus a img.HoursStatusImage {
+.MVLC_GridTable th.ActiveColumn div.HoursStatus a img.HoursStatusImage {
     display:block;
     height: 35px;
 }
-.MVCL_GridTable th div.HoursStatus div.Missing,
-.MVCL_GridTable th div.HoursStatus div.HasHours,
-.MVCL_GridTable th div.HoursStatus div.NoClass
+.MVLC_GridTable th div.HoursStatus div.Missing,
+.MVLC_GridTable th div.HoursStatus div.HasHours,
+.MVLC_GridTable th div.HoursStatus div.NoClass
   {
     display:none;
 }
-.MVCL_GridTable th.ActiveColumn.PastHours.MissingHours div.HoursStatus {
+.MVLC_GridTable th.ActiveColumn.PastHours.MissingHours div.HoursStatus {
     margin-top:-10px;
 }
-.MVCL_GridTable th.PastHours.MissingHours div.HoursStatus div.Missing,
-.MVCL_GridTable th.HasHours div.HoursStatus div.HasHours,
-.MVCL_GridTable th.NoClass div.HoursStatus div.NoClass
+.MVLC_GridTable th.PastHours.MissingHours div.HoursStatus div.Missing,
+.MVLC_GridTable th.HasHours div.HoursStatus div.HasHours,
+.MVLC_GridTable th.NoClass div.HoursStatus div.NoClass
   {
     display:block;
     min-height: 35px;
 }
-.MVCL_GridTable th.InactiveColumn div.HoursStatus div.HoursStatusActionBox {
+.MVLC_GridTable th.InactiveColumn div.HoursStatus div.HoursStatusActionBox {
     display:none;
 }
-.MVCL_GridTable th.ActiveColumn div.HoursStatus div.HoursStatusActionBox {
+.MVLC_GridTable th.ActiveColumn div.HoursStatus div.HoursStatusActionBox {
     display:block;
      min-height: 35px;
 }
@@ -131,15 +131,15 @@ div.HoursStatusCB { margin-top:10px;margin-left:35px;margin-right:35px; width:11
     width:100%;
     min-width:100%
 }
- .MVCL_GridTable th  div.HoursStatus a img.MissingHoursImage {
+ .MVLC_GridTable th  div.HoursStatus a img.MissingHoursImage {
     
      display:none;
 }
-  .MVCL_GridTable th  div.HoursStatus a img.OKHoursImage {
+  .MVLC_GridTable th  div.HoursStatus a img.OKHoursImage {
     
      display:none;
 }
-  .MVCL_GridTable th  div.HoursStatus a img.NoClassImage {
+  .MVLC_GridTable th  div.HoursStatus a img.NoClassImage {
     
      display:none;
 }
@@ -149,12 +149,12 @@ div.HoursStatusCB { margin-top:10px;margin-left:35px;margin-right:35px; width:11
     display:none;
 
 }
-.MVCL_GridTable th.MissingHours.ActiveColumn div.MissingHours div.MissingHoursActionBox
+.MVLC_GridTable th.MissingHours.ActiveColumn div.MissingHours div.MissingHoursActionBox
 {
     min-height: 25px;
     display:block;
 }
-.MVCL_GridTable th div.MissingHours div.MissingHoursActionBox
+.MVLC_GridTable th div.MissingHours div.MissingHoursActionBox
 {
     display:none;
 }
@@ -171,7 +171,7 @@ th.ssMissingHours div.MissingHours  {
   max-width: inherit;
 
 }
-.MVCL_GridTable th.MissingHours div.MissingHours div.InnerMissingHours {
+.MVLC_GridTable th.MissingHours div.MissingHours div.InnerMissingHours {
 }
 
 

@@ -1,0 +1,213 @@
+﻿.MVCL_GridTable {
+    text-align:center;
+    width:700px;
+}
+.MVCL_GridTable .header
+{
+
+}
+.MVCL_GridTable .footer
+{
+
+}
+
+/*Colum Header CSS*/
+.MVCL_GridTable  th {
+  border-bottom: 2px solid;
+}
+.MVCL_GridTable  th.InactiveColumn {
+    font-weight:Bold;
+    font-size:1em;
+}
+.MVCL_GridTable  th.ActiveColumn {
+    font-weight:Bold;
+        font-size:1.2em;
+}
+
+
+.MVCL_GridTable  th.ActiveColumn .SmallestDate{
+  display:none;
+}
+.MVCL_GridTable  th.ActiveColumn .BigDate{
+  display:block;
+}
+.MVCL_GridTable  th.InactiveColumn .SmallestDate{
+  display:block;
+}
+.MVCL_GridTable  th.InactiveColumn .BigDate{
+  display:none;
+}
+
+
+
+
+
+/*Row CSS*/
+
+.MVCL_GridTable .ActiveRow {
+opacity: .75;
+max-height:70px;
+height:70px;
+}
+
+.MVCL_GridTable tr.OddRow {
+}
+
+.MVCL_GridTable tr.EvenRow {
+}
+.MVCL_GridTable .Separator {
+  display:block;
+
+}
+.MVCL_GridTable {
+        margin-bottom:5px;
+}
+.MVCL_GridTable caption {
+    margin-bottom:0px;
+    margin-top:0px;
+    padding-top:0px;
+    /*background: url('https://farm3.staticflickr.com/2878/10944255073_973d2cd25c.jpg');
+  background-size: cover;*/
+       /*background: rgba(255, 255, 255, 0.1);*/
+}
+.MVCL_GridTable  div.caption {
+  position: relative;
+  display: block;
+  padding: 0em 0em 0em 0em;
+  overflow: hidden;
+  color: #fff;
+  width: 100%;
+    z-index: 5;
+}
+
+.MVCL_GridTable caption div:after {
+  position: absolute;
+  content:' ';
+  top: 0px;
+
+  left: 100px;
+  width: 100%;
+  height: 90px;
+  min-height: 90px;
+  margin-top:-60px;
+
+  background: #fff;
+  -webkit-transform-origin: 100% 0;
+  -ms-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+  -webkit-transform: skew(45deg);
+  -ms-transform: skew(45deg);
+  transform: skew(45deg);
+  z-index: -2;
+}
+
+
+
+.MVCL_GridTable tr.LastRow {
+
+}
+.MVCL_GridTable tr.Separator.Narrow td {
+    width:100%;
+
+max-height:5px;
+min-height:5px;
+height:5px;
+}
+.MVCL_GridTable .Separator.Medium {
+max-height:10px;
+min-height:10px;
+height:10px;
+}
+.MVCL_GridTable tr.Separator.Wide {
+max-height:20px;
+min-height:20px;
+height:20px;
+}
+
+
+/*Column CSS*/
+.MVCL_GridTable .HiddenColumn  {
+   display:none;
+}
+.MVCL_GridTable {
+   
+}
+.MVLC_TableCell,
+.MVCL_GridTable td {
+    padding-top: 0px !important;
+    padding-bottom:0px !important;
+}
+.MVCL_GridTable col.EntryDataColumn.ActiveColumn 
+{
+ border: 2px dashed;
+    opacity: 1;
+     width:220px;
+     min-width:220px;
+}
+.MVCL_GridTable .ActiveColumn {
+       width:220px;
+     min-width:220px;  
+}
+.MVCL_GridTable .InactiveColumn {
+    opacity: .75;
+    width:45px;
+    max-width:45px;
+    margin-left:0px;
+    margin-right:0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    overflow-x:hidden;
+    
+}
+.MVCL_GridTable .ActiveRow .InactiveColumn {
+
+}
+
+
+
+
+/*Cell CSS*/
+
+.MVCL_GridTable .MVLC_ActiveCell,
+.ActiveRow .ActiveColumn.MVLC_TableCell
+{
+    border: 2px solid;
+}
+
+
+
+/*Cell Content CSS*/
+.MVCL_GridTable .InactiveColumn.MVLC_TableCell div.DataSection{
+    font-size:1.2em;
+    font-weight:Bold;
+}
+
+.MVCL_GridTable .ActiveColumn.MVLC_TableCell div.DataSection{
+    font-size:1.2em;
+    font-weight:Bold;
+}
+.MVCL_GridTable .ActiveColumn.MVLC_TableCell div.DataSection:hover{
+    font-size:1.2em;
+    font-weight:Bold;
+        border:1px solid;
+}
+
+.MVCL_GridTable .MVLC_TableCell .DataValue{
+    font-size:1.2em;
+    font-weight:Bold;
+}
+
+.MVCL_GridTable .MVLC_TableCell span.DataValue.LargeDataValue{
+    font-size:2.1em;
+}
+
+.MVCL_GridTable .ActiveColumn.MVLC_TableCell div.HoursViewSpan{
+    margin-top:8px;
+    width:40px;
+    max-width:43px;
+}
+.MVCL_GridTable .InactiveColumn.MVLC_TableCell div.HoursViewSpan{
+    margin-top:4px;
+    margin-left:-20px;
+}
+

@@ -6,63 +6,63 @@
 
 
 
-    <div class="OuterTableWrapper">
-        <div class="TableSelectorSection">
-            <div class="Small2Column">
-                <div class="Small2Column"  style="padding-top:1px;">
-                    Term:
-                </div>
-                <div class="Big2Column">
-                    @Html.Partial("_DropDownDivPartial", Model.TermsDD)
-                </div>
-
-                <div class="Small2Column " style="padding-top:1px;">
-                    Tutor:
-                </div>
-                <div class="Big2Column ">
-                    @Html.Partial("_DropDownDivPartial", Model.TutorsDD)
-                </div>
-
+<div class="OuterTableWrapper">
+    <div class="TableSelectorSection">
+        <div class="Small2Column">
+            <div class="Small2Column" style="padding-top:1px;">
+                Term:
             </div>
-
-
             <div class="Big2Column">
-                <div id="ClassesDD_Div">
-                    <div class="Small2Column">Class:  </div>
-                    <div class="Big2Column">
-                        @Html.Partial("_DropDownDivPartial", Model.ClassesDD)
-                    </div>
+                @Html.Partial("_DropDownDivPartial", Model.TermsDD)
+            </div>
+            <div style="clear:both;"></div>
+
+            <div class="Small2Column " style="padding-top:1px;">
+                Tutor:
+            </div>
+            <div class="Big2Column ">
+                @Html.Partial("_DropDownDivPartial", Model.TutorsDD)
+            </div>
+
+        </div>
+
+
+        <div class="Big2Column">
+            <div id="ClassesDD_Div">
+                <div class="Small2Column">Class:  </div>
+                <div class="Big2Column">
+                    @Html.Partial("_DropDownDivPartial", Model.ClassesDD)
                 </div>
-               
-            </div>
-
-
-           
-           
-            <div id="LoadingDiv" style="display:none">
-                <div class="loader"></div>
-                Retrieving Data...
             </div>
 
         </div>
-       
-        <div id="GridSection">
 
+
+
+
+        <div id="LoadingDiv" style="display:none">
+            <div class="loader"></div>
+            Retrieving Data...
         </div>
+
     </div>
 
-    @section CustomScripts
+    <div id="GridSection">
+
+    </div>
+</div>
+
+@section CustomScripts
    {
 
-        <script src="@Url.Content("~/Scripts/Custom/HoursClassSelectViewModel.js")" type="text/javascript"></script>
+   
+}
 
-    }
 
-
-    @section scripts
+@section scripts
 {
 
-        <script type="text/javascript">
+    <script type="text/javascript">
 
             $('#ClassesDD_Div').hide();
 
@@ -72,6 +72,7 @@
                 $('#ClassesDD_Div').hide();
                 ClassesChanged(DropDownID, newText, newValue);
             }
+
             function TutorChanged(DropDownID, newText, newValue) {
                 var TutorValue = $('#HF_Value_TutorsDD').val();
                 if (TutorValue > 0) {
@@ -109,16 +110,17 @@
             }
 
             function OnGridReady() {
-              //  TestAlert('ds');
+                //  TestAlert('ds');
+               // GridInit();
                 SetActiveandMaxColumns();
                 MaxRow = document.getElementsByClassName('DataRow').length
                 UpdateClassTotalsForAllRows();
                 UpdateTotalsForAllColumns();
                 MarkMissingHours();
                 SetAllColumnVisibility();
+
+             //   GridInit();
             }
-
-
 
             function HoursDropDownClick(idText) {
                 var DDR_isVisible = $('#DDR' + idText).css('display') == 'block';
@@ -134,7 +136,7 @@
                 }
                 //DDSelector
                 $(document).mouseup(function (e) {
-         
+
                 var ddSelect = $('#' + 'DDSelector' + idText);
                 //alert('ff');
                 var ClickedOutsideDDSelector = (!ddSelect.is(e.target) && ddSelect.has(e.target).length === 0);
@@ -147,13 +149,13 @@
                     $('#DDR' + idText).css("display", "none");
                     $('#RadioDiv' + idText).css("display", "block");
                 }
-               
+
                // alert('Clicked DDR: ' + ClickedinDDR);
                 });
 
                 //        $('#DDR' + idText).css("display", "none");
                     //        $('#BottomDiv' + idText).css("display", "block");
-   
+
                 //$(document).mouseup(function (e) {
 
                 //    var ddr = $('#' + 'DDR' + idText);
@@ -166,7 +168,7 @@
                 //        $('#BottomDiv' + idText).css("display", "block");
                 //    }
                 //});
-         
+
 
             }
 
@@ -181,7 +183,6 @@
               //  if (!vis) { $('#MissingHoursDetailsDiv' + column).show(); }
 
             }
-
 
             function SetHideDiv(activeDivID)
             {
@@ -207,16 +208,10 @@
                 TestAlert(elem.text());
             }
 
-            function fireChangeFor(ctrlID) {
-                var element = document.getElementById(ctrlID);
-                var event = new Event('change');
-                // alert(ctrlID);
-                element.selectedIndex = 0
-                element.dispatchEvent(event);
-            }
+   
 
 
-           
+
 
             function UpdateTotalsForColumn(column) {
                 var hrsTotal = 0;
@@ -469,52 +464,12 @@
                                 MaxVisible = data;
                             }
                         }
-                   );  
+                   );
                 }
 
 
-                function callj(ctrlID, jsonURL, pname, pVal, pname2, pVal2) {
-                    var paramName = "Term";
-                    var link = '@Url.Action("xurlx", new { PN1 = "PV1", PN2 = "PV2" })';
-                    //var link = "Hours/xurlx?PN1=PV1&PN2=PV2"
-                    TestAlert("Pval2:" + pVal2);
+    
 
-                    //http://localhost:49906/Hours/GetTermTutorClasses?TutorID=101&Term=Spring%202019
-                    //,new {xpNamex= "xvalx",xpName2x= "xval2x"}
+    </script>
 
-                    link = link.replace("xurlx", jsonURL);
-                    link = link.replace("PN1", $.trim(pname));
-                    link = link.replace("PV1", $.trim(pVal));
-                    link = link.replace("PN2", $.trim(pname2));
-                    link = link.replace("PV2", $.trim(pVal2));
-                    link = link.replace(" ", "%20");
-                    link = link.replace("&amp;", "&");
-
-                    TestAlert("link:" + link);
-
-                    if (pVal != null && pVal != '') {
-                    // $.getJSON(link, { Term: selectedItem },
-                    $.getJSON(link,
-                           function (data) { PopulateNameIDDropDown(data, ctrlID); }
-                       );  //endJSON Line
-                    }
-                }
-
-                function PopulateNameIDDropDown(data, ctrlID) {
-
-                    //  TestAlert("here1xx_" + ctrlID);
-                    var currentSelect = $('#' + ctrlID);
-                    currentSelect.empty();
-
-                $.each(data, function (index, item) {
-                        currentSelect.append($('<option/>', {
-                        value: item.ID,
-                        text: item.Name
-                        }));
-                    });
-                    fireChangeFor(ctrlID);
-                }
-
-        </script>
-
-    }
+}

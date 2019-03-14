@@ -1,0 +1,34 @@
+﻿.NavDirectionCircle{
+    border: 1px solid Black;
+    border-radius: 25px;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+    top: -11px;
+    right: -3px;
+    font-size: 1em;
+    line-height: 1.7em;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    background-color:blue;
+    color:white;
+}
+.HelpQuestionMark {
+    background-color:blue;
+    color:white;
+    border: 1px solid Black;
+    border-radius: 15px;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+    top: -3px;
+    right: -3px;
+    font-size: 14px;
+    line-height: 12px;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+}

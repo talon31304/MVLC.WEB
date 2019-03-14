@@ -1,4 +1,4 @@
-﻿.MVCL_GridTable {
+﻿.MVLC_GridTable {
     text-align:center;
     width:800px;
 }
@@ -6,11 +6,11 @@
 
     width:800px;
 }
-.MVCL_GridTable .header
+.MVLC_GridTable .header
 {
 
 }
-.MVCL_GridTable .footer
+.MVLC_GridTable .footer
 {
 
 }
@@ -19,29 +19,29 @@
     width:800px;
 }
 /*Colum Header CSS*/
-.MVCL_GridTable  th {
+.MVLC_GridTable  th {
   border-bottom: 2px solid;
 }
-.MVCL_GridTable  th.InactiveColumn {
+.MVLC_GridTable  th.InactiveColumn {
     font-weight:Bold;
     font-size:1em;
 }
-.MVCL_GridTable  th.ActiveColumn {
+.MVLC_GridTable  th.ActiveColumn {
     font-weight:Bold;
         font-size:1.2em;
 }
 
 
-.MVCL_GridTable  th.ActiveColumn .SmallestDate{
+.MVLC_GridTable  th.ActiveColumn .SmallestDate{
   display:none;
 }
-.MVCL_GridTable  th.ActiveColumn .BigDate{
+.MVLC_GridTable  th.ActiveColumn .BigDate{
   display:block;
 }
-.MVCL_GridTable  th.InactiveColumn .SmallestDate{
+.MVLC_GridTable  th.InactiveColumn .SmallestDate{
   display:block;
 }
-.MVCL_GridTable  th.InactiveColumn .BigDate{
+.MVLC_GridTable  th.InactiveColumn .BigDate{
   display:none;
 }
 
@@ -51,25 +51,25 @@
 
 /*Row CSS*/
 
-.MVCL_GridTable .ActiveRow {
+.MVLC_GridTable .ActiveRow {
 opacity: .75;
 max-height:70px;
 height:70px;
 }
 
-.MVCL_GridTable tr.OddRow {
+.MVLC_GridTable tr.OddRow {
 }
 
-.MVCL_GridTable tr.EvenRow {
+.MVLC_GridTable tr.EvenRow {
 }
-.MVCL_GridTable .Separator {
+.MVLC_GridTable .Separator {
   display:block;
 
 }
-.MVCL_GridTable {
+.MVLC_GridTable {
         margin-bottom:5px;
 }
-.MVCL_GridTable caption {
+.MVLC_GridTable caption {
     margin-bottom:0px;
     margin-top:0px;
     padding-top:0px;
@@ -77,7 +77,7 @@ height:70px;
   background-size: cover;*/
        /*background: rgba(255, 255, 255, 0.1);*/
 }
-.MVCL_GridTable  div.caption {
+.MVLC_GridTable  div.caption {
   position: relative;
   display: block;
   padding: 0em 0em 0em 0em;
@@ -87,7 +87,7 @@ height:70px;
     z-index: 5;
 }
 
-.MVCL_GridTable caption div:after {
+.MVLC_GridTable caption div:after {
   position: absolute;
   content:' ';
   top: 0px;
@@ -110,22 +110,22 @@ height:70px;
 
 
 
-.MVCL_GridTable tr.LastRow {
+.MVLC_GridTable tr.LastRow {
 
 }
-.MVCL_GridTable tr.Separator.Narrow td {
+.MVLC_GridTable tr.Separator.Narrow td {
     width:100%;
 
 max-height:5px;
 min-height:5px;
 height:5px;
 }
-.MVCL_GridTable .Separator.Medium {
+.MVLC_GridTable .Separator.Medium {
 max-height:10px;
 min-height:10px;
 height:10px;
 }
-.MVCL_GridTable tr.Separator.Wide {
+.MVLC_GridTable tr.Separator.Wide {
 max-height:20px;
 min-height:20px;
 height:20px;
@@ -133,29 +133,29 @@ height:20px;
 
 
 /*Column CSS*/
-.MVCL_GridTable .HiddenColumn  {
+.MVLC_GridTable .HiddenColumn  {
    display:none;
 }
-.MVCL_GridTable {
+.MVLC_GridTable {
    
 }
 .MVLC_TableCell,
-.MVCL_GridTable td {
+.MVLC_GridTable td {
     padding-top: 0px !important;
     padding-bottom:0px !important;
 }
-.MVCL_GridTable col.EntryDataColumn.ActiveColumn 
+.MVLC_GridTable col.EntryDataColumn.ActiveColumn 
 {
  border: 2px dashed;
     opacity: 1;
      width:220px;
      min-width:220px;
 }
-.MVCL_GridTable .ActiveColumn {
+.MVLC_GridTable .ActiveColumn {
        width:220px;
      min-width:220px;  
 }
-.MVCL_GridTable .InactiveColumn {
+.MVLC_GridTable .InactiveColumn {
     opacity: .75;
     width:45px;
     max-width:45px;
@@ -166,7 +166,7 @@ height:20px;
     overflow-x:hidden;
     
 }
-.MVCL_GridTable .ActiveRow .InactiveColumn {
+.MVLC_GridTable .ActiveRow .InactiveColumn {
 
 }
 
@@ -175,7 +175,7 @@ height:20px;
 
 /*Cell CSS*/
 
-.MVCL_GridTable .MVLC_ActiveCell,
+.MVLC_GridTable .MVLC_ActiveCell,
 .ActiveRow .ActiveColumn.MVLC_TableCell
 {
     border: 2px solid;
@@ -184,36 +184,36 @@ height:20px;
 
 
 /*Cell Content CSS*/
-.MVCL_GridTable .InactiveColumn.MVLC_TableCell div.DataSection{
+.MVLC_GridTable .InactiveColumn.MVLC_TableCell div.DataSection{
     font-size:1.2em;
     font-weight:Bold;
 }
 
-.MVCL_GridTable .ActiveColumn.MVLC_TableCell div.DataSection{
+.MVLC_GridTable .ActiveColumn.MVLC_TableCell div.DataSection{
     font-size:1.2em;
     font-weight:Bold;
 }
-.MVCL_GridTable .ActiveColumn.MVLC_TableCell div.DataSection:hover{
+.MVLC_GridTable .ActiveColumn.MVLC_TableCell div.DataSection:hover{
     font-size:1.2em;
     font-weight:Bold;
         border:1px solid;
 }
 
-.MVCL_GridTable .MVLC_TableCell .DataValue{
+.MVLC_GridTable .MVLC_TableCell .DataValue{
     font-size:1.2em;
     font-weight:Bold;
 }
 
-.MVCL_GridTable .MVLC_TableCell span.DataValue.LargeDataValue{
+.MVLC_GridTable .MVLC_TableCell span.DataValue.LargeDataValue{
     font-size:2.1em;
 }
 
-.MVCL_GridTable .ActiveColumn.MVLC_TableCell div.HoursViewSpan{
+.MVLC_GridTable .ActiveColumn.MVLC_TableCell div.HoursViewSpan{
     margin-top:8px;
     width:40px;
     max-width:43px;
 }
-.MVCL_GridTable .InactiveColumn.MVLC_TableCell div.HoursViewSpan{
+.MVLC_GridTable .InactiveColumn.MVLC_TableCell div.HoursViewSpan{
     margin-top:4px;
     margin-left:-20px;
 }

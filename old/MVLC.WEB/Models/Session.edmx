@@ -1,0 +1,891 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Core.dbo.Classes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Classes">
+          <Key>
+            <PropertyRef Name="ClassID" />
+            <PropertyRef Name="Monday" />
+            <PropertyRef Name="Tuesday" />
+            <PropertyRef Name="Wednesday" />
+            <PropertyRef Name="Thursday" />
+            <PropertyRef Name="Friday" />
+          </Key>
+          <Property Name="ClassID" Type="int" Nullable="false" />
+          <Property Name="CourseNumber" Type="int" />
+          <Property Name="LocationID" Type="int" />
+          <Property Name="Term" Type="nvarchar" MaxLength="255" />
+          <Property Name="Start Time" Type="nvarchar" MaxLength="255" />
+          <Property Name="End Time" Type="nvarchar" MaxLength="255" />
+          <Property Name="Monday" Type="bit" Nullable="false" />
+          <Property Name="Tuesday" Type="bit" Nullable="false" />
+          <Property Name="Wednesday" Type="bit" Nullable="false" />
+          <Property Name="Thursday" Type="bit" Nullable="false" />
+          <Property Name="Friday" Type="bit" Nullable="false" />
+          <Property Name="TutorID" Type="int" />
+          <Property Name="TotalTutorHours" Type="float" />
+          <Property Name="TotalStudentHours" Type="float" />
+          <Property Name="AddedDate" Type="datetime" />
+          <Property Name="AddedBy" Type="nvarchar" MaxLength="25" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Core.dbo.Courses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="CourseNumber" />
+            <PropertyRef Name="InUse" />
+          </Key>
+          <Property Name="CourseNumber" Type="int" Nullable="false" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="255" />
+          <Property Name="CourseDescription" Type="nvarchar(max)" />
+          <Property Name="InUse" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Core.dbo.Locations' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Locations">
+          <Key>
+            <PropertyRef Name="LocationID" />
+            <PropertyRef Name="LocationContactID" />
+          </Key>
+          <Property Name="LocationID" Type="int" Nullable="false" />
+          <Property Name="LocationContactID" Type="int" Nullable="false" />
+          <Property Name="LocationName" Type="nvarchar" MaxLength="255" />
+          <Property Name="PlaceID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Core.dbo.People' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="People">
+          <Key>
+            <PropertyRef Name="PersonID" />
+            <PropertyRef Name="CityStateZipID" />
+            <PropertyRef Name="MailingCityStateZipID" />
+            <PropertyRef Name="IsPerson" />
+          </Key>
+          <Property Name="PersonID" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="255" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Middle Initial" Type="nvarchar" MaxLength="1" />
+          <Property Name="MainPhone" Type="nvarchar" MaxLength="20" />
+          <Property Name="MainPhoneType" Type="int" />
+          <Property Name="AltPhone" Type="nvarchar" MaxLength="20" />
+          <Property Name="AltPhoneType" Type="int" />
+          <Property Name="StreetAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="MailingStreetAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="CityStateZipID" Type="int" Nullable="false" />
+          <Property Name="MailingCityStateZipID" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="ImportStudentID" Type="int" />
+          <Property Name="DateAdded" Type="datetime" />
+          <Property Name="AddedBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="IsPerson" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Core.dbo.PersonNotes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PersonNotes">
+          <Key>
+            <PropertyRef Name="NoteID" />
+            <PropertyRef Name="Note" />
+            <PropertyRef Name="DateAdded" />
+            <PropertyRef Name="AddedBy" />
+          </Key>
+          <Property Name="NoteID" Type="int" Nullable="false" />
+          <Property Name="PersonID" Type="int" />
+          <Property Name="Note" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DateAdded" Type="datetime" Nullable="false" />
+          <Property Name="AddedBy" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="FollowUpDate" Type="datetime" />
+          <Property Name="Closed" Type="datetime" />
+          <Property Name="ClosedBy" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Core.dbo.StudentClasses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="StudentClasses">
+          <Key>
+            <PropertyRef Name="StudentID" />
+            <PropertyRef Name="ClassID" />
+            <PropertyRef Name="AddedDate" />
+            <PropertyRef Name="AddedBy" />
+          </Key>
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="ClassID" Type="int" Nullable="false" />
+          <Property Name="AddedDate" Type="datetime" Nullable="false" />
+          <Property Name="AddedBy" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="WithdrawDate" Type="datetime" />
+          <Property Name="WithdrawBy" Type="nvarchar" MaxLength="20" />
+          <Property Name="TotalHours" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Core.dbo.StudentClassHours' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="StudentClassHours">
+          <Key>
+            <PropertyRef Name="StudentID" />
+            <PropertyRef Name="ClassID" />
+            <PropertyRef Name="ClassDate" />
+          </Key>
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="ClassID" Type="int" Nullable="false" />
+          <Property Name="ClassDate" Type="datetime" Nullable="false" />
+          <Property Name="Hours" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Core.dbo.Students' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="StudentID" />
+            <PropertyRef Name="Delete" />
+            <PropertyRef Name="EthnicityID" />
+            <PropertyRef Name="Below Poverty level" />
+            <PropertyRef Name="Is Homeless" />
+            <PropertyRef Name="IsRefugee" />
+            <PropertyRef Name="SpecialNeeds" />
+          </Key>
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="Delete" Type="bit" Nullable="false" />
+          <Property Name="Country of Origin" Type="int" />
+          <Property Name="PersonID" Type="int" />
+          <Property Name="DOB" Type="datetime" />
+          <Property Name="EthnicityID" Type="int" Nullable="false" />
+          <Property Name="Below Poverty level" Type="bit" Nullable="false" />
+          <Property Name="Is Homeless" Type="bit" Nullable="false" />
+          <Property Name="IsRefugee" Type="bit" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="1" />
+          <Property Name="Education" Type="int" />
+          <Property Name="Employed" Type="nvarchar" MaxLength="255" />
+          <Property Name="Years Complete" Type="nvarchar" MaxLength="255" />
+          <Property Name="Time Here" Type="nvarchar" MaxLength="255" />
+          <Property Name="Other Degree or Diploma" Type="nvarchar" MaxLength="255" />
+          <Property Name="Country Earned?" Type="nvarchar" MaxLength="255" />
+          <Property Name="AgeRange" Type="nvarchar" MaxLength="255" />
+          <Property Name="Where Earned" Type="int" />
+          <Property Name="FirstLanguage" Type="int" />
+          <Property Name="Country of Origin1" Type="nvarchar" MaxLength="255" />
+          <Property Name="SpecialNeeds" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Core.dbo.Terms' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Terms">
+          <Key>
+            <PropertyRef Name="Term" />
+            <PropertyRef Name="TermSeason" />
+            <PropertyRef Name="TermYear" />
+          </Key>
+          <Property Name="Term" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="TermSeason" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="TermYear" Type="smallint" Nullable="false" />
+          <Property Name="Start Date" Type="datetime" />
+          <Property Name="End Date" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Core.dbo.TutorClasses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TutorClasses">
+          <Key>
+            <PropertyRef Name="TutorID" />
+            <PropertyRef Name="ClassID" />
+          </Key>
+          <Property Name="TutorID" Type="int" Nullable="false" />
+          <Property Name="ClassID" Type="int" Nullable="false" />
+          <Property Name="TotalHours" Type="int" />
+          <Property Name="NumberStudents" Type="int" />
+          <Property Name="TotalStudentHours" Type="int" />
+          <Property Name="MaxStudentHours" Type="int" />
+          <Property Name="AddedDate" Type="datetime" />
+          <Property Name="AddedBy" Type="nvarchar" MaxLength="255" />
+          <Property Name="RemoveDate" Type="datetime" />
+          <Property Name="RemovedBy" Type="nvarchar" MaxLength="255" />
+          <Property Name="WithdrawDate" Type="datetime" />
+          <Property Name="WithDrawBy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Core.dbo.TutorClassHours' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TutorClassHours">
+          <Key>
+            <PropertyRef Name="TutorID" />
+            <PropertyRef Name="ClassID" />
+            <PropertyRef Name="ClassDate" />
+          </Key>
+          <Property Name="TutorID" Type="int" Nullable="false" />
+          <Property Name="ClassID" Type="int" Nullable="false" />
+          <Property Name="ClassDate" Type="datetime" Nullable="false" />
+          <Property Name="Hours" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Core.dbo.Tutors' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Tutors">
+          <Key>
+            <PropertyRef Name="TutorID" />
+            <PropertyRef Name="Start Date" />
+            <PropertyRef Name="IsEmployed" />
+            <PropertyRef Name="Has Diploma or GED" />
+            <PropertyRef Name="IsExperienced" />
+          </Key>
+          <Property Name="TutorID" Type="int" Nullable="false" />
+          <Property Name="PersonID" Type="int" />
+          <Property Name="Start Date" Type="datetime" Nullable="false" />
+          <Property Name="End Date" Type="datetime" />
+          <Property Name="IsEmployed" Type="bit" Nullable="false" />
+          <Property Name="Employer" Type="nvarchar" MaxLength="255" />
+          <Property Name="Has Diploma or GED" Type="bit" Nullable="false" />
+          <Property Name="IsExperienced" Type="bit" Nullable="false" />
+          <Property Name="ExperienceLocation" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityContainer Name="CoreModelStoreContainer">
+          <EntitySet Name="Classes" EntityType="Self.Classes" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Classes].[ClassID] AS [ClassID], 
+    [Classes].[CourseNumber] AS [CourseNumber], 
+    [Classes].[LocationID] AS [LocationID], 
+    [Classes].[Term] AS [Term], 
+    [Classes].[Start Time] AS [Start Time], 
+    [Classes].[End Time] AS [End Time], 
+    [Classes].[Monday] AS [Monday], 
+    [Classes].[Tuesday] AS [Tuesday], 
+    [Classes].[Wednesday] AS [Wednesday], 
+    [Classes].[Thursday] AS [Thursday], 
+    [Classes].[Friday] AS [Friday], 
+    [Classes].[TutorID] AS [TutorID], 
+    [Classes].[TotalTutorHours] AS [TotalTutorHours], 
+    [Classes].[TotalStudentHours] AS [TotalStudentHours], 
+    [Classes].[AddedDate] AS [AddedDate], 
+    [Classes].[AddedBy] AS [AddedBy]
+    FROM [dbo].[Classes] AS [Classes]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Courses" EntityType="Self.Courses" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Courses].[CourseNumber] AS [CourseNumber], 
+    [Courses].[CourseName] AS [CourseName], 
+    [Courses].[CourseDescription] AS [CourseDescription], 
+    [Courses].[InUse] AS [InUse]
+    FROM [dbo].[Courses] AS [Courses]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Locations" EntityType="Self.Locations" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Locations].[LocationID] AS [LocationID], 
+    [Locations].[LocationContactID] AS [LocationContactID], 
+    [Locations].[LocationName] AS [LocationName], 
+    [Locations].[PlaceID] AS [PlaceID]
+    FROM [dbo].[Locations] AS [Locations]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="People" EntityType="Self.People" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [People].[PersonID] AS [PersonID], 
+    [People].[FirstName] AS [FirstName], 
+    [People].[LastName] AS [LastName], 
+    [People].[Middle Initial] AS [Middle Initial], 
+    [People].[MainPhone] AS [MainPhone], 
+    [People].[MainPhoneType] AS [MainPhoneType], 
+    [People].[AltPhone] AS [AltPhone], 
+    [People].[AltPhoneType] AS [AltPhoneType], 
+    [People].[StreetAddress] AS [StreetAddress], 
+    [People].[MailingStreetAddress] AS [MailingStreetAddress], 
+    [People].[CityStateZipID] AS [CityStateZipID], 
+    [People].[MailingCityStateZipID] AS [MailingCityStateZipID], 
+    [People].[Email] AS [Email], 
+    [People].[ImportStudentID] AS [ImportStudentID], 
+    [People].[DateAdded] AS [DateAdded], 
+    [People].[AddedBy] AS [AddedBy], 
+    [People].[IsPerson] AS [IsPerson]
+    FROM [dbo].[People] AS [People]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PersonNotes" EntityType="Self.PersonNotes" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PersonNotes].[NoteID] AS [NoteID], 
+    [PersonNotes].[PersonID] AS [PersonID], 
+    [PersonNotes].[Note] AS [Note], 
+    [PersonNotes].[DateAdded] AS [DateAdded], 
+    [PersonNotes].[AddedBy] AS [AddedBy], 
+    [PersonNotes].[FollowUpDate] AS [FollowUpDate], 
+    [PersonNotes].[Closed] AS [Closed], 
+    [PersonNotes].[ClosedBy] AS [ClosedBy]
+    FROM [dbo].[PersonNotes] AS [PersonNotes]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="StudentClasses" EntityType="Self.StudentClasses" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [StudentClasses].[StudentID] AS [StudentID], 
+    [StudentClasses].[ClassID] AS [ClassID], 
+    [StudentClasses].[AddedDate] AS [AddedDate], 
+    [StudentClasses].[AddedBy] AS [AddedBy], 
+    [StudentClasses].[WithdrawDate] AS [WithdrawDate], 
+    [StudentClasses].[WithdrawBy] AS [WithdrawBy], 
+    [StudentClasses].[TotalHours] AS [TotalHours]
+    FROM [dbo].[StudentClasses] AS [StudentClasses]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="StudentClassHours" EntityType="Self.StudentClassHours" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [StudentClassHours].[StudentID] AS [StudentID], 
+    [StudentClassHours].[ClassID] AS [ClassID], 
+    [StudentClassHours].[ClassDate] AS [ClassDate], 
+    [StudentClassHours].[Hours] AS [Hours]
+    FROM [dbo].[StudentClassHours] AS [StudentClassHours]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Students" EntityType="Self.Students" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Students].[StudentID] AS [StudentID], 
+    [Students].[Delete] AS [Delete], 
+    [Students].[Country of Origin] AS [Country of Origin], 
+    [Students].[PersonID] AS [PersonID], 
+    [Students].[DOB] AS [DOB], 
+    [Students].[EthnicityID] AS [EthnicityID], 
+    [Students].[Below Poverty level] AS [Below Poverty level], 
+    [Students].[Is Homeless] AS [Is Homeless], 
+    [Students].[IsRefugee] AS [IsRefugee], 
+    [Students].[Gender] AS [Gender], 
+    [Students].[Education] AS [Education], 
+    [Students].[Employed] AS [Employed], 
+    [Students].[Years Complete] AS [Years Complete], 
+    [Students].[Time Here] AS [Time Here], 
+    [Students].[Other Degree or Diploma] AS [Other Degree or Diploma], 
+    [Students].[Country Earned?] AS [Country Earned?], 
+    [Students].[AgeRange] AS [AgeRange], 
+    [Students].[Where Earned] AS [Where Earned], 
+    [Students].[FirstLanguage] AS [FirstLanguage], 
+    [Students].[Country of Origin1] AS [Country of Origin1], 
+    [Students].[SpecialNeeds] AS [SpecialNeeds]
+    FROM [dbo].[Students] AS [Students]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Terms" EntityType="Self.Terms" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Terms].[Term] AS [Term], 
+    [Terms].[TermSeason] AS [TermSeason], 
+    [Terms].[TermYear] AS [TermYear], 
+    [Terms].[Start Date] AS [Start Date], 
+    [Terms].[End Date] AS [End Date]
+    FROM [dbo].[Terms] AS [Terms]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TutorClasses" EntityType="Self.TutorClasses" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TutorClasses].[TutorID] AS [TutorID], 
+    [TutorClasses].[ClassID] AS [ClassID], 
+    [TutorClasses].[TotalHours] AS [TotalHours], 
+    [TutorClasses].[NumberStudents] AS [NumberStudents], 
+    [TutorClasses].[TotalStudentHours] AS [TotalStudentHours], 
+    [TutorClasses].[MaxStudentHours] AS [MaxStudentHours], 
+    [TutorClasses].[AddedDate] AS [AddedDate], 
+    [TutorClasses].[AddedBy] AS [AddedBy], 
+    [TutorClasses].[RemoveDate] AS [RemoveDate], 
+    [TutorClasses].[RemovedBy] AS [RemovedBy], 
+    [TutorClasses].[WithdrawDate] AS [WithdrawDate], 
+    [TutorClasses].[WithDrawBy] AS [WithDrawBy]
+    FROM [dbo].[TutorClasses] AS [TutorClasses]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TutorClassHours" EntityType="Self.TutorClassHours" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TutorClassHours].[TutorID] AS [TutorID], 
+    [TutorClassHours].[ClassID] AS [ClassID], 
+    [TutorClassHours].[ClassDate] AS [ClassDate], 
+    [TutorClassHours].[Hours] AS [Hours]
+    FROM [dbo].[TutorClassHours] AS [TutorClassHours]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Tutors" EntityType="Self.Tutors" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Tutors].[TutorID] AS [TutorID], 
+    [Tutors].[PersonID] AS [PersonID], 
+    [Tutors].[Start Date] AS [Start Date], 
+    [Tutors].[End Date] AS [End Date], 
+    [Tutors].[IsEmployed] AS [IsEmployed], 
+    [Tutors].[Employer] AS [Employer], 
+    [Tutors].[Has Diploma or GED] AS [Has Diploma or GED], 
+    [Tutors].[IsExperienced] AS [IsExperienced], 
+    [Tutors].[ExperienceLocation] AS [ExperienceLocation]
+    FROM [dbo].[Tutors] AS [Tutors]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="ClassID" />
+            <PropertyRef Name="Monday" />
+            <PropertyRef Name="Tuesday" />
+            <PropertyRef Name="Wednesday" />
+            <PropertyRef Name="Thursday" />
+            <PropertyRef Name="Friday" />
+          </Key>
+          <Property Name="ClassID" Type="Int32" Nullable="false" />
+          <Property Name="CourseNumber" Type="Int32" />
+          <Property Name="LocationID" Type="Int32" />
+          <Property Name="Term" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Start_Time" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="End_Time" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Monday" Type="Boolean" Nullable="false" />
+          <Property Name="Tuesday" Type="Boolean" Nullable="false" />
+          <Property Name="Wednesday" Type="Boolean" Nullable="false" />
+          <Property Name="Thursday" Type="Boolean" Nullable="false" />
+          <Property Name="Friday" Type="Boolean" Nullable="false" />
+          <Property Name="TutorID" Type="Int32" />
+          <Property Name="TotalTutorHours" Type="Double" />
+          <Property Name="TotalStudentHours" Type="Double" />
+          <Property Name="AddedDate" Type="DateTime" Precision="3" />
+          <Property Name="AddedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Course" Relationship="CoreModel.ClassCourse" FromRole="Class" ToRole="Course" />
+          <Property Name="CourseCourseNumber" Type="Int32" Nullable="false" />
+          <Property Name="CourseInUse" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseNumber" />
+            <PropertyRef Name="InUse" />
+          </Key>
+          <Property Name="CourseNumber" Type="Int32" Nullable="false" />
+          <Property Name="CourseName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CourseDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InUse" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Classes" Relationship="CoreModel.ClassCourse" FromRole="Course" ToRole="Class" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationID" />
+            <PropertyRef Name="LocationContactID" />
+          </Key>
+          <Property Name="LocationID" Type="Int32" Nullable="false" />
+          <Property Name="LocationContactID" Type="Int32" Nullable="false" />
+          <Property Name="LocationName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PlaceID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="PersonID" />
+            <PropertyRef Name="CityStateZipID" />
+            <PropertyRef Name="MailingCityStateZipID" />
+            <PropertyRef Name="IsPerson" />
+          </Key>
+          <Property Name="PersonID" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Middle_Initial" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="MainPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MainPhoneType" Type="Int32" />
+          <Property Name="AltPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AltPhoneType" Type="Int32" />
+          <Property Name="StreetAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MailingStreetAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CityStateZipID" Type="Int32" Nullable="false" />
+          <Property Name="MailingCityStateZipID" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ImportStudentID" Type="Int32" />
+          <Property Name="DateAdded" Type="DateTime" Precision="3" />
+          <Property Name="AddedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsPerson" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PersonNote">
+          <Key>
+            <PropertyRef Name="NoteID" />
+            <PropertyRef Name="Note" />
+            <PropertyRef Name="DateAdded" />
+            <PropertyRef Name="AddedBy" />
+          </Key>
+          <Property Name="NoteID" Type="Int32" Nullable="false" />
+          <Property Name="PersonID" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateAdded" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AddedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FollowUpDate" Type="DateTime" Precision="3" />
+          <Property Name="Closed" Type="DateTime" Precision="3" />
+          <Property Name="ClosedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="StudentClass">
+          <Key>
+            <PropertyRef Name="StudentID" />
+            <PropertyRef Name="ClassID" />
+            <PropertyRef Name="AddedDate" />
+            <PropertyRef Name="AddedBy" />
+          </Key>
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="ClassID" Type="Int32" Nullable="false" />
+          <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AddedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WithdrawDate" Type="DateTime" Precision="3" />
+          <Property Name="WithdrawBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TotalHours" Type="Int32" />
+          <NavigationProperty Name="Student" Relationship="CoreModel.StudentStudentClass" FromRole="StudentClass" ToRole="Student" />
+          <Property Name="StudentStudentID" Type="Int32" Nullable="false" />
+          <Property Name="StudentDelete" Type="Boolean" Nullable="false" />
+          <Property Name="StudentEthnicityID" Type="Int32" Nullable="false" />
+          <Property Name="StudentBelow_Poverty_level" Type="Boolean" Nullable="false" />
+          <Property Name="StudentIs_Homeless" Type="Boolean" Nullable="false" />
+          <Property Name="StudentIsRefugee" Type="Boolean" Nullable="false" />
+          <Property Name="StudentSpecialNeeds" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentClassHour">
+          <Key>
+            <PropertyRef Name="StudentID" />
+            <PropertyRef Name="ClassID" />
+            <PropertyRef Name="ClassDate" />
+          </Key>
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="ClassID" Type="Int32" Nullable="false" />
+          <Property Name="ClassDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Hours" Type="Double" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentID" />
+            <PropertyRef Name="Delete" />
+            <PropertyRef Name="EthnicityID" />
+            <PropertyRef Name="Below_Poverty_level" />
+            <PropertyRef Name="Is_Homeless" />
+            <PropertyRef Name="IsRefugee" />
+            <PropertyRef Name="SpecialNeeds" />
+          </Key>
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="Delete" Type="Boolean" Nullable="false" />
+          <Property Name="Country_of_Origin" Type="Int32" />
+          <Property Name="PersonID" Type="Int32" />
+          <Property Name="DOB" Type="DateTime" Precision="3" />
+          <Property Name="EthnicityID" Type="Int32" Nullable="false" />
+          <Property Name="Below_Poverty_level" Type="Boolean" Nullable="false" />
+          <Property Name="Is_Homeless" Type="Boolean" Nullable="false" />
+          <Property Name="IsRefugee" Type="Boolean" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="Education" Type="Int32" />
+          <Property Name="Employed" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Years_Complete" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Time_Here" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Other_Degree_or_Diploma" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Earned_" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AgeRange" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Where_Earned" Type="Int32" />
+          <Property Name="FirstLanguage" Type="Int32" />
+          <Property Name="Country_of_Origin1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SpecialNeeds" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="StudentClasses" Relationship="CoreModel.StudentStudentClass" FromRole="Student" ToRole="StudentClass" />
+        </EntityType>
+        <EntityType Name="Term">
+          <Key>
+            <PropertyRef Name="Term1" />
+            <PropertyRef Name="TermSeason" />
+            <PropertyRef Name="TermYear" />
+          </Key>
+          <Property Name="Term1" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TermSeason" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TermYear" Type="Int16" Nullable="false" />
+          <Property Name="Start_Date" Type="DateTime" Precision="3" />
+          <Property Name="End_Date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TutorClass">
+          <Key>
+            <PropertyRef Name="TutorID" />
+            <PropertyRef Name="ClassID" />
+          </Key>
+          <Property Name="TutorID" Type="Int32" Nullable="false" />
+          <Property Name="ClassID" Type="Int32" Nullable="false" />
+          <Property Name="TotalHours" Type="Int32" />
+          <Property Name="NumberStudents" Type="Int32" />
+          <Property Name="TotalStudentHours" Type="Int32" />
+          <Property Name="MaxStudentHours" Type="Int32" />
+          <Property Name="AddedDate" Type="DateTime" Precision="3" />
+          <Property Name="AddedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RemoveDate" Type="DateTime" Precision="3" />
+          <Property Name="RemovedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="WithdrawDate" Type="DateTime" Precision="3" />
+          <Property Name="WithDrawBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TutorClassHour">
+          <Key>
+            <PropertyRef Name="TutorID" />
+            <PropertyRef Name="ClassID" />
+            <PropertyRef Name="ClassDate" />
+          </Key>
+          <Property Name="TutorID" Type="Int32" Nullable="false" />
+          <Property Name="ClassID" Type="Int32" Nullable="false" />
+          <Property Name="ClassDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Hours" Type="Double" />
+        </EntityType>
+        <EntityType Name="Tutor">
+          <Key>
+            <PropertyRef Name="TutorID" />
+            <PropertyRef Name="Start_Date" />
+            <PropertyRef Name="IsEmployed" />
+            <PropertyRef Name="Has_Diploma_or_GED" />
+            <PropertyRef Name="IsExperienced" />
+          </Key>
+          <Property Name="TutorID" Type="Int32" Nullable="false" />
+          <Property Name="PersonID" Type="Int32" />
+          <Property Name="Start_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="End_Date" Type="DateTime" Precision="3" />
+          <Property Name="IsEmployed" Type="Boolean" Nullable="false" />
+          <Property Name="Employer" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Has_Diploma_or_GED" Type="Boolean" Nullable="false" />
+          <Property Name="IsExperienced" Type="Boolean" Nullable="false" />
+          <Property Name="ExperienceLocation" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="CoreEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Classes" EntityType="Self.Class" />
+          <EntitySet Name="Courses" EntityType="CoreModel.Course" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="People" EntityType="Self.Person" />
+          <EntitySet Name="PersonNotes" EntityType="Self.PersonNote" />
+          <EntitySet Name="StudentClasses" EntityType="Self.StudentClass" />
+          <EntitySet Name="StudentClassHours" EntityType="Self.StudentClassHour" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="Terms" EntityType="Self.Term" />
+          <EntitySet Name="TutorClasses" EntityType="Self.TutorClass" />
+          <EntitySet Name="TutorClassHours" EntityType="Self.TutorClassHour" />
+          <EntitySet Name="Tutors" EntityType="Self.Tutor" />
+          <AssociationSet Name="ClassCourse" Association="CoreModel.ClassCourse">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Course" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="StudentStudentClass" Association="CoreModel.StudentStudentClass">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="StudentClass" EntitySet="StudentClasses" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="ClassCourse">
+          <End Type="CoreModel.Class" Role="Class" Multiplicity="*" />
+          <End Type="CoreModel.Course" Role="Course" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseNumber" />
+              <PropertyRef Name="InUse" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="CourseCourseNumber" />
+              <PropertyRef Name="CourseInUse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StudentStudentClass">
+          <End Type="CoreModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="CoreModel.StudentClass" Role="StudentClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentID" />
+              <PropertyRef Name="Delete" />
+              <PropertyRef Name="EthnicityID" />
+              <PropertyRef Name="Below_Poverty_level" />
+              <PropertyRef Name="Is_Homeless" />
+              <PropertyRef Name="IsRefugee" />
+              <PropertyRef Name="SpecialNeeds" />
+            </Principal>
+            <Dependent Role="StudentClass">
+              <PropertyRef Name="StudentStudentID" />
+              <PropertyRef Name="StudentDelete" />
+              <PropertyRef Name="StudentEthnicityID" />
+              <PropertyRef Name="StudentBelow_Poverty_level" />
+              <PropertyRef Name="StudentIs_Homeless" />
+              <PropertyRef Name="StudentIsRefugee" />
+              <PropertyRef Name="StudentSpecialNeeds" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CoreModelStoreContainer" CdmEntityContainer="CoreEntities">
+          <EntitySetMapping Name="Classes">
+            <EntityTypeMapping TypeName="CoreModel.Class">
+              <MappingFragment StoreEntitySet="Classes">
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="CourseNumber" ColumnName="CourseNumber" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="Term" ColumnName="Term" />
+                <ScalarProperty Name="Start_Time" ColumnName="Start Time" />
+                <ScalarProperty Name="End_Time" ColumnName="End Time" />
+                <ScalarProperty Name="Monday" ColumnName="Monday" />
+                <ScalarProperty Name="Tuesday" ColumnName="Tuesday" />
+                <ScalarProperty Name="Wednesday" ColumnName="Wednesday" />
+                <ScalarProperty Name="Thursday" ColumnName="Thursday" />
+                <ScalarProperty Name="Friday" ColumnName="Friday" />
+                <ScalarProperty Name="TutorID" ColumnName="TutorID" />
+                <ScalarProperty Name="TotalTutorHours" ColumnName="TotalTutorHours" />
+                <ScalarProperty Name="TotalStudentHours" ColumnName="TotalStudentHours" />
+                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="CoreModel.Course">
+              <MappingFragment StoreEntitySet="Courses">
+                <ScalarProperty Name="CourseNumber" ColumnName="CourseNumber" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="CourseDescription" ColumnName="CourseDescription" />
+                <ScalarProperty Name="InUse" ColumnName="InUse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="CoreModel.Location">
+              <MappingFragment StoreEntitySet="Locations">
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="LocationContactID" ColumnName="LocationContactID" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+                <ScalarProperty Name="PlaceID" ColumnName="PlaceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="People">
+            <EntityTypeMapping TypeName="CoreModel.Person">
+              <MappingFragment StoreEntitySet="People">
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Middle_Initial" ColumnName="Middle Initial" />
+                <ScalarProperty Name="MainPhone" ColumnName="MainPhone" />
+                <ScalarProperty Name="MainPhoneType" ColumnName="MainPhoneType" />
+                <ScalarProperty Name="AltPhone" ColumnName="AltPhone" />
+                <ScalarProperty Name="AltPhoneType" ColumnName="AltPhoneType" />
+                <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
+                <ScalarProperty Name="MailingStreetAddress" ColumnName="MailingStreetAddress" />
+                <ScalarProperty Name="CityStateZipID" ColumnName="CityStateZipID" />
+                <ScalarProperty Name="MailingCityStateZipID" ColumnName="MailingCityStateZipID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ImportStudentID" ColumnName="ImportStudentID" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+                <ScalarProperty Name="IsPerson" ColumnName="IsPerson" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonNotes">
+            <EntityTypeMapping TypeName="CoreModel.PersonNote">
+              <MappingFragment StoreEntitySet="PersonNotes">
+                <ScalarProperty Name="NoteID" ColumnName="NoteID" />
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+                <ScalarProperty Name="FollowUpDate" ColumnName="FollowUpDate" />
+                <ScalarProperty Name="Closed" ColumnName="Closed" />
+                <ScalarProperty Name="ClosedBy" ColumnName="ClosedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentClasses">
+            <EntityTypeMapping TypeName="CoreModel.StudentClass">
+              <MappingFragment StoreEntitySet="StudentClasses">
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+                <ScalarProperty Name="WithdrawDate" ColumnName="WithdrawDate" />
+                <ScalarProperty Name="WithdrawBy" ColumnName="WithdrawBy" />
+                <ScalarProperty Name="TotalHours" ColumnName="TotalHours" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentClassHours">
+            <EntityTypeMapping TypeName="CoreModel.StudentClassHour">
+              <MappingFragment StoreEntitySet="StudentClassHours">
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="ClassDate" ColumnName="ClassDate" />
+                <ScalarProperty Name="Hours" ColumnName="Hours" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="CoreModel.Student">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="Delete" ColumnName="Delete" />
+                <ScalarProperty Name="Country_of_Origin" ColumnName="Country of Origin" />
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="EthnicityID" ColumnName="EthnicityID" />
+                <ScalarProperty Name="Below_Poverty_level" ColumnName="Below Poverty level" />
+                <ScalarProperty Name="Is_Homeless" ColumnName="Is Homeless" />
+                <ScalarProperty Name="IsRefugee" ColumnName="IsRefugee" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Education" ColumnName="Education" />
+                <ScalarProperty Name="Employed" ColumnName="Employed" />
+                <ScalarProperty Name="Years_Complete" ColumnName="Years Complete" />
+                <ScalarProperty Name="Time_Here" ColumnName="Time Here" />
+                <ScalarProperty Name="Other_Degree_or_Diploma" ColumnName="Other Degree or Diploma" />
+                <ScalarProperty Name="Country_Earned_" ColumnName="Country Earned?" />
+                <ScalarProperty Name="AgeRange" ColumnName="AgeRange" />
+                <ScalarProperty Name="Where_Earned" ColumnName="Where Earned" />
+                <ScalarProperty Name="FirstLanguage" ColumnName="FirstLanguage" />
+                <ScalarProperty Name="Country_of_Origin1" ColumnName="Country of Origin1" />
+                <ScalarProperty Name="SpecialNeeds" ColumnName="SpecialNeeds" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Terms">
+            <EntityTypeMapping TypeName="CoreModel.Term">
+              <MappingFragment StoreEntitySet="Terms">
+                <ScalarProperty Name="Term1" ColumnName="Term" />
+                <ScalarProperty Name="TermSeason" ColumnName="TermSeason" />
+                <ScalarProperty Name="TermYear" ColumnName="TermYear" />
+                <ScalarProperty Name="Start_Date" ColumnName="Start Date" />
+                <ScalarProperty Name="End_Date" ColumnName="End Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TutorClasses">
+            <EntityTypeMapping TypeName="CoreModel.TutorClass">
+              <MappingFragment StoreEntitySet="TutorClasses">
+                <ScalarProperty Name="TutorID" ColumnName="TutorID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="TotalHours" ColumnName="TotalHours" />
+                <ScalarProperty Name="NumberStudents" ColumnName="NumberStudents" />
+                <ScalarProperty Name="TotalStudentHours" ColumnName="TotalStudentHours" />
+                <ScalarProperty Name="MaxStudentHours" ColumnName="MaxStudentHours" />
+                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+                <ScalarProperty Name="RemoveDate" ColumnName="RemoveDate" />
+                <ScalarProperty Name="RemovedBy" ColumnName="RemovedBy" />
+                <ScalarProperty Name="WithdrawDate" ColumnName="WithdrawDate" />
+                <ScalarProperty Name="WithDrawBy" ColumnName="WithDrawBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TutorClassHours">
+            <EntityTypeMapping TypeName="CoreModel.TutorClassHour">
+              <MappingFragment StoreEntitySet="TutorClassHours">
+                <ScalarProperty Name="TutorID" ColumnName="TutorID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="ClassDate" ColumnName="ClassDate" />
+                <ScalarProperty Name="Hours" ColumnName="Hours" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tutors">
+            <EntityTypeMapping TypeName="CoreModel.Tutor">
+              <MappingFragment StoreEntitySet="Tutors">
+                <ScalarProperty Name="TutorID" ColumnName="TutorID" />
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="Start_Date" ColumnName="Start Date" />
+                <ScalarProperty Name="End_Date" ColumnName="End Date" />
+                <ScalarProperty Name="IsEmployed" ColumnName="IsEmployed" />
+                <ScalarProperty Name="Employer" ColumnName="Employer" />
+                <ScalarProperty Name="Has_Diploma_or_GED" ColumnName="Has Diploma or GED" />
+                <ScalarProperty Name="IsExperienced" ColumnName="IsExperienced" />
+                <ScalarProperty Name="ExperienceLocation" ColumnName="ExperienceLocation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

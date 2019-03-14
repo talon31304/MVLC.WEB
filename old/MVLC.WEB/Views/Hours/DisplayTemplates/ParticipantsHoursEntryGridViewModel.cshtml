@@ -1,0 +1,39 @@
+﻿@model MVLC.WEB.ViewModels.ParticipantHoursGridRow
+<tr>
+    <td class="EntryNameColumn">
+        <span class="EntryNameColumn">@Model.PartipantName</span><br />
+        <span class="MVLCTable_SmallLabel">Classes Attended</span>
+        <span class="MVLCTable_SmallValue">AddJSNumberAttended</span><br />
+        <span class="MVLCTable_SmallLabel">Total Hours</span>
+        <span class="MVLCTable_SmallValue">AddJSTotal</span><br />
+    </td>
+
+
+
+    @for (var j = 0; j < Model.Hours.Count() - 1; j++)
+    {
+        if (j < Model.Hours.Count() - 3)
+        {
+
+
+            <td class="EntryDataColumn HiddenColumn EntryDataColumn@(j + 1)">
+                @Html.TextBoxFor(m => m.Hours[j], new { @class = "HoursEntryInput" })
+                <span class="HoursEntryText">@Html.DisplayFor(m => m.Hours[j])</span>
+            </td>
+        }
+        else
+        {
+            <td class="EntryDataColumn InactiveColumn EntryDataColumn@(j + 1)">
+                @Html.TextBoxFor(m => m.Hours[j], new { @class = "HoursEntryInput" })
+                <span class="HoursEntryText">@Html.DisplayFor(m => m.Hours[j])</span>
+            </td>
+        }
+    }
+
+    <td class="EntryDataColumn ActiveColumn EntryDataColumn@(Model.Hours.Count())">
+        @Html.TextBoxFor(m => m.Hours[Model.Hours.Count() - 1], new { @class = "HoursEntryInput" })
+        <span class="HoursEntryText">@Html.DisplayFor(m => m.Hours[Model.Hours.Count() - 1])</span>
+    </td>
+
+    <td></td>
+</tr>

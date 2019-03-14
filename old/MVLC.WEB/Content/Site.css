@@ -1,0 +1,216 @@
+﻿html {
+    font-family: Arial;
+}
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-size:14px;
+}
+body table, div, span, a, p, th, td, tr, li, ul {
+    font-size:14px;
+}
+
+.navbar-default {
+    background:inherit !important;
+    border: 0px !important;
+}
+
+.HeaderLogo {
+    width:18%;
+     float:Left;
+     margin-top:10px;
+     margin-left:20px;
+}
+
+div.container.body-content
+{
+   min-height:500px;
+   padding-left: 15px;
+    padding-right: 15px;
+
+}
+footer {
+      
+    display:block;
+    width:600px;
+    min-width:100%;
+    text-align:center;
+}
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.FullWidth{
+    width:100%;
+    min-width:100%
+}
+ 
+
+.HelpInfoBox 
+{
+    font-size:1em;
+    border: 1px solid;
+}
+
+
+.NarrowFormDiv {
+margin-top: 5px;
+margin-bottom: 5px;
+line-height: .92em;
+ font-size: .9em;
+               }
+
+.loader {
+  height: 4px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.loader:before{
+  display: block;
+  position: absolute;
+  content: "";
+  left: -200px;
+  width: 200px;
+  height: 4px;
+  animation: loading 2s linear infinite;
+}
+
+@keyframes loading {
+    from {left: -200px; width: 30%;}
+    50% {width: 30%;}
+    70% {width: 70%;}
+    80% { left: 50%;}
+    95% {left: 120%;}
+    to {left: 100%;}
+}
+/*s##############################################s*/
+
+
+ a.dropdown-toggle
+{
+    padding-left:0px;
+    padding-right:0px;
+    margin-left:0px;
+    margin-right:0px;
+
+    font-size:14px;
+    width:30px !important;
+  max-width:30px;
+    text-align:right !important;
+}
+
+div.EntryDropDownRightOuter {
+    display:block;
+    min-width:80px;
+    max-width:100px;
+    max-height:60px;
+    overflow-y:scroll;
+        overflow-x:hidden;
+        z-index: 9;
+}
+
+
+
+div.MVCL-DropdownMenuSelector
+{
+
+    max-width:70px;
+    min-width:70px;
+    width:70px;
+     text-align: center;
+    
+    
+     /*margin: 0 auto;*/
+     margin-top:3px;
+ position:relative;
+ left:0px;
+}
+div.MVCL-DropdownMenuSelectorTextContainer {
+    max-width:60px;
+    min-width:30px;
+    /*width:60px;*/
+    float:left;
+    text-align:right;
+     cursor: pointer;
+      max-height:inherit; 
+ 
+}
+.MVCL-DropdownMenuSelectorTextContainer 
+{
+     text-decoration:none;
+}
+
+.MVCL-DropdownMenuSelectorTextContainer span
+{
+     margin-bottom:30px;
+     padding-bottom:30px;
+     vertical-align:top;
+     line-height:45px;
+}
+
+div.MVCL-DropdownMenuSelectorCaretContainer {
+    max-width:6px;
+    min-width:6px;
+    width:6px;
+    float:left;
+    cursor: pointer; 
+    max-height:inherit;
+    margin-top:10px; 
+}
+
+.MenuCaret {
+  width: 0; 
+  height: 0; 
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid black;
+  display:inline;
+  padding:0px 0px 0px 0px;
+}
+
+
+
+/* Dynamic Data Value Formats */
+
+.DynamicValueLabel {
+    font-weight:bold;
+    font-style:normal;
+}
+
+.DynamicText,
+.DynamicValue{
+    font-weight:normal;
+    font-style:italic;
+}
+
+
+.Large {    
+    font-size:1.2em;
+    font-style:normal;
+}
+.Small {
+    font-size:.9em;
+    line-height:105%;
+    height:.92em;
+    margin-top: -10px;
+    margin-bottom: 0px;
+}
+  .Show {display:block;}  
+  .Hide {display:none;} 
+  .NoPadding {padding:0px 0px 0px 0px !important;}
+
+      
+.Small2Column {float:left;width:25%}
+.Big2Column {float:left;width:75%}
+

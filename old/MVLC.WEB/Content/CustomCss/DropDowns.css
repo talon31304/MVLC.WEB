@@ -1,0 +1,32 @@
+﻿.DropDown .MenuText 
+{
+    padding-top:0px;
+    padding-bottom:0px;
+    padding-left:0px;
+    padding-right:0px;
+    display:inline-block;
+}
+
+.DropDown .Caret 
+{
+ width: 0; 
+  height: 0; 
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-top: 18px solid black;
+  display:inline;
+  padding:0px 0px 0px 0px;
+}
+.DropDown .CaretContainer {
+    max-width: 16px;
+    min-width: 16px;
+    width: 16px;
+    float: left;
+    cursor: pointer;
+    max-height: inherit;
+    margin-top: 10px;
+}
+.DropDown .DroppedDown 
+{
+
+}
