@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVLC.WEB", "MVLC.WEB\MVLC.WEB.csproj", "{F1A272BD-B697-43A5-A3DE-6B067A1564BE}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVLC.BL", "MVLC.BL\MVLC.BL.csproj", "{17791F46-56D4-4E61-8E55-4BE0BD71F995}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVLC.DAL", "MVLC.DAL\MVLC.DAL.csproj", "{94394A3E-A3E7-4E0C-9E4F-04E8D045A7AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVLCLearningTracker", "MVLCLearningTracker\MVLCLearningTracker.csproj", "{A5DE2D4D-5666-4E7E-B33A-5A4ACF2DBD37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{94394A3E-A3E7-4E0C-9E4F-04E8D045A7AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94394A3E-A3E7-4E0C-9E4F-04E8D045A7AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94394A3E-A3E7-4E0C-9E4F-04E8D045A7AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5DE2D4D-5666-4E7E-B33A-5A4ACF2DBD37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5DE2D4D-5666-4E7E-B33A-5A4ACF2DBD37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5DE2D4D-5666-4E7E-B33A-5A4ACF2DBD37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5DE2D4D-5666-4E7E-B33A-5A4ACF2DBD37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
