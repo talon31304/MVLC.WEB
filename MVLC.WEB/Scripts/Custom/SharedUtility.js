@@ -15,3 +15,8 @@ function fireChangeFor(ctrlID) {
     element.dispatchEvent(event);
 }
 
+
+function ShowandFade(elemID) {
+    $('#' + elemID).show().delay(10000).fadeOut();
+
+}

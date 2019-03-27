@@ -9,14 +9,16 @@ using MVLC.DAL.Models;
 
 namespace MVLC.WEB.Controllers
 {
-    public class HoursController : Controller
+    public class HoursController : BaseController
     {
+
+
         public ActionResult GetTutorsByTerm(string p1)
         {
             string term = p1;
             bool isRefresh = true;
             string defaultValue = "-1"; //No selection made
-            HoursRepository hours = new HoursRepository();
+            HoursRepository hours = new HoursRepository(ConnStringName);
             List<NameID> ActiveTutors = hours.GetTutorListByTerm(term);
             ActiveTutors.Insert(0, new NameID() { Name = " (Select Tutor)", ID = defaultValue });
             DropDownDiv model = new DropDownDiv("TutorsDD", defaultValue, ActiveTutors, isRefresh, "ClassesDD", "TutorChanged");
@@ -30,7 +32,7 @@ namespace MVLC.WEB.Controllers
 
             bool isRefresh = true;
             string defaultValue = "-1"; //No selection made
-            HoursRepository hours = new HoursRepository();
+            HoursRepository hours = new HoursRepository(ConnStringName);
             List<NameID> ActiveClasses = hours.GetTutorClassesByTutorPersonIDAndTerm(tutorID, term);
             ActiveClasses.Insert(0, new NameID() { Name = " (Select Class)", ID = defaultValue });
             DropDownDiv model = new DropDownDiv("ClassesDD", defaultValue, ActiveClasses, isRefresh, "ClassesDD", "ClassesChanged");
@@ -44,7 +46,7 @@ namespace MVLC.WEB.Controllers
         {
             HoursClassSelectViewModel model = new HoursClassSelectViewModel();
 
-            HoursRepository hours = new HoursRepository();
+            HoursRepository hours = new HoursRepository(ConnStringName);
             string DropDownToCascadeTo;
             bool isRefresh = false;
             string refreshURL;
@@ -82,7 +84,7 @@ namespace MVLC.WEB.Controllers
         [HttpPost]
         public ActionResult SetClassHours(PersonClassDateHours hrs)
         {
-            HoursRepository hours = new HoursRepository();
+            HoursRepository hours = new HoursRepository(ConnStringName);
 
             bool result = hours.UpdatePersonClassHours(hrs);
 
@@ -94,7 +96,7 @@ namespace MVLC.WEB.Controllers
         [HttpPost]
         public ActionResult SetDidClassMeet(int ClassID, DateTime ClassDate, string meet)
         {
-            HoursRepository hours = new HoursRepository();
+            HoursRepository hours = new HoursRepository(ConnStringName);
 
             bool result = hours.SetDidClassMeet(ClassID, ClassDate, meet);
 
@@ -106,7 +108,7 @@ namespace MVLC.WEB.Controllers
 
         private ParticipantHoursGridRow[] GetRowsForRole(DateTime[] classDates, int ClassID, string Role, int StartingRow)
         {
-            HoursRepository hours = new HoursRepository();
+            HoursRepository hours = new HoursRepository(ConnStringName);
             List<NameID> Participants = hours.GetPersonListByClassIDandRole(ClassID, Role);
 
             List<PersonClassDateHours> PersonHoursList = hours.GetHoursByClassIDandRole(ClassID, Role);
@@ -176,7 +178,7 @@ namespace MVLC.WEB.Controllers
 
         public ParticipantsHoursEntryGrid GetParticipantsHoursEntryGrid(int ClassID)
         {
-            HoursRepository hours = new HoursRepository();
+            HoursRepository hours = new HoursRepository(ConnStringName);
 
             ParticipantsHoursEntryGrid gridModel = new ParticipantsHoursEntryGrid();
             gridModel.NumberOfVisibleDates = GetMaxVisble();
@@ -191,6 +193,12 @@ namespace MVLC.WEB.Controllers
 
         public ActionResult Update(int id = -1)
         {
+            //RedirectOnNoDB();
+            if (!IsDBavailable())
+            {
+                return NoDatabaseAvailable();
+            }
+
             if (id == -1) return SelectClass();
 
             ParticipantsHoursEntryGrid model = GetParticipantsHoursEntryGrid(id);
@@ -198,7 +206,7 @@ namespace MVLC.WEB.Controllers
             List<string> choiceList = new List<string>() { "0", ".5", "1", "1.5", "2", "2.5", "3", "3.5", "4", "4.5", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" };
             List<string> RadioVals = new List<string>() { "0", "1", "1.5", "2", "2.5" };
 
-            HoursRepository hours = new HoursRepository();
+            HoursRepository hours = new HoursRepository(ConnStringName);
             List<DateTime> WithHours = hours.ClassDatesWithHours(id);
             List<DateTime> ClassDates = hours.GetOnlyPastandPresentClassDatesByClassID(id).OrderBy(d => d.Date).ToList();
 

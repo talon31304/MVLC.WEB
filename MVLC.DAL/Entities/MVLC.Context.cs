@@ -19,7 +19,11 @@ namespace MVLC.DAL.Entities
             : base("name=MVLC_LIVE_Entities")
         {
         }
-    
+        public MVLC_LIVE_Entities(string EnvName)
+            : base("name=" + EnvName)
+        {
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

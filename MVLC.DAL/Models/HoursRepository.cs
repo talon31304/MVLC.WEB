@@ -15,8 +15,24 @@ namespace MVLC.DAL.Classes
 
         public HoursRepository()
         {
-            dbConn = new MVLC_LIVE_Entities();
+            //dbConn = new MVLC_LIVE_Entities();
+            //dbConn = new MVLC_LIVE_Entities();
+            throw new KeyNotFoundException("Connection String Name Key must be specified.");
+
         }
+        public HoursRepository(string ConnStringName)
+        {
+            if (ConnStringName != null && ConnStringName.Length > 0)
+            {
+                dbConn = new MVLC_LIVE_Entities(ConnStringName);
+            }
+            else
+            {
+                throw new KeyNotFoundException("Connection String Name Key must be specified.");
+            }
+        }
+
+
         public List<string> GetCurrentTermsWithClassesEndingAfterLastWeek()
         {
             DateTime LastWeek = DateTime.Now.AddDays(-7);

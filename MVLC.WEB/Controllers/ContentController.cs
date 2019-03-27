@@ -10,12 +10,12 @@ using MVLC.DAL.Models;
 
 namespace MVLC.WEB.Controllers
 {
-    public class ContentController : Controller
+    public class ContentController : BaseController
     {
         // GET: Content
         public ActionResult Get(int ID)
         {
-            ContentRepository content = new ContentRepository();
+            ContentRepository content = new ContentRepository(ConnStringName);
             DynamicSectionContent DSC = content.Get(ID);
             DynamicDiv model = new DynamicDiv()
             {

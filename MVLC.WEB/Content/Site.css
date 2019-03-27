@@ -32,6 +32,10 @@ body table, div, span, a, p, th, td, tr, li, ul {
 .Small2Column {float:left;width:25%}
 .Big2Column {float:left;width:75%}
 
+.TopRightNav {float:left;width:25%}
+.TopLeftNav {float:left;width:70%}
+
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;

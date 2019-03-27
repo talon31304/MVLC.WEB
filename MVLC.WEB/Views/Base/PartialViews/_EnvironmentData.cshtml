@@ -1,0 +1,32 @@
+﻿@model MVLC.WEB.ViewModels.EnvironmentInfo
+<span>System Status:</span>
+
+
+
+    <div class="StatusOval @Model.CurrentStatus @Model.EnvironmentType"
+          onmouseover="ShowandFade('StatusDiv');" >
+        @if (Model.CurrentStatus == "Online" && @Model.EnvironmentType == "Production")
+        {
+            <span> &#10004; </span>
+        }
+        else if (Model.CurrentStatus == "Online")
+        {
+            <span>Online: @Model.EnvironmentType</span>
+        }
+        else
+        {
+            <span> Offline </span>
+        }
+
+  </div>
+
+
+
+    
+    
+
+<div id="StatusDiv" style="display:none;">
+    <span class="DynamicValueLabel">Connection:</span><span class="DynamicValue">@Model.EnvironmentType</span><br />
+    <span class="DynamicValueLabel">Database:</span><span class="DynamicValue">@Model.DB</span><br />
+    <span class="DynamicValueLabel">Server:</span><span class="DynamicValue">@Model.DataSource</span><br />
+</div>

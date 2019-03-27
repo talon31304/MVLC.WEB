@@ -11,35 +11,44 @@
 
 
 <body class="MainTheme">
-    <div style="height:40px; display:block;">
-        <div class="navbar navbar-default navbar-fixed-top">
-            <div class="HeaderLogo">
-                <img src="~/Content/Images/MVCL-Logo.png" alt="MVLCLogo" style="width:auto; max-height:50px" />
-            </div>
-            <div class="container" style="width:75%; float:Left">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("MVLC Learning Tracker", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                </div>
 
+        <div style="height:40px; display:block;">
+            <div class="navbar navbar-default navbar-fixed-top">
+                <div class="HeaderLogo">
+                    <img src="~/Content/Images/MVCL-Logo.png" alt="MVLCLogo" style="width:auto; max-height:50px" />
+                </div>
+                <div class="container" style="width:55%; float:Left">
+                    <div class="navbar-header">
+                        
+                        @Html.ActionLink("MVLC Learning Tracker", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    </div>
+                </div>
+                <div style="width:20%; float:Left">
+                    @{Html.RenderAction("ShowEnvironmentInfo", "Base");}
+                </div>
             </div>
         </div>
-    </div>
+    <div style="clear:both;"></div>
+
     <div class="MainContent container body-content">
         <div id="DynamicDivPopup"></div>
-
+      
 
         @RenderBody()
+    
         <hr />
        
     </div>
     <div class="footer">
         <footer>
-            <p>&copy; @DateTime.Now.Year - MVLC</p>
+            <p>
+                <div class="Small2Column">&copy; @DateTime.Now.Year - MVLC</div>
+                     <div class="Big2Column">
+                         
+                     </div>
+                
+            </p>
+     
         </footer>
     </div>
     @Scripts.Render("~/bundles/jquery")

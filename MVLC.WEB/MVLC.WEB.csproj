@@ -144,6 +144,7 @@
     <Compile Include="ClassDate.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HoursController.cs" />
@@ -190,6 +191,7 @@
     <Compile Include="ViewModels\Content\DynamicDiv.cs" />
     <Compile Include="ViewModels\DropDownDivElement.cs" />
     <Compile Include="ViewModels\DropDownDiv.cs" />
+    <Compile Include="ViewModels\EnvironmentInfo.cs" />
     <Compile Include="ViewModels\Hours\DateHours.cs" />
     <Compile Include="ViewModels\Hours\HoursColumnHead.cs" />
     <Compile Include="ViewModels\Hours\OnClickText.cs" />
@@ -286,6 +288,8 @@
     <Content Include="Views\Shared\Layouts\_Layout.cshtml" />
     <Content Include="Views\Shared\PartialViews\_DropDownDivPartial.cshtml" />
     <Content Include="Views\Shared\PartialViews\_LoginPartial.cshtml" />
+    <Content Include="Views\Base\PartialViews\_EnvironmentData.cshtml" />
+    <Content Include="Views\Shared\Message.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

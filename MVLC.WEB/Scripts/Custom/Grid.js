@@ -7,7 +7,7 @@ var MaxRow = -1;
 //Returns apropriate row or column number based on parameters passed-
 //If InitialText is "FIRST" or "Last", returns the aproprioate value
 //If no or invalid value is passed, return default.
-function GetRowOrColNumber(InititalText, Max, defaultVal) {
+function GetInitialRowOrColNumber(InititalText, Max, defaultVal) {
     var val = 0;
     if (InititalText  &&  (InititalText=='FIRST' || InititalText=='LAST'))
     {
